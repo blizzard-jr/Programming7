@@ -10,18 +10,36 @@ import org.example.server.fileSystem.FileSystem;
  */
 
 public class StorageOfManagers {
-    public static Storage storage;
-    public static CollectionManager collectionManager;
-    public static UserInterface userInterface;
-    public static FileSystem fileSystem;
-    public static CommandsManager commandsManager;
+    private final Storage storage = new Storage();
+    private CollectionManager collectionManager;
+    private UserInterface userInterface;
+    private FileSystem fileSystem;
+    private CommandsManager commandsManager;
     public StorageOfManagers(CollectionManager collectionManager, UserInterface userInterface, FileSystem fileSystem, CommandsManager commandsManager, Storage storage){
-        StorageOfManagers.collectionManager = collectionManager;
-        StorageOfManagers.userInterface = userInterface;
-        StorageOfManagers.fileSystem = fileSystem;
-        StorageOfManagers.commandsManager = commandsManager;
-        StorageOfManagers.storage = storage;
+        this.collectionManager = collectionManager;
+        this.userInterface = userInterface;
+        this.fileSystem = fileSystem;
+        this.commandsManager = commandsManager;
+        this.storage = storage;
     }
 
-//Сделаать методы getmanage
+    public Storage getStorage() {
+        return storage;
+    }
+
+    public CollectionManager getCollectionManager() {
+        return collectionManager;
+    }
+
+    public UserInterface getUserInterface() {
+        return userInterface;
+    }
+
+    public FileSystem getFileSystem() {
+        return fileSystem;
+    }
+
+    public CommandsManager getCommandsManager() {
+        return commandsManager;
+    }
 }

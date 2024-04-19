@@ -1,8 +1,10 @@
 package org.example.client;
 
 import org.example.commands.*;
+import org.example.server.details.Serialization;
 import org.example.server.exceptions.NoSuchCommandException;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,12 +39,15 @@ public class CommandsManager {
     public void addCommand(Command cmd){
         commandRegistry.put(cmd.getName(), cmd);
     }
-    public void executeCommand(String s) throws NoSuchCommandException {
+    public ByteBuffer commandForming(String s) throws NoSuchCommandException {
         String[] str = parseCommand(s);
         Command command = getCommand(str[0].toLowerCase());
         commandList.add(str[0]);
         String[] args = Arrays.copyOfRange(str, 1, str.length);
-
+        HashMap<Command, String[]> parcel = new HashMap<>();
+        ByteBuffer buffer = ByteBuffer.wrap(Serialization.SerializeObject(command));
+        buffer.put(Serialization.SerializeObject(args));
+        return buffer;
     }
     /**
      * Метод принимает строку, переданную через консоль, и разбивает её, позволяя разделить имя команды и аргументы

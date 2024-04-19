@@ -1,12 +1,15 @@
 package org.example.commands;
 
-import exception.NoSuchCommandException;
+import org.example.server.exceptions.NoSuchCommandException;
+
+import java.io.Externalizable;
+import java.io.Serializable;
 
 /**
  * Абстрактный класс для всех команд, доступных в приложении
  */
 
-public abstract class Command {
+public abstract class Command implements Serializable {
     protected int argumentCount = 0;
     private String name;
     private String description;

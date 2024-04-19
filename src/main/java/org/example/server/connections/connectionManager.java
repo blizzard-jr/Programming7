@@ -1,5 +1,8 @@
 package org.example.server.connections;
 
+import org.example.commands.Command;
+import org.example.server.details.Serialization;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -16,10 +19,8 @@ public class connectionManager {
             System.out.println("Server is ready!");
             clientSocket = server.accept();
             try{
-                in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-                String word = in.readLine();
-                out.write("Hello, it`s a server, your message is " + word);
+                InputStreamReader reader = new InputStreamReader(clientSocket.getInputStream());
+                
             }finally{
                 clientSocket.close();
                 in.close();

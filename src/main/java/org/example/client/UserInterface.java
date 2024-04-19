@@ -1,18 +1,19 @@
 package org.example.client;
 //Журнал КОД от яндекс, почитать
 
+import com.sun.source.doctree.SeeTree;
+import org.example.commands.Command;
 import org.example.object.*;
+import org.example.server.details.Storage;
+import org.example.server.details.StorageOfManagers;
+import org.example.server.exceptions.IllegalValueException;
+import org.example.server.exceptions.NoSuchCommandException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
-import java.util.LinkedHashMap;
-import java.util.NoSuchElementException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.nio.ByteBuffer;
+import java.util.*;
 
-import static org.example.server.details.StorageOfManagers.fileSystem;
 
 
 /**
@@ -21,6 +22,8 @@ import static org.example.server.details.StorageOfManagers.fileSystem;
 
 public class UserInterface {
     private static Socket clientSocket;
+    private BufferedWriter out;
+    private BufferedReader in;
     private final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
     public static void main(String[] args){
         try {
@@ -38,30 +41,37 @@ public class UserInterface {
 
         System.out.println(fileName);
         Storage st = new Storage();
-        FileSystem file = new FileSystem();
-        UserInterface user = new UserInterface();
+        InputProcess console = new InputProcess();
         CommandsManager manage = new CommandsManager();
-        CollectionManager collection = new CollectionManager();
-        StorageOfManagers storageOfManagers = new StorageOfManagers(collection, user, file, manage, st);
+        //CollectionManager collection = new CollectionManager();
+        StorageOfManagers storageOfManagers = new StorageOfManagers(collection, console, file, manage, st);
         LinkedHashMap<Integer, StudyGroup> map;
         if(!fileName.isEmpty()){
-            map = user.readFile("Желаете инициализировать коллекцию из файла? \"Enter\" - Да; Another - Нет: ", fileName);
+            map = console.readFile("Желаете инициализировать коллекцию из файла? \"Enter\" - Да; Another - Нет: ", fileName);
         }
         else{
             System.out.println("Будет использована пустая коллекция");
             map = new LinkedHashMap<>();
         }
         StorageOfManagers.storage.mapInit(map);
-        user.writeln("Программа готова к работе");
-        while(user.hasNextLine()){
+        console.writeln("Программа готова к работе");
+        while(console.hasNextLine()){
             try {
-                manage.executeCommand(user.readWithMessage(""));
+                outputData(manage.commandForming(console.readWithMessage("")));
             }catch(NoSuchCommandException | IllegalValueException e){
-                user.writeErr(e.getMessage());
+                console.writeErr(e.getMessage());
             }catch(NoSuchElementException e){
                 System.err.println("Программа завершена без сохранения данных");
                 System.exit(0);
             }
+        }
+    }
+    public static void outputData(ByteBuffer buffer){
+        try {
+            OutputStream ou = clientSocket.getOutputStream();
+            ou.write(buffer.array());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
