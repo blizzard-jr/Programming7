@@ -4,8 +4,10 @@ package org.example.island.object;
 import org.example.InputProcess;
 import org.example.exceptions.IllegalValueException;
 
-public class Person {
-    InputProcess process = new InputProcess();
+import java.io.Serializable;
+
+public class Person implements Serializable {
+
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Float height; //Поле не может быть null, Значение поля должно быть больше 0
     private double weight; //Значение поля должно быть больше 0
@@ -20,7 +22,7 @@ public class Person {
     }
     public Person(){}
     public void setName(String name) {
-        if(!process.validate(name, false)){
+        if(!new InputProcess().validate(name, false)){
            throw new IllegalValueException("Значение не может быть null или пустой строкой");
         }
         else{
@@ -29,7 +31,7 @@ public class Person {
     }
 
     public void setHeight(float height) {
-        if (process.validate(height, 0) & process.validate(height, false)){
+        if (new InputProcess().validate(height, 0) & new InputProcess().validate(height, false)){
             this.height = height;
         }
         else{
@@ -38,7 +40,7 @@ public class Person {
     }
 
     public void setWeight(double weight) {
-        if(process.validate(weight, 0)){
+        if(new InputProcess().validate(weight, 0)){
             this.weight = weight;
         }
         else{
@@ -47,7 +49,7 @@ public class Person {
     }
 
     public void setHairColor(Color hairColor) {
-        if(!process.validate(hairColor, false)){
+        if(!new InputProcess().validate(hairColor, false)){
             throw new IllegalValueException("Значение не может быть null");
         }
         else{
@@ -76,7 +78,7 @@ public class Person {
     }
 
     public void setLocation(Location location) {
-        if(!process.validate(location, false)){
+        if(!new InputProcess().validate(location, false)){
             throw new IllegalValueException("Значение не может быть null");
         }
         else{

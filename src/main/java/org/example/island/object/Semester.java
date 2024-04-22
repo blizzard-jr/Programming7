@@ -3,7 +3,9 @@ package org.example.island.object;
 
 import org.example.exceptions.IllegalValueException;
 
-public enum Semester {
+import java.io.Serializable;
+
+public enum Semester implements Serializable {
     FIRST("Первый"),
     FOURTH("Четвёртый"),
     FIFTH("Пятый");

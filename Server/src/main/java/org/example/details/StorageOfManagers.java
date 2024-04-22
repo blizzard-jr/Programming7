@@ -1,44 +1,27 @@
-/*
+
 package org.example.details;
+
+
+import org.example.answers.AnswerManager;
+import org.example.commandsManager.ExecuteManager;
+import org.example.fileSystem.FileSystem;
 
 
 /**
  * Класс для хранения менеджеров, позволяет избежать использования синглтонов
  */
-/*
+
 public class StorageOfManagers {
-    private final Storage storage = new Storage();
-    private UserInterface userInterface = new UserInterfece;
-    private FileSystem fileSystem;
-    private CommandsManager commandsManager;
-    public StorageOfManagers(CollectionManager collectionManager, UserInterface userInterface, FileSystem fileSystem, CommandsManager commandsManager, Storage storage){
-        this.collectionManager = collectionManager;
-        this.userInterface = userInterface;
-        this.fileSystem = fileSystem;
-        this.commandsManager = commandsManager;
-        this.storage = storage;
-    }
+    public static  Storage storage;
+    public static FileSystem fileSystem;
+    public  static ExecuteManager executeManager;
+    public StorageOfManagers(Storage storage, FileSystem fileSystem, ExecuteManager executeManager){
+        StorageOfManagers.storage = storage;
+        StorageOfManagers.fileSystem = fileSystem;
+        StorageOfManagers.executeManager = executeManager;
 
-    public Storage getStorage() {
-        return storage;
-    }
-
-    public CollectionManager getCollectionManager() {
-        return collectionManager;
-    }
-
-    public UserInterface getUserInterface() {
-        return userInterface;
-    }
-
-    public FileSystem getFileSystem() {
-        return fileSystem;
-    }
-
-    public CommandsManager getCommandsManager() {
-        return commandsManager;
     }
 }
 
 
- */
+

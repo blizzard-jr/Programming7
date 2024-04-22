@@ -2,12 +2,16 @@ package org.example;
 //Журнал КОД от яндекс, почитать
 
 import org.example.exceptions.*;
+import org.example.island.commands.Command;
+import org.example.island.commands.Help;
+import org.example.island.commands.History;
 import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
 import org.example.island.object.*;
 
 
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
@@ -21,16 +25,12 @@ import java.util.*;
 
 public class UserInterface {
     private static Scanner scanner = new Scanner(System.in);
-    private static Socket clientSocket;
-    private BufferedWriter out;
-    private BufferedReader in;
-    private static ByteBuffer buffer = ByteBuffer.allocate(2048);
+    private static ByteBuffer buffer = ByteBuffer.allocate(4096);
     private static SocketChannel channel;
-    private final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
     public static void main(String[] args){
         try {
-            clientSocket = new Socket("localhost", 4004);
-            channel = clientSocket.getChannel();
+            channel = SocketChannel.open();
+            channel.connect(new InetSocketAddress("localhost", 4004));
             System.out.println("Соединение с сервером установлено");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -49,45 +49,54 @@ public class UserInterface {
         if(!fileName.isEmpty()){
             System.out.println("Желаете инициализировать коллекцию из файла? \"Enter\" - Да; Another - Нет: ");
             String ans = scanner.nextLine();
-            if(!ans.isEmpty()){
+            if(ans.isEmpty()){
                 Message msg = new Message();
                 msg.setArguments(fileName);
                 outputData(Serialization.SerializeObject(msg));
-                String answer = inputData();
-                if(answer.equals("Успех")){
-                    System.out.println("Коллекция успешно инициализирована");
+                Message answer = inputData();
+                System.out.println(answer.getArguments()[0]);
                 }
-                else{
-                    System.out.println(ans);
-                }
-            }
             else{
                 System.out.println("Будет использована пустая коллекция");
-                outputData(Serialization.SerializeObject("Пустая коллекция"));
+                Message msg = new Message();
+                msg.setArguments("Пустая коллекция");
+                outputData(Serialization.SerializeObject(msg));
             }
         }
         else{
             System.out.println("Будет использована пустая коллекция");
-            outputData(Serialization.SerializeObject("Пустая коллекция"));
+            Message msg = new Message();
+            msg.setArguments("Пустая коллекция");
+            outputData(Serialization.SerializeObject(msg));
 
         }
         System.out.println("Программа готова к работе");
         while(console.hasNextLine()){
             try {
-                outputData(Serialization.SerializeObject(manage.commandForming(console.readWithMessage("---"))));
-            }catch(IllegalValueException e){
+                Command command = manage.commandForming(console.readWithMessage("---"));
+                if(command.getClass() != Help.class & command.getClass() != History.class){
+                    outputData(Serialization.SerializeObject(command));
+                    Message msg = inputData();
+                    for(Object o : msg.getArguments()){
+                        System.out.println(o);
+                    }
+                }
+                else{
+                    continue;
+                }
+
+            }catch(IllegalValueException | NoSuchCommandException | org.example.island.details.exceptions.NoSuchCommandException e){
                 console.writeErr(e.getMessage());
             }catch(NoSuchElementException e){
                 System.err.println("Программа завершена без сохранения данных");
                 System.exit(0);
-            } catch (NoSuchCommandException e) {
-                throw new RuntimeException(e);
             }
         }
     }
     public static void outputData(byte[] data){
         try {
             buffer.put(data);
+            buffer.flip();
             channel.write(buffer);
             buffer.clear();
         } catch (IOException e) {
@@ -96,13 +105,15 @@ public class UserInterface {
     }
 
 
-    public static String inputData(){
+    public static Message inputData(){
         try {
             channel.read(buffer);
             buffer.flip();
             return Serialization.DeserializeObject(buffer.array());
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }finally {
+            buffer.clear();
         }
     }
 

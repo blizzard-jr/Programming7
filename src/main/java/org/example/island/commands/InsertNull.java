@@ -1,6 +1,8 @@
 package org.example.island.commands;
 
 
+import org.example.InputProcess;
+import org.example.commandsManager.ExecuteManager;
 import org.example.exceptions.IllegalValueException;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.StudyGroup;
@@ -28,7 +30,7 @@ public class InsertNull extends Command{
         if(fields[0].isEmpty() || studentsCount <=0 || studentsShouldBeExpelled <=0){
             throw new IllegalValueException("Введённые значения не валидны");
         }
-        StudyGroup obj = process.studyGroupInit(name, studentsCount, studentsShouldBeExpelled);
+        StudyGroup obj = new InputProcess().studyGroupInit(name, studentsCount, studentsShouldBeExpelled);
         Object[] data = new Object[2];
         data[0] = key;
         data[1] = obj;
@@ -37,7 +39,7 @@ public class InsertNull extends Command{
     }
 
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
         manage.executeInsert(this.getArguments());
     }
 }

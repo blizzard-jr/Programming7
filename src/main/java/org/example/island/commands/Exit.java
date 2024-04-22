@@ -1,6 +1,7 @@
 package org.example.island.commands;
 
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 public class Exit extends Command{
@@ -9,7 +10,7 @@ public class Exit extends Command{
     }
 
     @Override
-    public void execute(){
+    public void execute(ExecuteManager manage){
     }
 
     @Override

@@ -15,12 +15,12 @@ public class AnswerManager {
         this.socket = socket;
     }
 
-    public void answerForming(String data){
+    public void answerForming(Object data){
         Message message = new Message();
         message.setArguments(data);
         flush(message);
     }
-    public void answerForming(String[] data){
+    public void answerForming(Object[] data){
         Message msg = new Message();
         msg.setArguments(data);
         flush(msg);

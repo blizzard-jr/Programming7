@@ -7,22 +7,23 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.example.InputProcess;
 import org.example.details.Storage;
+
 import org.example.exceptions.IllegalValueException;
 
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.Objects;
-
-
+import java.util.Set;
 
 
 /**
  * Класс - объект коллекции
  */
-public class StudyGroup implements Comparable<StudyGroup> {
-    Storage storage = new Storage();
-    InputProcess process = new InputProcess();
+public class StudyGroup implements Comparable<StudyGroup>, Serializable {
+    private Set<Integer> idSet = new HashSet<>();
     private String name; //Поле не может быть null, Строка не может быть пустой
     private long studentsCount; //Значение поля должно быть больше 0
     private long shouldBeExpelled; //Значение поля должно быть больше 0
@@ -31,47 +32,45 @@ public class StudyGroup implements Comparable<StudyGroup> {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy-HH:mm:ss")
     private LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private FormOfEducation formOfEducation; //Поле не может быть null
     private Semester semesterEnum; //Поле не может быть null
     private Person groupAdmin; //Поле может быть null
 
     @JsonCreator
-    public StudyGroup(String name, long studentsCount, long shouldBeExpelled, Coordinates coordinates, FormOfEducation formOfEducation, Semester semesterEnum, Person groupAdmin) {
+    public StudyGroup(@JsonProperty("name") String name, @JsonProperty("studentsCount") long studentsCount, @JsonProperty("shouldBeExpelled")long shouldBeExpelled, @JsonProperty("coordinates")Coordinates coordinates, @JsonProperty("formOfEducation")FormOfEducation formOfEducation, @JsonProperty("semesterEnum")Semester semesterEnum, @JsonProperty("groupAdmin")Person groupAdmin) {
         setName(name);
         setStudentsCount(studentsCount);
         setShouldBeExpelled(shouldBeExpelled);
         setCoordinates(coordinates);
-        this.creationDate =LocalDateTime.now();
-        this.id = storage.getId();
+        this.creationDate = LocalDateTime.now();
+        this.id = idInit();
         setFormOfEducation(formOfEducation);
         setGroupAdmin(groupAdmin);
         setSemesterEnum(semesterEnum);
     }
     public StudyGroup(){
-        this.id = storage.getId();
+        this.id = idInit();
         this.creationDate = LocalDateTime.now();
     }
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
+
 
     public void setName(String name) {
-        if(!process.validate(name, false)){
-            throw new IllegalValueException("Поле name не может быть пустым");
-        }
-        else {
+        if(!name.isEmpty() & name != null){
             this.name = name;
         }
+        else{
+            throw new IllegalValueException("Поле name не может быть пустым");
+        }
     }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public void setShouldBeExpelled(long shouldBeExpelled) {
-        if (process.validate(shouldBeExpelled, 0)){
-            this.shouldBeExpelled = shouldBeExpelled;
+        if(shouldBeExpelled > 0){
+            this.
+                    shouldBeExpelled= shouldBeExpelled;
         }
         else{
             throw new IllegalValueException("Число студентов на отчислении должно быть больше нуля");
@@ -80,7 +79,7 @@ public class StudyGroup implements Comparable<StudyGroup> {
 
 
     public void setStudentsCount(long studentsCount) {
-        if (process.validate(studentsCount, 0)){
+        if(studentsCount > 0){
             this.studentsCount = studentsCount;
         }
         else{
@@ -88,7 +87,7 @@ public class StudyGroup implements Comparable<StudyGroup> {
         }
     }
     public void setCoordinates(Coordinates coordinates){
-        if(process.validate(coordinates, false)){
+        if(coordinates != null){
             this.coordinates = coordinates;
         }
         else{
@@ -97,7 +96,7 @@ public class StudyGroup implements Comparable<StudyGroup> {
     }
 
     public void setGroupAdmin(Person groupAdmin) {
-        if(process.validate(groupAdmin, false)){
+        if(groupAdmin != null){
             this.groupAdmin = groupAdmin;
         }
         else{
@@ -105,8 +104,16 @@ public class StudyGroup implements Comparable<StudyGroup> {
         }
 
     }
+    public void setCreationDate(LocalDateTime creationDate) {
+        if(creationDate != null){
+            this.creationDate = creationDate;
+        }
+        else{
+            throw new IllegalValueException("Поле CreationDate не может быть равным нулю");
+        }
+    }
     public void setSemesterEnum(Semester semesterEnum) {
-        if(process.validate(semesterEnum, false)){
+        if(semesterEnum != null){
             this.semesterEnum = semesterEnum;
         }
         else{
@@ -115,7 +122,7 @@ public class StudyGroup implements Comparable<StudyGroup> {
     }
 
     public void setFormOfEducation(FormOfEducation formOfEducation) {
-        if(process.validate(formOfEducation, false)){
+        if(formOfEducation != null){
             this.formOfEducation = formOfEducation;
         }
         else{
@@ -156,6 +163,19 @@ public class StudyGroup implements Comparable<StudyGroup> {
 
     public Person getGroupAdmin() {
         return groupAdmin;
+    }
+    public int idInit(){
+        int id = (int) (Math.random() * 1000);
+        while(true){
+            if(idSet.contains(id)){
+                id += (long) (Math.random() * 10);
+            }
+            else{
+                idSet.add(id);
+                break;
+            }
+        }
+        return id;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package org.example.requests;
 
 import org.example.answers.AnswerManager;
+import org.example.commandsManager.ExecuteManager;
+import org.example.details.StorageOfManagers;
 import org.example.island.commands.Command;
 import org.example.island.details.Serialization;
 import org.example.island.details.exceptions.NoSuchCommandException;
@@ -22,9 +24,11 @@ public class RequestsManager {
         InputStream stream = null;
         try {
             stream = socket.getInputStream();
-            stream.read(data);
-            Command command = Serialization.DeserializeObject(data);
-            command.execute();
+            while (true){
+                int t = stream.read(data);
+                Command command = Serialization.DeserializeObject(data);
+                command.execute(new ExecuteManager());
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

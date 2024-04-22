@@ -1,6 +1,8 @@
 package org.example.island.commands;
 
 
+import org.example.InputProcess;
+import org.example.commandsManager.ExecuteManager;
 import org.example.details.*;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.StudyGroup;
@@ -11,7 +13,7 @@ public class Remove_greater extends Command{
         argumentCount = 3;
     }
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
         manage.executeRemoveGreater(this.getArguments());
     }
 
@@ -27,7 +29,7 @@ public class Remove_greater extends Command{
         }catch(NumberFormatException e){
             throw new NoSuchCommandException("Проблема с аргументами команды");
         }
-        StudyGroup group = process.studyGroupInit(name, studentsCount, shouldBeExpelled);
+        StudyGroup group = new InputProcess().studyGroupInit(name, studentsCount, shouldBeExpelled);
         this.setArguments(group);
         return this;
     }

@@ -2,6 +2,7 @@ package org.example.island.commands;
 
 
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 public class Filter_by_students_count extends Command{
@@ -11,7 +12,7 @@ public class Filter_by_students_count extends Command{
     }
 
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
         manage.executeFilterStudentsCount(this.getArguments());
     }
 

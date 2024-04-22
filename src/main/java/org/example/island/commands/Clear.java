@@ -1,6 +1,7 @@
 package org.example.island.commands;
 
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 public class Clear extends Command{
@@ -8,7 +9,7 @@ public class Clear extends Command{
         super("clear", "Очистить коллекцию");
     }
     @Override
-    public void execute(){
+    public void execute(ExecuteManager manage){
         manage.executeCLear();
     }
 

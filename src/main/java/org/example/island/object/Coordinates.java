@@ -4,8 +4,9 @@ package org.example.island.object;
 import org.example.InputProcess;
 import org.example.exceptions.IllegalValueException;
 
-public class Coordinates {
-    InputProcess process = new InputProcess();
+import java.io.Serializable;
+
+public class Coordinates implements Serializable {
     private float x; //Значение поля должно быть больше -417
     private double y; //Значение поля должно быть больше -574
 
@@ -18,7 +19,7 @@ public class Coordinates {
         return this.x;
     }
     public void setX(float x){
-        if(!process.validate(x, -417)){
+        if(!new InputProcess().validate(x, -417)){
             throw new IllegalValueException("Значение координаты x должно быть больше -417");
         }
         else{
@@ -30,7 +31,7 @@ public class Coordinates {
         return this.y;
     }
     public void setY(double y){
-        if(!process.validate(y, -574)){
+        if(!new InputProcess().validate(y, -574)){
             throw new IllegalValueException("Значение координату y должно быть больше -574");
         }
         else{

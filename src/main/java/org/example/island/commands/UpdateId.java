@@ -2,6 +2,8 @@ package org.example.island.commands;
 
 
 
+import org.example.InputProcess;
+import org.example.commandsManager.ExecuteManager;
 import org.example.exceptions.IllegalValueException;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.StudyGroup;
@@ -12,7 +14,7 @@ public class UpdateId extends Command{
         argumentCount = 4;
     }
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
         manage.executeUpdate(this.getArguments());
     }
 
@@ -33,7 +35,7 @@ public class UpdateId extends Command{
         if(name.isEmpty() || studentsCount <=0 || studentsShouldBeExpelled <=0){
             throw new IllegalValueException("Введённые значения не валидны");
         }
-        StudyGroup el = process.studyGroupInit(name, studentsCount,studentsShouldBeExpelled);
+        StudyGroup el = new InputProcess().studyGroupInit(name, studentsCount,studentsShouldBeExpelled);
         Object[] data = new Object[2];
         data[0] = id;
         data[1] = el;

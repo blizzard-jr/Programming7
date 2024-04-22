@@ -3,7 +3,9 @@ package org.example.island.object;
 
 import org.example.exceptions.IllegalValueException;
 
-public enum FormOfEducation {
+import java.io.Serializable;
+
+public enum FormOfEducation implements Serializable {
     DISTANCE_EDUCATION("Дистанционное"),
     FULL_TIME_EDUCATION("Очное"),
     EVENING_CLASSES("Вечернее");

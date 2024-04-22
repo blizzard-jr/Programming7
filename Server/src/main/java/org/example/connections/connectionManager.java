@@ -1,6 +1,11 @@
 package org.example.connections;
 
 
+import org.example.answers.AnswerManager;
+import org.example.commandsManager.ExecuteManager;
+import org.example.details.Storage;
+import org.example.details.StorageOfManagers;
+import org.example.fileSystem.FileSystem;
 import org.example.island.details.Serialization;
 import org.example.requests.RequestsManager;
 
@@ -22,6 +27,7 @@ public class connectionManager {
         try{
             while(true){
                 clientSocket = server.accept();
+                StorageOfManagers managers = new StorageOfManagers(new Storage(), new FileSystem(), new ExecuteManager());
                 socketList.add(new RequestsManager(clientSocket));
             }
         } catch (IOException e) {

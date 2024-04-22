@@ -9,7 +9,6 @@ import java.util.*;
  * Инкапсулированный класс для хранения коллекции и работы с ней
  */
 public class Storage {
-    private Set<Long> idSet = new HashSet<>();
     private final LocalDateTime date;
     private Map<Long, Integer> mapKey = new HashMap<>();
     private LinkedHashMap<Integer, StudyGroup> map = new LinkedHashMap<>();
@@ -55,19 +54,7 @@ public class Storage {
     public Set<Integer> getKeys(){
         return map.keySet();
     }
-    public Long getId(){
-        long id = (long) (Math.random() * 1000);
-        while(true){
-            if(idSet.contains(id)){
-                id += (long) (Math.random() * 10);
-            }
-            else{
-                idSet.add(id);
-                break;
-            }
-        }
-        return id;
-    }
+
     /*
     public int getKey(StudyGroup obj){
         int key = Math.abs(obj.hashCode() / 10000);

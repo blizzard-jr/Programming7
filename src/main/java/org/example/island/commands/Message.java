@@ -1,5 +1,6 @@
 package org.example.island.commands;
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 public class Message extends Command{
@@ -11,8 +12,10 @@ public class Message extends Command{
     }
 
     @Override
-    public void execute() {
-
+    public void execute(ExecuteManager manage) {
+        Object[] data = getArguments();
+        String str = (String) data[0];
+        manage.executeMessage(str);
     }
 
     @Override

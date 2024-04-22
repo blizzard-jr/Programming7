@@ -2,6 +2,7 @@ package org.example.island.commands;
 
 
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 public class Remove_lower_key extends Command{
@@ -10,7 +11,7 @@ public class Remove_lower_key extends Command{
         argumentCount = 1;
     }
     @Override
-    public void execute()  {
+    public void execute(ExecuteManager manage)  {
         manage.executeRemoveLower(this.getArguments());
     }
 

@@ -4,8 +4,10 @@ package org.example.island.object;
 import org.example.InputProcess;
 import org.example.exceptions.IllegalValueException;
 
-public class Location {
-    InputProcess process = new InputProcess();
+import java.io.Serializable;
+
+public class Location implements Serializable {
+
     private Long x; //Поле не может быть null
     private long y;
     private int z;
@@ -18,7 +20,7 @@ public class Location {
     }
     public Location(){}
     public void setX(Long x) {
-        if(!process.validate(x,false)){
+        if(!new InputProcess().validate(x,false)){
             throw new IllegalValueException("Значение не может быть null");
         }
         else{
@@ -52,7 +54,7 @@ public class Location {
     }
 
     public void setName(String name) {
-        if(!process.validate(name, false)){
+        if(!new InputProcess().validate(name, false)){
             throw new IllegalValueException("Значение не может быть null или пустой строкой");
         }
         else{

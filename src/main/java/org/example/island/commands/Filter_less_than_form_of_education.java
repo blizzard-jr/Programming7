@@ -2,6 +2,7 @@ package org.example.island.commands;
 
 
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.FormOfEducation;
 
@@ -13,7 +14,7 @@ public class Filter_less_than_form_of_education extends Command {
 
 
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
         manage.executeFilterEdu(this.getArguments());
     }
 

@@ -4,11 +4,12 @@ package org.example;
 
 import org.example.island.object.*;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class InputProcess {
+public class InputProcess  {
     private Scanner scanner = new Scanner(System.in);
     /**
      * Метод читает ввод пользователя с предварительным выводом сообщения, внутри используется валидация для строк

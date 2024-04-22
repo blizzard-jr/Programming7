@@ -3,6 +3,7 @@ package org.example.island.commands;
 
 import org.example.CommandsManager;
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 import java.util.Map;
@@ -20,11 +21,10 @@ public class Help extends Command{
         for(Command command : map.values()){
             System.out.println(command.getName() + " - " + command.getDescription());
         }
-        return null;
+        return this;
     }
 
     @Override
-    public void execute() {
-
+    public void execute(ExecuteManager manage) {
     }
 }

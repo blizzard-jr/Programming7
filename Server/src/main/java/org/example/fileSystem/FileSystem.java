@@ -5,8 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.example.commandsManager.ExecuteManager;
+import org.example.details.Storage;
+
+import org.example.details.StorageOfManagers;
 import org.example.exceptions.IllegalValueException;
-import org.example.exceptions.NoSuchCommandException;
+import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.*;
 
 
@@ -20,7 +23,6 @@ import java.util.Scanner;
  * Класс отвечает за работу с файлами
  */
 public class FileSystem {
-    ExecuteManager manage = new ExecuteManager();
     private String fileName;
     private Scanner scanner = new Scanner(System.in);
 
@@ -108,10 +110,10 @@ public class FileSystem {
                         data.add(reader.readLine());
                     }
                     if(string.split(" ")[0].equals("insert")){
-                        manage.insertFormScript(data);
+                        StorageOfManagers.executeManager.insertFormScript(data);
                     }
                     else if(string.split(" ")[0].equals("update")){
-                        manage.updateFromScript(data);
+                        StorageOfManagers.executeManager.updateFromScript(data);
                     }
 
                 }
@@ -119,7 +121,11 @@ public class FileSystem {
                     break;
                 }
                 else{
-                    //StorageOfManagers.commandsManager.executeCommand(string);
+                    try {
+                        StorageOfManagers.executeManager.commandExecute(string);
+                    } catch (NoSuchCommandException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }catch(IOException e){

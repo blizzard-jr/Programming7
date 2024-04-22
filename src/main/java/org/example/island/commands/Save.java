@@ -2,6 +2,7 @@ package org.example.island.commands;
 
 
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 public class Save extends Command{
@@ -9,7 +10,7 @@ public class Save extends Command{
         super("save", "Сохранить коллекцию в файл");
     }
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
         manage.executeSave();
     }
 

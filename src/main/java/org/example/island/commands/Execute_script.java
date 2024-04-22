@@ -1,6 +1,7 @@
 package org.example.island.commands;
 
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 import java.io.FileInputStream;
@@ -18,7 +19,7 @@ public class Execute_script extends Command{
     }
 
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
         manage.executeScript(this.getArguments());
     }
 

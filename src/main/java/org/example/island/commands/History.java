@@ -1,6 +1,7 @@
 package org.example.island.commands;
 import org.example.CommandsManager;
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class History extends Command{
         super("history","Вывести последние 14 команд (без их аргументов)");
     }
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
     }
 
     @Override
@@ -26,6 +27,6 @@ public class History extends Command{
                 System.out.println(list.get(i));
             }
         }
-        return null;
+        return this;
     }
 }

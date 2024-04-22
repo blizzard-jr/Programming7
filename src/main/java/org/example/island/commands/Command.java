@@ -4,7 +4,6 @@ package org.example.island.commands;
 import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.InputProcess;
-import java.io.Externalizable;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +13,6 @@ import java.util.List;
  */
 
 public abstract class Command implements Serializable {
-    protected InputProcess process = new InputProcess();
-    protected ExecuteManager manage = new ExecuteManager();
     private Object[] arguments;
     protected int argumentCount = 0;
     private String name;
@@ -35,7 +32,7 @@ public abstract class Command implements Serializable {
         this.arguments = arguments;
     }
     public void setArguments(Object str){
-        this.arguments = new String[1];
+        this.arguments = new Object[1];
         this.arguments[0] = str;
 
     }
@@ -70,7 +67,7 @@ public abstract class Command implements Serializable {
      * Абстрактный метод, отвечающий за исполнение всех команд
      * @throws NoSuchCommandException
      */
-    public abstract void execute();
+    public abstract void execute(ExecuteManager manage);
 
     public abstract Command clientExecute(String[] args) throws NoSuchCommandException;
 }

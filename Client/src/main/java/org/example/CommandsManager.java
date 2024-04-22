@@ -39,16 +39,12 @@ public class CommandsManager {
     public void addCommand(Command cmd){
         commandRegistry.put(cmd.getName(), cmd);
     }
-    public Command commandForming(String s) throws NoSuchCommandException {
+    public Command commandForming(String s) throws NoSuchCommandException, org.example.island.details.exceptions.NoSuchCommandException {
         String[] str = parseCommand(s);
         Command command = getCommand(str[0].toLowerCase());
         commandList.add(str[0]);
         String[] args = Arrays.copyOfRange(str, 1, str.length);
-        try {
-            command = command.clientExecute(args);
-        } catch (org.example.island.details.exceptions.NoSuchCommandException e) {
-            throw new RuntimeException(e);
-        }
+        command = command.clientExecute(args);
         return command;
     }
     /**

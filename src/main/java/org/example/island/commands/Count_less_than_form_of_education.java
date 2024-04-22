@@ -2,6 +2,7 @@ package org.example.island.commands;
 
 
 
+import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.FormOfEducation;
 
@@ -11,7 +12,7 @@ public class Count_less_than_form_of_education extends Command{
         argumentCount = 1;
     }
     @Override
-    public void execute() {
+    public void execute(ExecuteManager manage) {
         manage.executeCountEdu(this.getArguments());
     }
 
