@@ -14,4 +14,3 @@ insert 676 P676 19 9
 show
 execute_script C:\Users\Кот\IdeaProjects\Programming6\AnotherOneScript.txt
 help
-save

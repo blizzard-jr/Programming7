@@ -2,6 +2,7 @@ package org.example.answers;
 
 import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
+import org.example.requests.RequestsManager;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -13,6 +14,11 @@ public class AnswerManager {
 
     public AnswerManager(Socket socket){
         this.socket = socket;
+        try {
+            ou = socket.getOutputStream();
+        } catch (IOException e) {
+            RequestsManager.manager.answerForming(e.getMessage());
+        }
     }
 
     public void answerForming(Object data){
@@ -20,7 +26,7 @@ public class AnswerManager {
         message.setArguments(data);
         flush(message);
     }
-    public void answerForming(Object[] data){
+        public void answerForming(Object[] data){
         Message msg = new Message();
         msg.setArguments(data);
         flush(msg);
@@ -28,10 +34,11 @@ public class AnswerManager {
     public void flush(Message msg){
         byte[] data = Serialization.SerializeObject(msg);
         try {
-            ou = socket.getOutputStream();
-            ou.write(data);
+            if(data != null){
+                ou.write(data);
+            }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            RequestsManager.manager.answerForming(e.getMessage());
         }
     }
 }

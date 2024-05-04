@@ -1,29 +1,4 @@
 {
-  "476" : {
-    "name" : "J324",
-    "studentsCount" : 21,
-    "shouldBeExpelled" : 6,
-    "coordinates" : {
-      "x" : -5.0,
-      "y" : -2.0
-    },
-    "creationDate" : "22-04-2024-09:40:21",
-    "id" : 403,
-    "formOfEducation" : "EVENING_CLASSES",
-    "semesterEnum" : "FOURTH",
-    "groupAdmin" : {
-      "name" : "Коля",
-      "height" : 76.0,
-      "weight" : 52.0,
-      "hairColor" : "BLACK",
-      "location" : {
-        "x" : 876,
-        "y" : 1,
-        "z" : -443,
-        "name" : "Кронва"
-      }
-    }
-  },
   "676" : {
     "name" : "P676",
     "studentsCount" : 19,
@@ -32,8 +7,6 @@
       "x" : -234.0,
       "y" : -1.0
     },
-    "creationDate" : "22-04-2024-09:40:21",
-    "id" : 676,
     "formOfEducation" : "FULL_TIME_EDUCATION",
     "semesterEnum" : "FOURTH",
     "groupAdmin" : {
@@ -47,6 +20,33 @@
         "z" : -645,
         "name" : "Кронва"
       }
-    }
+    },
+    "creationDate" : "04-05-2024-21:39:06",
+    "id" : 74
+  },
+  "476" : {
+    "name" : "J324",
+    "studentsCount" : 21,
+    "shouldBeExpelled" : 6,
+    "coordinates" : {
+      "x" : -5.0,
+      "y" : -2.0
+    },
+    "formOfEducation" : "EVENING_CLASSES",
+    "semesterEnum" : "FOURTH",
+    "groupAdmin" : {
+      "name" : "Коля",
+      "height" : 76.0,
+      "weight" : 52.0,
+      "hairColor" : "BLACK",
+      "location" : {
+        "x" : 876,
+        "y" : 1,
+        "z" : -443,
+        "name" : "Кронва"
+      }
+    },
+    "creationDate" : "04-05-2024-21:39:06",
+    "id" : 688
   }
 }

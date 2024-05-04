@@ -4,6 +4,7 @@ import org.example.answers.AnswerManager;
 import org.example.commandsManager.ExecuteManager;
 import org.example.details.StorageOfManagers;
 import org.example.island.commands.Command;
+import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
@@ -12,10 +13,10 @@ import java.io.InputStream;
 import java.net.Socket;
 
 public class RequestsManager {
-    private Socket socket;
+    private static Socket socket;
     public static AnswerManager manager;
     public RequestsManager(Socket socket){
-        this.socket = socket;
+        RequestsManager.socket = socket;
         manager = new AnswerManager(socket);
         processing();
     }
@@ -27,10 +28,23 @@ public class RequestsManager {
             while (true){
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
-                command.execute(new ExecuteManager());
+                command.execute(StorageOfManagers.executeManager);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+    public static Message getMessage(){
+        byte[] data = new byte[2048];
+        InputStream stream = null;
+        try {
+            stream = socket.getInputStream();
+            int t = stream.read(data);
+            Message msg = Serialization.DeserializeObject(data);
+            return msg;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        }
 }

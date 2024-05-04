@@ -39,6 +39,7 @@ public class ExecuteManager {
         addCommand(new Exit());
         addCommand(new Help());
         addCommand(new Message());
+        addCommand(new Save());
     }
     public void executeCLear(){
         String answer = StorageOfManagers.storage.clear();
@@ -249,6 +250,9 @@ public class ExecuteManager {
         }catch(NumberFormatException | IllegalValueException e){
             RequestsManager.manager.answerForming("Значения команды insert  в скрипте не валидны");
         }
+        finally{
+            commandList.add("insert");
+        }
     }
     public void updateFromScript(ArrayList<String> args){
         try{
@@ -270,9 +274,12 @@ public class ExecuteManager {
             Coordinates coord = new Coordinates(coordinatesX, coordinatesY);
             StudyGroup el = new StudyGroup(args.get(1), studentsCount, shouldBeExpelled, coord, form, sem, admin);
             el.setId(id);
-            StorageOfManagers.storage.replaceElement(id, el);
+            RequestsManager.manager.answerForming(StorageOfManagers.storage.replaceElement(id, el));
         }catch(NumberFormatException | IllegalValueException e){
             RequestsManager.manager.answerForming("Значения команды update в скрипте не валидны");
+        }
+        finally{
+            commandList.add("update");
         }
     }
 
@@ -283,7 +290,6 @@ public class ExecuteManager {
         String[] args = Arrays.copyOfRange(str, 1, str.length);
         command.setArguments(args);
         command.execute(this);
-
     }
 
     public String[] parseCommand(String s){

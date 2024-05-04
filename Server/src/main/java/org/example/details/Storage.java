@@ -99,13 +99,13 @@ public class Storage {
      * @param id
      * @param el
      */
-    public void replaceElement(long id, StudyGroup el){
+    public String replaceElement(long id, StudyGroup el){
         if(map.replace(mapKey.get(id), getObj(id), el)){
-            System.out.println("замена прошла успешно, " + map.get(mapKey.get(id)));
             sort();
+            return ("замена прошла успешно, " + map.get(mapKey.get(id)));
         }
         else{
-            System.out.println("Замена не удалась, что-то пошло не так");
+            return ("Замена не удалась, что-то пошло не так");
         }
 
     }

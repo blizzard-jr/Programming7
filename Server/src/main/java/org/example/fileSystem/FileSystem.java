@@ -9,8 +9,10 @@ import org.example.details.Storage;
 
 import org.example.details.StorageOfManagers;
 import org.example.exceptions.IllegalValueException;
+import org.example.island.commands.Message;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.*;
+import org.example.requests.RequestsManager;
 
 
 import java.io.*;
@@ -69,12 +71,14 @@ public class FileSystem {
             try {
                 f = new FileOutputStream(fileName);
             } catch (FileNotFoundException | NullPointerException e) {
-                System.out.println("Выполнение команды невозможно, передайте новое имя файла или \"Enter\" - для пропуска");
-                String s = scanner.nextLine();
-                if (s.isEmpty()) {
-                    throw new IllegalValueException("");
+                RequestsManager.manager.answerForming("Выполнение команды невозможно, передайте новое имя файла или \"Enter\" - для пропуска");
+                Message message = RequestsManager.getMessage();
+                String answer = message.getArguments()[0].toString();
+                if (answer.isEmpty()) {
+                    RequestsManager.manager.answerForming("Команда не будет исполнена");
+                    return;
                 } else {
-                    fileName = s;
+                    fileName = answer;
                     continue;
                 }
             }
@@ -88,7 +92,7 @@ public class FileSystem {
         try {
             o.writeValue(writer, map);
         } catch (IOException e) {
-            e.fillInStackTrace();
+            RequestsManager.manager.answerForming(e.getMessage());
         }
     }
 
@@ -98,9 +102,7 @@ public class FileSystem {
      */
     public void parseScript(FileInputStream stream)  {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-        //Pattern p = Pattern.compile("insert");
         try {
-            //Matcher match = p.matcher(reader.readLine());
             while (reader.ready()) {
                 String string = reader.readLine();
                 if(string.split(" ")[0].equals("insert") || string.split(" ")[0].equals("update")){
@@ -124,12 +126,12 @@ public class FileSystem {
                     try {
                         StorageOfManagers.executeManager.commandExecute(string);
                     } catch (NoSuchCommandException e) {
-                        throw new RuntimeException(e);
+                        RequestsManager.manager.answerForming(e.getMessage());
                     }
                 }
             }
         }catch(IOException e){
-            throw new IllegalValueException("Проблема с парсингом файла или команда не найдена");
+            RequestsManager.manager.answerForming("Проблема с парсингом файла или команда не найдена");
         }
     }
 }

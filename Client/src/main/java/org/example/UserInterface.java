@@ -77,8 +77,11 @@ public class UserInterface {
                 if(command.getClass() != Help.class & command.getClass() != History.class){
                     outputData(Serialization.SerializeObject(command));
                     Message msg = inputData();
-                    for(Object o : msg.getArguments()){
-                        System.out.println(o);
+                    while(msg != null){
+                        for(Object o : msg.getArguments()){
+                            System.out.println(o);
+                        }
+                        msg = inputData();
                     }
                 }
                 else{
@@ -111,7 +114,7 @@ public class UserInterface {
             buffer.flip();
             return Serialization.DeserializeObject(buffer.array());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return null;
         }finally {
             buffer.clear();
         }

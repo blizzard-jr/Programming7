@@ -24,10 +24,10 @@ public class connectionManager {
     public static void main(String[] args) throws IOException {
         server = new ServerSocket(4004);
         System.out.println("Server is ready!");
+        StorageOfManagers managers = new StorageOfManagers(new Storage(), new FileSystem(), new ExecuteManager());
         try{
             while(true){
                 clientSocket = server.accept();
-                StorageOfManagers managers = new StorageOfManagers(new Storage(), new FileSystem(), new ExecuteManager());
                 socketList.add(new RequestsManager(clientSocket));
             }
         } catch (IOException e) {
