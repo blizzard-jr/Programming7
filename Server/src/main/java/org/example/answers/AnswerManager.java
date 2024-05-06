@@ -7,6 +7,7 @@ import org.example.requests.RequestsManager;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class AnswerManager {
     private Socket socket;
@@ -33,9 +34,12 @@ public class AnswerManager {
     }
     public void flush(Message msg){
         byte[] data = Serialization.SerializeObject(msg);
+        byte[] finalData = new byte[data.length + 1];
+        System.arraycopy(data, 0, finalData, 0, data.length);
+        finalData[data.length] = (byte) 254;
         try {
-            if(data != null){
-                ou.write(data);
+            if(finalData != null){
+                ou.write(finalData);
             }
         } catch (IOException e) {
             RequestsManager.manager.answerForming(e.getMessage());

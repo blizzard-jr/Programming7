@@ -7,13 +7,15 @@ import org.example.island.commands.Help;
 import org.example.island.commands.History;
 import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
+import org.example.island.details.Service;
 import org.example.island.object.*;
 
 
 import java.io.*;
 import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.*;
 
@@ -25,12 +27,21 @@ import java.util.*;
 
 public class UserInterface {
     private static Scanner scanner = new Scanner(System.in);
-    private static ByteBuffer buffer = ByteBuffer.allocate(4096);
+    private static ByteBuffer buffer = ByteBuffer.allocate(10000);
     private static SocketChannel channel;
+    private static Selector selectorConnect;
     public static void main(String[] args){
         try {
             channel = SocketChannel.open();
+            channel.configureBlocking(false);
             channel.connect(new InetSocketAddress("localhost", 4004));
+            selectorConnect = Selector.open();
+            SelectionKey selectionKeyConnect = channel.register(selectorConnect, SelectionKey.OP_CONNECT);
+            if(selectorConnect.select() > 0) {
+                while (!channel.finishConnect()) {
+                    continue;
+                }
+            }
             System.out.println("Соединение с сервером установлено");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -42,7 +53,6 @@ public class UserInterface {
             System.out.println("Кажется, вы забыли передать имя файла");
         }
 
-        System.out.println(fileName);
         InputProcess console = new InputProcess();
         CommandsManager manage = new CommandsManager();
         LinkedHashMap<Integer, StudyGroup> map;
@@ -53,10 +63,11 @@ public class UserInterface {
                 Message msg = new Message();
                 msg.setArguments(fileName);
                 outputData(Serialization.SerializeObject(msg));
-                Message answer = inputData();
-                System.out.println(answer.getArguments()[0]);
+                ArrayList<Object> answer = inputData();
+                for(Object o : answer) {
+                    System.out.println(o);
                 }
-            else{
+                } else{
                 System.out.println("Будет использована пустая коллекция");
                 Message msg = new Message();
                 msg.setArguments("Пустая коллекция");
@@ -74,20 +85,13 @@ public class UserInterface {
         while(console.hasNextLine()){
             try {
                 Command command = manage.commandForming(console.readWithMessage("---"));
-                if(command.getClass() != Help.class & command.getClass() != History.class){
+                if(command.getClass() != Help.class & command.getClass() != History.class) {
                     outputData(Serialization.SerializeObject(command));
-                    Message msg = inputData();
-                    while(msg != null){
-                        for(Object o : msg.getArguments()){
-                            System.out.println(o);
-                        }
-                        msg = inputData();
+                    ArrayList<Object> msg = inputData();
+                    for(Object o : msg) {
+                        System.out.println(o);
                     }
                 }
-                else{
-                    continue;
-                }
-
             }catch(IllegalValueException | NoSuchCommandException | org.example.island.details.exceptions.NoSuchCommandException e){
                 console.writeErr(e.getMessage());
             }catch(NoSuchElementException e){
@@ -101,25 +105,73 @@ public class UserInterface {
             buffer.put(data);
             buffer.flip();
             channel.write(buffer);
-            buffer.clear();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-
-    public static Message inputData(){
-        try {
-            channel.read(buffer);
-            buffer.flip();
-            return Serialization.DeserializeObject(buffer.array());
-        } catch (IOException e) {
-            return null;
         }finally {
             buffer.clear();
         }
     }
 
+
+    public static ArrayList<Object> inputData() {
+        try {
+            ArrayList<Object> args = new ArrayList<>();
+            while(true) {
+                buffer.clear();
+                channel.read(buffer);
+                if (buffer.position() == 0) {
+                    continue;
+                }
+                byte[] buf = buffer.array();
+                ArrayList<ArrayList<Byte>> listArr = new ArrayList<>();
+                ArrayList<Byte> listByte = new ArrayList<>();
+                for (Byte b : buf) {
+                    if (b != -1) {
+                        listByte.add(b);
+                    } else {
+                        listArr.add(listByte);
+                        listByte = new ArrayList<>();
+                    }
+                }
+                for (ArrayList<Byte> el : listArr) {
+                    boolean check = el.stream()
+                            .anyMatch(element -> element != 0);
+                    if (check) {
+                        el.removeIf(elem -> elem == Byte.valueOf((byte) -1));
+                    } else {
+                        listArr.remove(el);
+                    }
+                }
+                if (!listArr.isEmpty()) {
+                    for (ArrayList<Byte> el : listArr) {
+                        byte[] b1 = new byte[el.size()];
+                        int i = 0;
+                        for (Byte b : el) {
+                            b1[i] = b;
+                            i++;
+                        }
+                        Message msg = Serialization.DeserializeObject(b1);
+                        args.addAll(Arrays.asList(msg.getArguments()));
+                    }
+                    for (Object o : args) {
+                        if (o.equals(Service.FINISH)) {
+                            args.remove(o);
+                            return args;
+                        }
+                    }
+
+                } else {
+                    continue;
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            buffer.clear();
+        }
+    }
 
 
 

@@ -6,6 +6,7 @@ import org.example.details.StorageOfManagers;
 import org.example.island.commands.Command;
 import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
+import org.example.island.details.Service;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 import java.io.IOException;
@@ -29,12 +30,13 @@ public class RequestsManager {
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
                 command.execute(StorageOfManagers.executeManager);
+                manager.answerForming(Service.FINISH);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public static Message getMessage(){
+    public static Message getMessage() {
         byte[] data = new byte[2048];
         InputStream stream = null;
         try {
@@ -46,5 +48,5 @@ public class RequestsManager {
             throw new RuntimeException(e);
         }
 
-        }
+    }
 }
