@@ -6,6 +6,7 @@ import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.InputProcess;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 
 public abstract class Command implements Serializable {
-    private Object[] arguments;
+    private ArrayList<Object> arguments = new ArrayList<>();
     protected int argumentCount = 0;
     private String name;
     private String description;
@@ -28,16 +29,18 @@ public abstract class Command implements Serializable {
         this.description = description;
     }
 
-    public void setArguments(Object[] arguments) {
+    public void setArguments(ArrayList<Object> arguments) {
         this.arguments = arguments;
     }
+    public void setArguments(Object[] data){
+        this.arguments.addAll(Arrays.asList(data));
+    }
     public void setArguments(Object str){
-        this.arguments = new Object[1];
-        this.arguments[0] = str;
+        this.arguments.add(str);
 
     }
 
-    public Object[] getArguments() {
+    public ArrayList<Object> getArguments() {
         return arguments;
     }
     /*

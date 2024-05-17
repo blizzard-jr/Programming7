@@ -1,5 +1,6 @@
 package org.example.commandsManager;
 
+import org.example.CommandsManager;
 import org.example.answers.AnswerManager;
 import org.example.details.Storage;
 
@@ -15,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -41,12 +43,39 @@ public class ExecuteManager {
         addCommand(new Message());
         addCommand(new Save());
     }
+
+    public Map<String, Command> getCommandRegistry() {
+        return commandRegistry;
+    }
+
+    public void executeHelp(){
+        Map<String, Command> map = getCommandRegistry();
+        for(Command command : map.values()){
+            RequestsManager.manager.answerForming(command.getName() + " - " + command.getDescription());
+        }
+    }
+
+    public ArrayList<String> getCommandList() {
+        return commandList;
+    }
+
+    public void executeHistory(){
+        ArrayList<String> list = getCommandList();
+        if(list.size() < 14){
+            RequestsManager.manager.answerForming("Количества исполненных команд не достаточно для вывода истории");
+        }
+        else{
+            for (int i = 0; i < 14; i++) {
+                RequestsManager.manager.answerForming(list.get(i));
+            }
+        }
+    }
     public void executeCLear(){
         String answer = StorageOfManagers.storage.clear();
         RequestsManager.manager.answerForming(answer);
     }
-    public void executeCountEdu(Object[] args){
-        FormOfEducation form = (FormOfEducation) args[0];
+    public void executeCountEdu(ArrayList<Object> args){
+        FormOfEducation form = (FormOfEducation) args.get(0);
         int count = 0;
         for(StudyGroup group : StorageOfManagers.storage.getValues()){
             if(group.getFormOfEducation().compareTo(form) < 0){
@@ -57,16 +86,16 @@ public class ExecuteManager {
         RequestsManager.manager.answerForming(answer);
     }
 
-    public void executeScript(Object[] args){
+    public void executeScript(ArrayList<Object> args){
         FileInputStream stream = null;
         try {
-            stream = new FileInputStream((String) args[0]);
+            stream = new FileInputStream((String) args.get(0));
         } catch (FileNotFoundException e) {
             RequestsManager.manager.answerForming(e.getMessage());
             return;
         }
-        if(!Execute_script.files.contains((String) args[0])){
-            Execute_script.files.add((String) args[0]);
+        if(!Execute_script.files.contains((String) args.get(0))){
+            Execute_script.files.add((String) args.get(0));
             StorageOfManagers.fileSystem.parseScript(stream);
             RequestsManager.manager.answerForming("Выполнение скрипта завершено");
         }
@@ -74,10 +103,10 @@ public class ExecuteManager {
             RequestsManager.manager.answerForming("Не не, слишком бесконечно получается");
         }
     }
-    public void executeFilterStudentsCount(Object[] args){
+    public void executeFilterStudentsCount(ArrayList<Object> args){
         long studentCount = 0;
         try{
-            studentCount = Long.parseLong((String) args[0]);
+            studentCount = Long.parseLong((String) args.get(0));
         }catch(NumberFormatException e){
             RequestsManager.manager.answerForming(e.getMessage());
         }
@@ -96,13 +125,13 @@ public class ExecuteManager {
             RequestsManager.manager.answerForming(list.toArray());
         }
     }
-    public void executeFilterEdu(Object[] args){
+    public void executeFilterEdu(ArrayList<Object> args){
         FormOfEducation form;
-        if(args[0].getClass() == String.class){
-            form = FormOfEducation.getForm((String) args[0]);
+        if(args.get(0).getClass() == String.class){
+            form = FormOfEducation.getForm((String) args.get(0));
         }
         else{
-            form = (FormOfEducation) args[0];
+            form = (FormOfEducation) args.get(0);
         }
         boolean flag = false;
         List<String> list = new ArrayList<>();
@@ -122,16 +151,16 @@ public class ExecuteManager {
     public void executeInfo(){
         RequestsManager.manager.answerForming(StorageOfManagers.storage.toString());
     }
-    public void executeInsert(Object[] args){
-        StudyGroup obj = (StudyGroup) args[1];
-        Integer key = (Integer) args[0];
+    public void executeInsert(ArrayList<Object> args){
+        StudyGroup obj = (StudyGroup) args.get(1);
+        Integer key = (Integer) args.get(0);
         StorageOfManagers.storage.putWithKey(key, obj);
         StorageOfManagers.storage.putMapKeys(key, obj.getId());
         RequestsManager.manager.answerForming("Объект успешно добавлен");
     }
 
-    public void executeRemoveGreater(Object[] args){
-        StudyGroup el = (StudyGroup) args[0];
+    public void executeRemoveGreater(ArrayList<Object> args){
+        StudyGroup el = (StudyGroup) args.get(0);
         ArrayList<StudyGroup> keys = new ArrayList<>();
         for(StudyGroup element : StorageOfManagers.storage.getValues()){
             if(el.compareTo(element) > 0){
@@ -148,10 +177,10 @@ public class ExecuteManager {
 
     }
 
-    public void executeRemove(Object[] args){
+    public void executeRemove(ArrayList<Object> args){
         int key = 0;
         try{
-            key = (Integer) args[0];
+            key = (Integer) args.get(0);
         }catch (NumberFormatException e){
             RequestsManager.manager.answerForming(e.getMessage());
         }
@@ -162,10 +191,10 @@ public class ExecuteManager {
             RequestsManager.manager.answerForming("Объект, соответсвующий введённому вами ключу в коллекции не найден");
         }
     }
-    public void executeRemoveLower(Object[] args){
+    public void executeRemoveLower(ArrayList<Object> args){
         int key = 0;
         try{
-            key = Integer.parseInt((String) args[0]);
+            key = Integer.parseInt((String) args.get(0));
         }catch(NumberFormatException e){
             RequestsManager.manager.answerForming(e.getMessage());
         }
@@ -220,9 +249,9 @@ public class ExecuteManager {
         }
 
     }
-    public void executeUpdate(Object[] args){
-        StudyGroup element = (StudyGroup) args[1];
-        Integer id = (Integer) args[0];
+    public void executeUpdate(ArrayList<Object> args){
+        StudyGroup element = (StudyGroup) args.get(1);
+        Integer id = (Integer) args.get(0);
         element.setId(id);
         StorageOfManagers.storage.replaceElement(id, element);
         RequestsManager.manager.answerForming("Объект успешно заменён");

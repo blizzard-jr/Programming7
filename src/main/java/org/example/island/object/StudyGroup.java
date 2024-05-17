@@ -69,8 +69,7 @@ public class StudyGroup implements Comparable<StudyGroup>, Serializable {
 
     public void setShouldBeExpelled(long shouldBeExpelled) {
         if(shouldBeExpelled > 0){
-            this.
-                    shouldBeExpelled= shouldBeExpelled;
+            this.shouldBeExpelled= shouldBeExpelled;
         }
         else{
             throw new IllegalValueException("Число студентов на отчислении должно быть больше нуля");

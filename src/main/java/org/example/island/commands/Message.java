@@ -3,6 +3,8 @@ package org.example.island.commands;
 import org.example.commandsManager.ExecuteManager;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
+import java.util.ArrayList;
+
 public class Message extends Command{
 
 
@@ -13,8 +15,8 @@ public class Message extends Command{
 
     @Override
     public void execute(ExecuteManager manage) {
-        Object[] data = getArguments();
-        String str = (String) data[0];
+        ArrayList<Object> data = getArguments();
+        String str = (String) data.get(0);
         manage.executeMessage(str);
     }
 
@@ -23,4 +25,5 @@ public class Message extends Command{
         this.setArguments(args);
         return this;
     }
+
 }

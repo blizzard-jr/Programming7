@@ -14,19 +14,11 @@ public class History extends Command{
     }
     @Override
     public void execute(ExecuteManager manage) {
+        manage.executeHistory();
     }
 
     @Override
     public Command clientExecute(String[] args) throws NoSuchCommandException {
-        ArrayList<String> list = new CommandsManager().getCommandList();
-        if(list.size() < 14){
-            System.out.println("Количества исполненных команд не достаточно для вывода истории");
-        }
-        else{
-            for (int i = 0; i < 14; i++) {
-                System.out.println(list.get(i));
-            }
-        }
         return this;
     }
 }

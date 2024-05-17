@@ -73,7 +73,7 @@ public class FileSystem {
             } catch (FileNotFoundException | NullPointerException e) {
                 RequestsManager.manager.answerForming("Выполнение команды невозможно, передайте новое имя файла или \"Enter\" - для пропуска");
                 Message message = RequestsManager.getMessage();
-                String answer = message.getArguments()[0].toString();
+                String answer = message.getArguments().get(0).toString();
                 if (answer.isEmpty()) {
                     RequestsManager.manager.answerForming("Команда не будет исполнена");
                     return;

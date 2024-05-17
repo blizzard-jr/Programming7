@@ -17,14 +17,11 @@ public class Help extends Command{
 
     @Override
     public Command clientExecute(String[] args) throws NoSuchCommandException {
-        Map<String, Command> map = new CommandsManager().getCommandsReg();
-        for(Command command : map.values()){
-            System.out.println(command.getName() + " - " + command.getDescription());
-        }
         return this;
     }
 
     @Override
     public void execute(ExecuteManager manage) {
+        manage.executeHelp();
     }
 }

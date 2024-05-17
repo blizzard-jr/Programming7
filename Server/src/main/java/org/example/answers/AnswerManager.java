@@ -7,12 +7,17 @@ import org.example.requests.RequestsManager;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AnswerManager {
     private Socket socket;
     private OutputStream ou;
+    private Message msg = new Message();
 
+    public Message getMsg() {
+        return msg;
+    }
     public AnswerManager(Socket socket){
         this.socket = socket;
         try {
@@ -23,23 +28,19 @@ public class AnswerManager {
     }
 
     public void answerForming(Object data){
-        Message message = new Message();
-        message.setArguments(data);
-        flush(message);
-    }
-        public void answerForming(Object[] data){
-        Message msg = new Message();
         msg.setArguments(data);
-        flush(msg);
+    }
+    public void answerForming(Object[] data){
+        msg.setArguments(data);
+    }
+    public void answerForming(ArrayList<Object> data){
+        msg.setArguments(data);
     }
     public void flush(Message msg){
         byte[] data = Serialization.SerializeObject(msg);
-        byte[] finalData = new byte[data.length + 1];
-        System.arraycopy(data, 0, finalData, 0, data.length);
-        finalData[data.length] = (byte) 254;
         try {
-            if(finalData != null){
-                ou.write(finalData);
+            if(data != null){
+                ou.write(data);
             }
         } catch (IOException e) {
             RequestsManager.manager.answerForming(e.getMessage());

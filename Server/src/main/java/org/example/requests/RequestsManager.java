@@ -12,6 +12,7 @@ import org.example.island.details.exceptions.NoSuchCommandException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class RequestsManager {
     private static Socket socket;
@@ -30,7 +31,8 @@ public class RequestsManager {
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
                 command.execute(StorageOfManagers.executeManager);
-                manager.answerForming(Service.FINISH);
+                manager.flush(manager.getMsg());
+                manager.getMsg().setArguments(new ArrayList<>());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
