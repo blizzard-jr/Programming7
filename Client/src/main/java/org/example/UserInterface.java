@@ -11,6 +11,7 @@ import org.example.island.details.Service;
 import org.example.island.object.*;
 
 
+
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -97,6 +98,8 @@ public class UserInterface {
 
     public static void connect() {
         String ans = "";
+        char[] chars = new char[10];
+        InputStreamReader reader = new InputStreamReader(System.in);
         while (true) {
             if(ans.equals("exit")){
                 System.out.println("Всего доброго!");
@@ -115,15 +118,19 @@ public class UserInterface {
                 }
                 break;
             } catch (IOException e) {
-                if(scanner.match()){
-                    continue;
+                try {
+                    if(reader.ready()){
+                        reader.read(chars, 0, 9);
+                        ans = new String(Arrays.copyOfRange(chars, 0, 4));
+                        chars = new char[10];
+                    }
+                    else{
+                        continue;
+                    }
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
-                else{
-                    ans = scanner.nextLine();
-                }
-
             }
-
         }
     }
 
@@ -135,7 +142,7 @@ public class UserInterface {
         } catch (IOException e) {
             System.err.println("Соединение с сервером разорвано, начинаем процесс переподключения\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
             connect();
-            //Теряются ли данные из буфера после переподключения?
+            System.out.println("Соединение с сервером восстановлено\nПоследняя операция не была обработана, вы можете повторить её");
         } finally {
             buffer.clear();
         }
@@ -143,8 +150,6 @@ public class UserInterface {
 
 
     public static Message inputData() {
-        //try {
-        ArrayList<Object> args = new ArrayList<>();
         while (true) {
             try {
                 channel.read(buffer);
@@ -156,7 +161,16 @@ public class UserInterface {
                     return message;
                 }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+
+                System.err.println("Соединение с сервером разорвано, начинаем процесс переподключения\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
+                connect();
+                System.out.println("Соединение с сервером восстановлено, для того, чтобы получить сведения о последней исполненной команды, нажмите - \"Enter\", иначе - \"Любой другой ввод\"");
+                String answer = scanner.nextLine();
+                if(answer.isEmpty()){
+                    Message msg = new Message();
+                    msg.setArguments("Архив");
+                    outputData(Serialization.SerializeObject(msg));
+                }
             } finally {
                 buffer.clear();
             }

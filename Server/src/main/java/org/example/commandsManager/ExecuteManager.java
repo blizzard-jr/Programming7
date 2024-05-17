@@ -226,6 +226,9 @@ public class ExecuteManager {
             StorageOfManagers.storage.mapInit(new LinkedHashMap<>());
             RequestsManager.manager.answerForming("Коллекция инициализирована");
         }
+        else if(data.equals("Архив")){
+
+        }
         else{
             try {
                 StorageOfManagers.storage.mapInit(StorageOfManagers.fileSystem.parseToList(data));
