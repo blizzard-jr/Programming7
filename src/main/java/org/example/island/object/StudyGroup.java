@@ -5,12 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import org.example.InputProcess;
-import org.example.details.Storage;
-
 import org.example.exceptions.IllegalValueException;
-
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -183,7 +178,7 @@ public class StudyGroup implements Comparable<StudyGroup>, Serializable {
     }
     @Override
     public int compareTo(StudyGroup group){
-        return this.id.compareTo(group.id);
+        return this.name.compareTo(group.name);
     }
     @Override
     public int hashCode(){

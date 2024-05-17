@@ -24,6 +24,31 @@
     "creationDate" : "04-05-2024-21:39:06",
     "id" : 74
   },
+  "111" : {
+    "name" : "P111",
+    "studentsCount" : 11,
+    "shouldBeExpelled" : 1,
+    "coordinates" : {
+      "x" : 45.0,
+      "y" : 2.0
+    },
+    "formOfEducation" : "FULL_TIME_EDUCATION",
+    "semesterEnum" : "FOURTH",
+    "groupAdmin" : {
+      "name" : "3",
+      "height" : 4.0,
+      "weight" : 5.0,
+      "hairColor" : "GREEN",
+      "location" : {
+        "x" : 9,
+        "y" : 9,
+        "z" : 9,
+        "name" : "9"
+      }
+    },
+    "creationDate" : "17-05-2024-19:13:47",
+    "id" : 428
+  },
   "476" : {
     "name" : "J324",
     "studentsCount" : 21,

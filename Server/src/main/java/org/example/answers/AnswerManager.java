@@ -4,6 +4,7 @@ import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
 import org.example.requests.RequestsManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -14,7 +15,6 @@ public class AnswerManager {
     private Socket socket;
     private OutputStream ou;
     private Message msg = new Message();
-    private Message archive;
 
     public Message getMsg() {
         return msg;
@@ -37,11 +37,8 @@ public class AnswerManager {
     public void answerForming(ArrayList<Object> data){
         msg.setArguments(data);
     }
-    public void flushArchive(){
-        flush(archive);
-    }
+
     public void flush(Message msg){
-        archive = msg;
         byte[] data = Serialization.SerializeObject(msg);
         try {
             if(data != null){

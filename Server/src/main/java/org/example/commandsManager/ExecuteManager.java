@@ -220,14 +220,19 @@ public class ExecuteManager {
     public void executeSave(){
         StorageOfManagers.fileSystem.parseToFile(StorageOfManagers.storage.getMap());
     }
+    public void executeExit(){
+        executeSave();
+        RequestsManager.manager.answerForming("Всего доброго!");
+    }
 
     public void executeMessage(String data){
         if(data.equals("Пустая коллекция")){
             StorageOfManagers.storage.mapInit(new LinkedHashMap<>());
             RequestsManager.manager.answerForming("Коллекция инициализирована");
         }
-        else if(data.equals("Архив")){
-
+        else if(data.equals("Завершение")){
+            executeSave();
+            RequestsManager.manager.answerForming("Всего доброго!");
         }
         else{
             try {

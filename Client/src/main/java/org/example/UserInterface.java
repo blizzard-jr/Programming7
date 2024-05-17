@@ -2,12 +2,8 @@ package org.example;
 //Журнал КОД от яндекс, почитать
 
 import org.example.exceptions.*;
-import org.example.island.commands.Command;
-import org.example.island.commands.Help;
-import org.example.island.commands.History;
-import org.example.island.commands.Message;
+import org.example.island.commands.*;
 import org.example.island.details.Serialization;
-import org.example.island.details.Service;
 import org.example.island.object.*;
 
 
@@ -86,11 +82,20 @@ public class UserInterface {
                 for (Object o : msg.getArguments()) {
                     System.out.println(o.toString());
                 }
+                if(command.getClass() == (Exit.class)){
+                    System.exit(0);
+                }
             } catch (IllegalValueException | NoSuchCommandException |
                      org.example.island.details.exceptions.NoSuchCommandException e) {
                 console.writeErr(e.getMessage());
             } catch (NoSuchElementException e) {
-                System.err.println("Программа завершена без сохранения данных");
+                Message m = new Message();
+                m.setArguments("Завершение");
+                outputData(Serialization.SerializeObject(m));
+                Message msg = inputData();
+                for (Object o : msg.getArguments()) {
+                    System.out.println(o.toString());
+                }
                 System.exit(0);
             }
         }
@@ -164,13 +169,7 @@ public class UserInterface {
 
                 System.err.println("Соединение с сервером разорвано, начинаем процесс переподключения\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
                 connect();
-                System.out.println("Соединение с сервером восстановлено, для того, чтобы получить сведения о последней исполненной команды, нажмите - \"Enter\", иначе - \"Любой другой ввод\"");
-                String answer = scanner.nextLine();
-                if(answer.isEmpty()){
-                    Message msg = new Message();
-                    msg.setArguments("Архив");
-                    outputData(Serialization.SerializeObject(msg));
-                }
+                System.out.println("Соединение с сервером восстановлено");
             } finally {
                 buffer.clear();
             }

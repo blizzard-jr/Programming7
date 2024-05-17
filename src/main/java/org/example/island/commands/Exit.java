@@ -6,17 +6,16 @@ import org.example.island.details.exceptions.NoSuchCommandException;
 
 public class Exit extends Command{
     public Exit(){
-        super("exit", "Завершить программу (без сохранения в файл)");
+        super("exit", "Завершить работу программы");
     }
 
     @Override
     public void execute(ExecuteManager manage){
+        manage.executeExit();
     }
 
     @Override
     public Command clientExecute(String[] args) throws NoSuchCommandException {
-        System.out.println("I`ll be back, babe :)");
-        System.exit(0);
-        return null;
+        return new Exit();
     }
 }

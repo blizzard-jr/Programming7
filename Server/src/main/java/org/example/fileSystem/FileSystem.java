@@ -91,8 +91,9 @@ public class FileSystem {
         //File file = new File("C:\\Users\\Кот\\IdeaProjects\\ProgLab5\\src\\details\\Data.json");
         try {
             o.writeValue(writer, map);
+            RequestsManager.manager.answerForming("Коллекция сохранена в файл");
         } catch (IOException e) {
-            RequestsManager.manager.answerForming(e.getMessage());
+            RequestsManager.manager.answerForming("Не удалось сохранить коллекцию в файл");
         }
     }
 
