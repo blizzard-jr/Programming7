@@ -3,7 +3,7 @@ package org.example.island.commands;
 
 
 
-import org.example.exceptions.IllegalValueException;
+import org.example.island.details.exceptions.IllegalValueException;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
 public class Remove_key extends Command{

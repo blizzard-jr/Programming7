@@ -2,7 +2,7 @@ package org.example.island.object;
 
 
 
-import org.example.exceptions.IllegalValueException;
+import org.example.island.details.exceptions.IllegalValueException;
 
 import java.io.Serializable;
 

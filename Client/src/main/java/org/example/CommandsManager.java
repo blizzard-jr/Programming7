@@ -1,7 +1,6 @@
 package org.example;
 
 
-import org.example.details.StorageOfManagers;
 import org.example.exceptions.NoSuchCommandException;
 import org.example.island.commands.*;
 import org.example.island.object.StudyGroup;
