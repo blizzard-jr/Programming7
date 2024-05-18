@@ -21,6 +21,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.stream.Stream;
 
 
 public class ExecuteManager {
@@ -98,12 +99,7 @@ public class ExecuteManager {
     }
     public void executeCountEdu(ArrayList<Object> args){
         FormOfEducation form = (FormOfEducation) args.get(0);
-        int count = 0;
-        for(StudyGroup group : StorageOfManagers.storage.getValues()){
-            if(group.getFormOfEducation().compareTo(form) < 0){
-                count+=1;
-            }
-        }
+        long count = StorageOfManagers.storage.getValues().stream().filter(group -> group.getFormOfEducation().compareTo(form) < 0).count();
         String answer = "Поле FormOfEducation меньше заданного вами значения у " + count + " элементов";
         RequestsManager.manager.answerForming(answer);
     }
@@ -126,21 +122,17 @@ public class ExecuteManager {
         }
     }
     public void executeFilterStudentsCount(ArrayList<Object> args){
-        long studentCount = 0;
+        List<String> list = new ArrayList<>();
+        long studentCount;
+        long count = 0;
         try{
             studentCount = Long.parseLong((String) args.get(0));
+            count = StorageOfManagers.storage.getValues().stream().filter(group -> group.getStudentsCount() == studentCount).map(group -> list.add(group.toString())).count();
         }catch(NumberFormatException e){
             RequestsManager.manager.answerForming(e.getMessage());
         }
-        int flag = 0;
-        List<String> list = new ArrayList<>();
-        for(StudyGroup el : StorageOfManagers.storage.getValues()){
-            if(el.getStudentsCount() == studentCount){
-                flag+=1;
-                list.add(el.toString());
-            }
-        }
-        if(flag == 0){
+
+        if(count == 0){
             RequestsManager.manager.answerForming("В ходе выполнения программы совпадений не выявлено");
         }
         else{
@@ -155,15 +147,9 @@ public class ExecuteManager {
         else{
             form = (FormOfEducation) args.get(0);
         }
-        boolean flag = false;
         List<String> list = new ArrayList<>();
-        for(StudyGroup group : StorageOfManagers.storage.getValues()){
-            if(group.getFormOfEducation().compareTo(form) < 0){
-                flag = true;
-                list.add(group.toString());
-            }
-        }
-        if(!flag){
+        long count = StorageOfManagers.storage.getValues().stream().filter(group -> group.getFormOfEducation().compareTo(form) < 0).count();
+        if(count == 0){
             RequestsManager.manager.answerForming("Элементов, у которых значение поля FormOfEducation меньше заданного вами значения не нашлось");
         }
         else{
@@ -183,20 +169,8 @@ public class ExecuteManager {
 
     public void executeRemoveGreater(ArrayList<Object> args){
         StudyGroup el = (StudyGroup) args.get(0);
-        ArrayList<StudyGroup> keys = new ArrayList<>();
-        for(StudyGroup element : StorageOfManagers.storage.getValues()){
-            if(el.compareTo(element) > 0){
-                keys.add(element);
-            }
-        }
-        int count = 0;
-        for(StudyGroup groups : keys){
-            if(StorageOfManagers.storage.removeElement(StorageOfManagers.storage.findKey(groups.getId()))){
-                count+=1;
-            }
-        }
+        long count = StorageOfManagers.storage.getValues().stream().filter(group -> el.compareTo(group) > 0).map(group -> StorageOfManagers.storage.removeElement(StorageOfManagers.storage.findKey(group.getId()))).count();
         RequestsManager.manager.answerForming("В ходе исполнения команды было удалено " + count + " объектов");
-
     }
 
     public void executeRemove(ArrayList<Object> args){
@@ -214,28 +188,19 @@ public class ExecuteManager {
         }
     }
     public void executeRemoveLower(ArrayList<Object> args){
-        int key = 0;
+        ArrayList<Integer> keys = new ArrayList<>();
+        int key;
         try{
             key = Integer.parseInt((String) args.get(0));
+            long i = StorageOfManagers.storage.getKeys().stream().filter(key_i -> key > key_i).map(keys::add).count();
         }catch(NumberFormatException e){
             RequestsManager.manager.answerForming(e.getMessage());
-        }
-        ArrayList<Integer> keys = new ArrayList<>();
-        for(Integer key_i : StorageOfManagers.storage.getKeys()){
-            if(key > key_i){
-                keys.add(key_i);
-            }
         }
         if(keys.size() == StorageOfManagers.storage.getSize()){
             RequestsManager.manager.answerForming("Введённый вами ключ меньше всех ключей, что есть в коллекции, удаление элементов не было произведено");
         }
         else{
-            int count = 0;
-            for (Integer integer : keys) {
-                if(StorageOfManagers.storage.removeElement(integer)){
-                    count += 1;
-                }
-            }
+            long count = keys.stream().map(StorageOfManagers.storage::removeElement).count();
             RequestsManager.manager.answerForming("В ходе исполнения команды было удалено " + count + " объектов");
         }
     }
@@ -268,10 +233,7 @@ public class ExecuteManager {
     }
     public void executeShow(){
         List<String> list = new ArrayList<>();
-        Collection<StudyGroup> s = StorageOfManagers.storage.getValue();
-        for (StudyGroup group : s) {
-            list.add(group.toString());
-        }
+        StorageOfManagers.storage.getValue().stream().forEach(group -> list.add(group.toString()));
         if(!list.isEmpty()){
             RequestsManager.manager.answerForming(list.toArray());
         }

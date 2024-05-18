@@ -34,12 +34,7 @@ public class Storage {
     }
     @Deprecated
     public void sort(){
-        List<StudyGroup> list = new ArrayList<>(map.values());
-        Collections.sort(list);
-        map.clear();
-        for(StudyGroup el : list){
-            this.map.put(findKey(el.getId()), el);
-        }
+        map.entrySet().stream().sorted();
     }
 
 

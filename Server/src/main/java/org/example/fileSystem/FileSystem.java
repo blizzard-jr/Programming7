@@ -4,16 +4,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
-
 import org.example.details.StorageOfManagers;
-
 import org.example.island.commands.Message;
-
 import org.example.island.object.*;
 import org.example.requests.RequestsManager;
-
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,12 +32,7 @@ public class FileSystem {
         InputStreamReader input = new InputStreamReader(f);
         ObjectMapper o = new ObjectMapper().enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         LinkedHashMap<Integer, StudyGroup> map_one = o.readValue(input, new TypeReference<>(){});
-        LinkedHashMap<Integer, StudyGroup> map = new LinkedHashMap<>();
-
-        for(Integer keys : map_one.keySet()){
-            StudyGroup group = map_one.get(keys);
-            map.put(keys, group);
-        }
+        map_one.entrySet().stream().sorted();
         fileInit(file);
         return map_one;
     }

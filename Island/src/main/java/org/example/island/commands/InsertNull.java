@@ -3,6 +3,9 @@ package org.example.island.commands;
 
 import org.example.island.details.exceptions.NoSuchCommandException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 
 public class InsertNull extends Command{
@@ -13,7 +16,9 @@ public class InsertNull extends Command{
     @Override
     public Command clientExecute(Object[] args) throws NoSuchCommandException {
         checkArgs(args);
-        this.setArguments(args);
+        ArrayList<Object> arrayArg = new ArrayList<>();
+        Collections.addAll(arrayArg, args);
+        this.setArguments(arrayArg);
         return this;
     }
 }

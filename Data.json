@@ -1,4 +1,29 @@
 {
+  "333" : {
+    "name" : "B333",
+    "studentsCount" : 11,
+    "shouldBeExpelled" : 3,
+    "coordinates" : {
+      "x" : 3.0,
+      "y" : 3.0
+    },
+    "formOfEducation" : "FULL_TIME_EDUCATION",
+    "semesterEnum" : "FIRST",
+    "groupAdmin" : {
+      "name" : "3",
+      "height" : 3.0,
+      "weight" : 3.0,
+      "hairColor" : "BLACK",
+      "location" : {
+        "x" : 3,
+        "y" : 3,
+        "z" : 3,
+        "name" : "3"
+      }
+    },
+    "creationDate" : "18-05-2024-19:38:04",
+    "id" : 926
+  },
   "476" : {
     "name" : "J324",
     "studentsCount" : 21,
@@ -23,6 +48,31 @@
     },
     "creationDate" : "04-05-2024-21:39:06",
     "id" : 688
+  },
+  "10" : {
+    "name" : "L000",
+    "studentsCount" : 11,
+    "shouldBeExpelled" : 1,
+    "coordinates" : {
+      "x" : 0.0,
+      "y" : 0.0
+    },
+    "formOfEducation" : "FULL_TIME_EDUCATION",
+    "semesterEnum" : "FIFTH",
+    "groupAdmin" : {
+      "name" : "0",
+      "height" : 1.0,
+      "weight" : 1.0,
+      "hairColor" : "WHITE",
+      "location" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : 0,
+        "name" : "0"
+      }
+    },
+    "creationDate" : "18-05-2024-19:37:22",
+    "id" : 979
   },
   "111" : {
     "name" : "P111",
@@ -73,5 +123,30 @@
     },
     "creationDate" : "04-05-2024-21:39:06",
     "id" : 74
+  },
+  "444" : {
+    "name" : "U444",
+    "studentsCount" : 44,
+    "shouldBeExpelled" : 4,
+    "coordinates" : {
+      "x" : 4.0,
+      "y" : 4.0
+    },
+    "formOfEducation" : "EVENING_CLASSES",
+    "semesterEnum" : "FIFTH",
+    "groupAdmin" : {
+      "name" : "4",
+      "height" : 4.0,
+      "weight" : 4.0,
+      "hairColor" : "WHITE",
+      "location" : {
+        "x" : 4,
+        "y" : 4,
+        "z" : 4,
+        "name" : "4"
+      }
+    },
+    "creationDate" : "18-05-2024-19:38:45",
+    "id" : 691
   }
 }
