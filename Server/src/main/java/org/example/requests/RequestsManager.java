@@ -1,13 +1,12 @@
 package org.example.requests;
 
 import org.example.answers.AnswerManager;
-import org.example.commandsManager.ExecuteManager;
 import org.example.details.StorageOfManagers;
 import org.example.island.commands.Command;
 import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
-import org.example.island.details.Service;
-import org.example.island.details.exceptions.NoSuchCommandException;
+
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 public class RequestsManager {
     private static Socket socket;
     public static AnswerManager manager;
+
     public RequestsManager(Socket socket){
         RequestsManager.socket = socket;
         manager = new AnswerManager(socket);
@@ -30,7 +30,7 @@ public class RequestsManager {
             while (true){
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
-                command.execute(StorageOfManagers.executeManager);
+                StorageOfManagers.executeManager.commandExecute(command);
                 manager.flush(manager.getMsg());
                 manager.getMsg().setArguments(new ArrayList<>());
             }

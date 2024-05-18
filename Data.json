@@ -1,28 +1,28 @@
 {
-  "676" : {
-    "name" : "P676",
-    "studentsCount" : 19,
-    "shouldBeExpelled" : 9,
+  "476" : {
+    "name" : "J324",
+    "studentsCount" : 21,
+    "shouldBeExpelled" : 6,
     "coordinates" : {
-      "x" : -234.0,
-      "y" : -1.0
+      "x" : -5.0,
+      "y" : -2.0
     },
-    "formOfEducation" : "FULL_TIME_EDUCATION",
+    "formOfEducation" : "EVENING_CLASSES",
     "semesterEnum" : "FOURTH",
     "groupAdmin" : {
-      "name" : "Дарья",
-      "height" : 89.0,
+      "name" : "Коля",
+      "height" : 76.0,
       "weight" : 52.0,
-      "hairColor" : "ORANGE",
+      "hairColor" : "BLACK",
       "location" : {
-        "x" : 13,
-        "y" : 11,
-        "z" : -645,
+        "x" : 876,
+        "y" : 1,
+        "z" : -443,
         "name" : "Кронва"
       }
     },
     "creationDate" : "04-05-2024-21:39:06",
-    "id" : 74
+    "id" : 688
   },
   "111" : {
     "name" : "P111",
@@ -49,29 +49,29 @@
     "creationDate" : "17-05-2024-19:13:47",
     "id" : 428
   },
-  "476" : {
-    "name" : "J324",
-    "studentsCount" : 21,
-    "shouldBeExpelled" : 6,
+  "676" : {
+    "name" : "P676",
+    "studentsCount" : 19,
+    "shouldBeExpelled" : 9,
     "coordinates" : {
-      "x" : -5.0,
-      "y" : -2.0
+      "x" : -234.0,
+      "y" : -1.0
     },
-    "formOfEducation" : "EVENING_CLASSES",
+    "formOfEducation" : "FULL_TIME_EDUCATION",
     "semesterEnum" : "FOURTH",
     "groupAdmin" : {
-      "name" : "Коля",
-      "height" : 76.0,
+      "name" : "Дарья",
+      "height" : 89.0,
       "weight" : 52.0,
-      "hairColor" : "BLACK",
+      "hairColor" : "ORANGE",
       "location" : {
-        "x" : 876,
-        "y" : 1,
-        "z" : -443,
+        "x" : 13,
+        "y" : 11,
+        "z" : -645,
         "name" : "Кронва"
       }
     },
     "creationDate" : "04-05-2024-21:39:06",
-    "id" : 688
+    "id" : 74
   }
 }

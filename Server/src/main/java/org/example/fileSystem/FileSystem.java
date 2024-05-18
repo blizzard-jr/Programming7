@@ -124,11 +124,7 @@ public class FileSystem {
                     break;
                 }
                 else{
-                    try {
-                        StorageOfManagers.executeManager.commandExecute(string);
-                    } catch (NoSuchCommandException e) {
-                        RequestsManager.manager.answerForming(e.getMessage());
-                    }
+                    StorageOfManagers.executeManager.commandExecute(string);
                 }
             }
         }catch(IOException e){

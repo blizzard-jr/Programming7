@@ -17,35 +17,56 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 
 public class ExecuteManager {
     private Map<String, Command> commandRegistry = new HashMap<>();
+    private Map<Object, String> commandEx = new HashMap<>();
     private ArrayList<String> commandList = new ArrayList<>();
 
     public ExecuteManager(){
-        addCommand(new Show());
-        addCommand(new Info());
-        addCommand(new InsertNull());
-        addCommand(new UpdateId());
-        addCommand(new Remove_key());
-        addCommand(new Clear());
-        addCommand(new Execute_script());
-        addCommand(new Remove_greater());
-        addCommand(new Remove_lower_key());
-        addCommand(new History());
-        addCommand(new Count_less_than_form_of_education());
-        addCommand(new Filter_by_students_count());
-        addCommand(new Filter_less_than_form_of_education());
-        addCommand(new Exit());
-        addCommand(new Help());
-        addCommand(new Message());
-        addCommand(new Save());
+        addCommand("executeShow", new Show());
+        addCommand("executeInfo", new Info());
+        addCommand("executeInsert", new InsertNull());
+        addCommand("executeUpdate", new UpdateId());
+        addCommand("executeRemove", new Remove_key());
+        addCommand("executeClear", new Clear());
+        addCommand("executeScript", new Execute_script());
+        addCommand("executeRemoveGreater", new Remove_greater());
+        addCommand("executeRemoveLower", new Remove_lower_key());
+        addCommand("executeHistory", new History());
+        addCommand("executeCountEdu", new Count_less_than_form_of_education());
+        addCommand("executeFilterStudentsCount", new Filter_by_students_count());
+        addCommand("executeFilterEdu", new Filter_less_than_form_of_education());
+        addCommand("executeExit", new Exit());
+        addCommand("executeHelp", new Help());
+        addCommand("executeMessage", new Message());
+        addCommand("executeSave", new Save());
     }
 
     public Map<String, Command> getCommandRegistry() {
         return commandRegistry;
+    }
+    public void commandExecute(Command cmd){
+        try {
+            Method mth;
+            if(cmd.getArgumentCount() > 0){
+                mth = this.getClass().getMethod(commandEx.get(cmd.getClass()), cmd.getArguments().getClass());
+                mth.invoke(this, cmd.getArguments());
+            }
+            else{
+                mth = this.getClass().getMethod(commandEx.get(cmd.getClass()));
+                mth.invoke(this);
+            }
+
+        } catch (NoSuchMethodException  | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     public void executeHelp(){
@@ -225,7 +246,8 @@ public class ExecuteManager {
         RequestsManager.manager.answerForming("Всего доброго!");
     }
 
-    public void executeMessage(String data){
+    public void executeMessage(ArrayList<Object> listArg){
+        String data = (String) listArg.get(0);
         if(data.equals("Пустая коллекция")){
             StorageOfManagers.storage.mapInit(new LinkedHashMap<>());
             RequestsManager.manager.answerForming("Коллекция инициализирована");
@@ -320,13 +342,18 @@ public class ExecuteManager {
         }
     }
 
-    public void commandExecute(String s) throws org.example.island.details.exceptions.NoSuchCommandException {
+    public void commandExecute(String s)  {
         String[] str = parseCommand(s);
-        Command command = getCommand(str[0].toLowerCase());
+        Command command = null;
+        try {
+            command = getCommand(str[0].toLowerCase());
+        } catch (NoSuchCommandException e) {
+            throw new RuntimeException(e);
+        }
         commandList.add(str[0]);
         String[] args = Arrays.copyOfRange(str, 1, str.length);
         command.setArguments(args);
-        command.execute(this);
+        commandExecute(command);
     }
 
     public String[] parseCommand(String s){
@@ -334,7 +361,8 @@ public class ExecuteManager {
     }
 
 
-    public void addCommand(Command cmd){
+    public void addCommand(String method, Command cmd){
+        commandEx.put(cmd.getClass(), method);
         commandRegistry.put(cmd.getName(), cmd);
     }
 

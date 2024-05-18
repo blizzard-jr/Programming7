@@ -2,9 +2,11 @@ package org.example;
 
 
 
+import org.example.exceptions.IllegalValueException;
 import org.example.island.object.*;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -162,6 +164,51 @@ public class InputProcess  {
         FormOfEducation formOfEducation = formInit("Введите значение формы обучения");
         Semester sem = semInit("Введите константу семестра: ");
         return new StudyGroup(name, studentsCount, shouldBeExpelled, coordinatesInit(), formOfEducation, sem, personInit());
+    }
+
+    public Object[] objectIdentity(String[] args){
+        if(args.length == 4){
+            Integer keyOrId;
+            String name = args[1];
+            long studentsCount;
+            long studentsShouldBeExpelled;
+            try{
+                keyOrId = Integer.parseInt(args[0]);
+                studentsCount = Long.parseLong(args[2]);
+                studentsShouldBeExpelled = Long.parseLong(args[3]);
+            } catch (NumberFormatException e) {
+                throw new IllegalValueException("Введены некорректные значения для объекта");
+            }
+            if(args[1].isEmpty() || studentsCount <=0 || studentsShouldBeExpelled <=0){
+                throw new IllegalValueException("Введённые значения не валидны");
+            }
+            StudyGroup o = studyGroupInit(name, studentsCount, studentsShouldBeExpelled);
+            Object[] args1 = new Object[2];
+            args1[0] = keyOrId;
+            args1[1] = o;
+            return args1;
+        }
+        else if (args.length == 3){
+            String name = args[0];
+            long studentsCount;
+            long studentsShouldBeExpelled;
+            try{
+                studentsCount = Long.parseLong(args[1]);
+                studentsShouldBeExpelled = Long.parseLong(args[2]);
+            } catch (NumberFormatException e) {
+                throw new IllegalValueException("Введены некорректные значения для объекта");
+            }
+            if(args[0].isEmpty() || studentsCount <=0 || studentsShouldBeExpelled <=0){
+                throw new IllegalValueException("Введённые значения не валидны");
+            }
+            StudyGroup o = studyGroupInit(name, studentsCount, studentsShouldBeExpelled);
+            Object[] args1 = new Object[1];
+            args1[0] = o;
+            return args1;
+        }
+        else{
+            throw new IllegalValueException("Неверное количество аргументов команды");
+        }
     }
     public boolean compare(double num, int comp){
         return num > comp;

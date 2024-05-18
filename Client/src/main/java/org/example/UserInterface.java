@@ -27,7 +27,7 @@ public class UserInterface {
     private static ByteBuffer buffer = ByteBuffer.allocate(10000);
     private static SocketChannel channel;
     private static Selector selectorConnect;
-    private static InputProcess console = new InputProcess();
+    protected static InputProcess console = new InputProcess();
     private static CommandsManager manage = new CommandsManager();
 
     public static void main(String[] args) {

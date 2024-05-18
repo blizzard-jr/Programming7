@@ -1,8 +1,10 @@
 package org.example;
 
 
+import org.example.details.StorageOfManagers;
 import org.example.exceptions.NoSuchCommandException;
 import org.example.island.commands.*;
+import org.example.island.object.StudyGroup;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.Map;
 public class CommandsManager {
     private Map<String, Command> commandRegistry = new HashMap<>();
     private ArrayList<String> commandList = new ArrayList<>();
+    private InputProcess inputProcess = new InputProcess();
 
     /**
      * Конструктор инициализирующий все команды приложения
@@ -44,7 +47,13 @@ public class CommandsManager {
         Command command = getCommand(str[0].toLowerCase());
         commandList.add(str[0]);
         String[] args = Arrays.copyOfRange(str, 1, str.length);
-        command = command.clientExecute(args);
+        if(command.getClass() == InsertNull.class || command.getClass() == UpdateId.class || command.getClass() == Remove_greater.class){
+            Object[] args1 = UserInterface.console.objectIdentity(args);
+            command = command.clientExecute(args1);
+        }
+        else{
+            command = command.clientExecute(args);
+        }
         return command;
     }
     /**
