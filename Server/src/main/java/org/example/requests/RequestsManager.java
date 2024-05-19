@@ -1,6 +1,7 @@
 package org.example.requests;
 
 import org.example.answers.AnswerManager;
+import org.example.commandsManager.ExecuteManager;
 import org.example.details.StorageOfManagers;
 import org.example.island.commands.Command;
 import org.example.island.commands.Message;
@@ -16,12 +17,17 @@ import java.util.ArrayList;
 
 public class RequestsManager {
     private static Socket socket;
-    public static AnswerManager manager;
+    public static AnswerManager answerManager;
     private final static Logger logger = LoggerFactory.getLogger(RequestsManager.class);
+    public static boolean clientContinue;
+
+
 
     public RequestsManager(Socket socket){
+        clientContinue = true;
         RequestsManager.socket = socket;
-        manager = new AnswerManager(socket);
+        answerManager = new AnswerManager(socket);
+        StorageOfManagers.setExecuteManager(new ExecuteManager());
         processing();
     }
     public void processing(){
@@ -29,16 +35,29 @@ public class RequestsManager {
         InputStream stream = null;
         try {
             stream = socket.getInputStream();
+            if(StorageOfManagers.fileSystem.getFileName().isEmpty()){
+                answerManager.answerForming("В данный момент сервер работает в режиме песочницы, так как коллекция не связана с файлом\nИзменения не будут сохранены после завершения работы");
+                answerManager.flush(answerManager.getMsg());
+                answerManager.getMsg().setArguments(new ArrayList<>());
+            }
+            else{
+                answerManager.answerForming("Коллекция инициализирована");
+                answerManager.flush(answerManager.getMsg());
+                answerManager.getMsg().setArguments(new ArrayList<>());
+            }
             while (true){
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
                 logger.info("Обработка запроса");
-                StorageOfManagers.executeManager.commandExecute(command);
-                manager.flush(manager.getMsg());
-                manager.getMsg().setArguments(new ArrayList<>());
+                StorageOfManagers.executeManager.commandExecute(command);//Сделать проверку на ноль
+                answerManager.flush(answerManager.getMsg());
+                answerManager.getMsg().setArguments(new ArrayList<>());
+                if(!clientContinue){
+                    break;
+                }
             }
         } catch (IOException e) {
-            RequestsManager.manager.answerForming("На этапе обработки выполнения запроса произошёл сбой, вам предлагается переподключится к серверу");
+            answerManager.answerForming("На этапе обработки выполнения запроса произошёл сбой, вам предлагается переподключиться к серверу");
         }
     }
     public static Message getMessage() {
@@ -52,6 +71,5 @@ public class RequestsManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

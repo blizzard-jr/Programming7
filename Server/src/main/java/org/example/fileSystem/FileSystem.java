@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.example.details.StorageOfManagers;
-import org.example.island.commands.Message;
 import org.example.island.object.*;
 import org.example.requests.RequestsManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +20,9 @@ import java.util.Scanner;
  * Класс отвечает за работу с файлами
  */
 public class FileSystem {
-    private String fileName;
+    private String fileName = "";
     private Scanner scanner = new Scanner(System.in);
+    private Logger logger = LoggerFactory.getLogger(FileSystem.class);
 
     /**
      * Метод десериализует информацию из файла в Map POJO
@@ -41,6 +44,10 @@ public class FileSystem {
         this.fileName = fileName;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
     /**
      * Метод для запоминания пути к файлу с которым работает коллекция
      * @param s
@@ -55,33 +62,21 @@ public class FileSystem {
      */
     public void parseToFile(LinkedHashMap<Integer, StudyGroup> map)  {
         FileOutputStream f = null;
-        while(true) {
-            try {
-                f = new FileOutputStream(fileName);
-            } catch (FileNotFoundException | NullPointerException e) {
-                RequestsManager.manager.answerForming("Выполнение команды невозможно, передайте новое имя файла или \"Enter\" - для пропуска");
-                Message message = RequestsManager.getMessage();
-                String answer = message.getArguments().get(0).toString();
-                if (answer.isEmpty()) {
-                    RequestsManager.manager.answerForming("Команда не будет исполнена");
-                    return;
-                } else {
-                    fileName = answer;
-                    continue;
-                }
-            }
-            break;
+        try {
+            f = new FileOutputStream(fileName);
+        } catch (FileNotFoundException | NullPointerException e) {
+            RequestsManager.answerManager.answerForming("Сохранение коллекции не произошло");
+            return;
         }
         OutputStreamWriter writer = new OutputStreamWriter(f);
         ObjectMapper o = new ObjectMapper();
         o.registerModules(new JavaTimeModule());
         o.enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, SerializationFeature.INDENT_OUTPUT);
-        //File file = new File("C:\\Users\\Кот\\IdeaProjects\\ProgLab5\\src\\details\\Data.json");
         try {
             o.writeValue(writer, map);
-            RequestsManager.manager.answerForming("Коллекция сохранена в файл");
+            RequestsManager.answerManager.answerForming("Коллекция сохранена в файл");
         } catch (IOException e) {
-            RequestsManager.manager.answerForming("Не удалось сохранить коллекцию в файл");
+            RequestsManager.answerManager.answerForming("Не удалось сохранить коллекцию в файл");
         }
     }
 
@@ -116,7 +111,7 @@ public class FileSystem {
                 }
             }
         }catch(IOException e){
-            RequestsManager.manager.answerForming("Проблема с парсингом файла или команда не найдена");
+            RequestsManager.answerManager.answerForming("Проблема с парсингом файла или команда не найдена");
         }
     }
 }

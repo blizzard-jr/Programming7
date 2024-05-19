@@ -27,7 +27,7 @@ public class AnswerManager {
         try {
             ou = socket.getOutputStream();
         } catch (IOException e) {
-            RequestsManager.manager.answerForming(e.getMessage());
+            RequestsManager.answerManager.answerForming(e.getMessage());
         }
     }
 
@@ -49,7 +49,7 @@ public class AnswerManager {
                 ou.write(data);
             }
         } catch (IOException e) {
-            RequestsManager.manager.answerForming(e.getMessage());
+            RequestsManager.answerManager.answerForming(e.getMessage());
         }
     }
 }

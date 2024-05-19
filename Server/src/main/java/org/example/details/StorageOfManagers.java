@@ -17,10 +17,16 @@ public class StorageOfManagers {
     public static FileSystem fileSystem;
     public  static ExecuteManager executeManager;
 
-    public StorageOfManagers(Storage storage, FileSystem fileSystem, ExecuteManager executeManager){
-        StorageOfManagers.storage = storage;
-        StorageOfManagers.fileSystem = fileSystem;
+    public static void setExecuteManager(ExecuteManager executeManager) {
         StorageOfManagers.executeManager = executeManager;
+    }
+
+    public static void setFileSystem(FileSystem fileSystem) {
+        StorageOfManagers.fileSystem = fileSystem;
+    }
+
+    public static void setStorage(Storage storage) {
+        StorageOfManagers.storage = storage;
     }
 }
 

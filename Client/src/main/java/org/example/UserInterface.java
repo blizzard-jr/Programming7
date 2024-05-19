@@ -4,10 +4,6 @@ package org.example;
 import org.example.exceptions.*;
 import org.example.island.commands.*;
 import org.example.island.details.Serialization;
-import org.example.island.object.*;
-
-
-
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -34,44 +30,16 @@ public class UserInterface {
         System.out.println("Начинаем подключение к серверу\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
         connect();
         System.out.println("Соединение с сервером установлено");
-        collectionInit(args);
+        Message msg = inputData();
+        if(msg != null) {
+            for (Object o : msg.getArguments()) {
+                System.out.println(o.toString());
+            }
+        }
         System.out.println("Программа готова к работе");
         process();
     }
 
-    public static void collectionInit(String[] args) {
-        String fileName = "";
-        try {
-            fileName = args[0];
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Кажется, вы забыли передать имя файла");
-        }
-        LinkedHashMap<Integer, StudyGroup> map;
-        if (!fileName.isEmpty()) {
-            System.out.println("Желаете инициализировать коллекцию из файла? \"Enter\" - Да; Another - Нет: ");
-            String ans = scanner.nextLine();
-            if (ans.isEmpty()) {
-                Message msg = new Message();
-                msg.setArguments(fileName);
-                outputData(Serialization.SerializeObject(msg));
-                Message answer = inputData();
-                for (Object o : answer.getArguments()) {
-                    System.out.println(o);
-                }
-            } else {
-                System.out.println("Будет использована пустая коллекция");
-                Message msg = new Message();
-                msg.setArguments("Пустая коллекция");
-                outputData(Serialization.SerializeObject(msg));
-            }
-        } else {
-            System.out.println("Будет использована пустая коллекция");
-            Message msg = new Message();
-            msg.setArguments("Пустая коллекция");
-            outputData(Serialization.SerializeObject(msg));
-
-        }
-    }
 
     public static void process() {
         while (console.hasNextLine()) {
@@ -79,12 +47,17 @@ public class UserInterface {
                 Command command = manage.commandForming(console.readWithMessage("---"));
                 outputData(Serialization.SerializeObject(command));
                 Message msg = inputData();
-                for (Object o : msg.getArguments()) {
-                    System.out.println(o.toString());
+                if(msg != null){
+                    for (Object o : msg.getArguments()) {
+                        System.out.println(o.toString());
+                    }
+                    if(command.getClass() == (Exit.class)){
+                        System.exit(0);
+                    }
+                }else{
+                    continue;
                 }
-                if(command.getClass() == (Exit.class)){
-                    System.exit(0);
-                }
+
             } catch (IllegalValueException | NoSuchCommandException |
                      org.example.island.details.exceptions.NoSuchCommandException e) {
                 console.writeErr(e.getMessage());
@@ -166,10 +139,10 @@ public class UserInterface {
                     return message;
                 }
             } catch (IOException e) {
-
                 System.err.println("Соединение с сервером разорвано, начинаем процесс переподключения\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
                 connect();
                 System.out.println("Соединение с сервером восстановлено");
+                return null;
             } finally {
                 buffer.clear();
             }

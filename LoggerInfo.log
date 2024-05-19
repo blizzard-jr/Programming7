@@ -2,3 +2,270 @@
 19.05.2024 13:17:31.079 [main] INFO   o.e.r.RequestsManager - Execute new command
 19.05.2024 13:17:39.073 [main] INFO   o.e.r.RequestsManager - Execute new command
 19.05.2024 13:17:41.539 [main] INFO   o.e.r.RequestsManager - Execute new command
+1500 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+11078 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+40423 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+47590 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+61676 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1006 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1173 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+1067 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+12215 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+16242 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+19794 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+971  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1112 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+1038 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+10139 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+14301 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+17217 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1024 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1173 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+20349 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+26844 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+118722 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+120873 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+879  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+6119 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+13180 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+13182 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+15813 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+15820 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+26452 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+26453 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+32002 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+32003 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+34336 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+34337 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+38762 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+38764 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+40525 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+40527 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+42893 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+42894 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+47213 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+47229 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1088 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+10819 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+69294 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+122551 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+793  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+12163 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+14777 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+15477 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+26127 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+30542 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+30545 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+36284 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+36400 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+52887 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+52893 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+55444 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+55447 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+771  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+14049 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+967  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+7779 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+1222 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+11908 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+11932 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+16685 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+16760 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+22355 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+22361 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+25318 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+25320 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+29372 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+29389 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1039 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+6511 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+30701 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+79478 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+106509 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+778  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+7096 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+7121 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+14474 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+14589 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+17162 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+17166 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+19682 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+19698 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+39412 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+39621 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+49566 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+49568 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+54176 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+54179 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+783  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+4373 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+4421 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+11793 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+11855 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1228 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1261 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+35519 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+35547 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+45122 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+45126 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+47789 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+47793 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+50286 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+50304 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+56618 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+815  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+859  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+1016 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1076 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+47767 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+60579 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+6512 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+18292 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+72730 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+77104 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+717  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+761  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+25806 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+25834 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+7259 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+11379 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+56440 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+90986 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+785  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+851  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+21369 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+21391 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+722  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+758  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+17424 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+17448 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+726  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+759  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+25638 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+25657 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+978  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1017 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+18375 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+18403 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+735  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+769  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+4770 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+12510 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+12535 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+18088 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+18091 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+22176 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+22177 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+16144 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+17776 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+43383 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+43791 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+45946 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+60386 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+62208 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+83859 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+264439 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1003 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1435 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+6697 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+12909 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+12996 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+16551 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+22884 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+36079 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+155989 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+788  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+824  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+15573 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+15575 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+15597 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+25006 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+25009 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+27721 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+27722 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+744  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+787  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+4920 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+14127 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+14154 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+24158 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+24169 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+27814 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+1013 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1445 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+3503 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+9230 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+9328 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+13110 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+23575 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+37719 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+713  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+752  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+5946 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+15008 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+15034 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+17775 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+17779 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+20171 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+20172 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+723  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+772  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+3273 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+753  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+776  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+16589 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+26007 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+26032 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+31564 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+31644 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+35822 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+35967 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
