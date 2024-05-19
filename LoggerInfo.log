@@ -269,3 +269,59 @@
 31644 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 35822 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
 35967 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+829  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+874  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+14308 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+1242 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1367 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+15866 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+24341 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+24369 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+29870 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+29944 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+32645 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+32648 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+63819 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+63820 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+72324 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+72329 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+862  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+905  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+9305 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+17517 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+17540 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+21028 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+21095 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+23235 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+23238 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+872  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+920  [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+10937 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+18213 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+18236 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+22029 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+22116 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+24078 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+24080 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+27895 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+28100 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+971  [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+1041 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+4694 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+4695 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+4737 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю

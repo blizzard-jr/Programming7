@@ -36,7 +36,6 @@ public class CommandsManager {
         addCommand(new Filter_less_than_form_of_education());
         addCommand(new Exit());
         addCommand(new Help());
-        addCommand(new Message());
     }
     public void addCommand(Command cmd){
         commandRegistry.put(cmd.getName(), cmd);

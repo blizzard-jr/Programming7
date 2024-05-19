@@ -35,8 +35,6 @@ public class ExecuteManager {
         addCommand("executeFilterEdu", new Filter_less_than_form_of_education());
         addCommand("executeExit", new Exit());
         addCommand("executeHelp", new Help());
-        addCommand("executeMessage", new Message());
-        addCommand("executeSave", new Save());
     }
 
     public Map<String, Command> getCommandRegistry() {
