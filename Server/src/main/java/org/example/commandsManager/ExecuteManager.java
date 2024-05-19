@@ -1,27 +1,19 @@
 package org.example.commandsManager;
 
-
-import org.example.answers.AnswerManager;
-import org.example.details.Storage;
-
 import org.example.details.StorageOfManagers;
-
-import org.example.fileSystem.FileSystem;
+import org.example.exceptions.ExecuteException;
 import org.example.island.commands.*;
 import org.example.island.details.exceptions.IllegalValueException;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.*;
 import org.example.requests.RequestsManager;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.stream.Stream;
+
 
 
 public class ExecuteManager {
@@ -65,7 +57,7 @@ public class ExecuteManager {
             }
 
         } catch (NoSuchMethodException  | IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+            RequestsManager.manager.answerForming("Во время выполнения команды произошла ошибка\nНе найден метод для исполнения данной команды");
         }
 
 
@@ -109,7 +101,7 @@ public class ExecuteManager {
         try {
             stream = new FileInputStream((String) args.get(0));
         } catch (FileNotFoundException e) {
-            RequestsManager.manager.answerForming(e.getMessage());
+            RequestsManager.manager.answerForming("Файл который вы указали не найден");
             return;
         }
         if(!Execute_script.files.contains((String) args.get(0))){
@@ -129,7 +121,7 @@ public class ExecuteManager {
             studentCount = Long.parseLong((String) args.get(0));
             count = StorageOfManagers.storage.getValues().stream().filter(group -> group.getStudentsCount() == studentCount).map(group -> list.add(group.toString())).count();
         }catch(NumberFormatException e){
-            RequestsManager.manager.answerForming(e.getMessage());
+            RequestsManager.manager.answerForming("Не удалось спарсить переданные вами данные");
         }
 
         if(count == 0){
@@ -178,7 +170,7 @@ public class ExecuteManager {
         try{
             key = (Integer) args.get(0);
         }catch (NumberFormatException e){
-            RequestsManager.manager.answerForming(e.getMessage());
+            RequestsManager.manager.answerForming("Не удалось спарсить переданные вами данные");
         }
         if(StorageOfManagers.storage.removeElement(key)){
             RequestsManager.manager.answerForming("Объект успешно удалён");
@@ -194,7 +186,7 @@ public class ExecuteManager {
             key = Integer.parseInt((String) args.get(0));
             long i = StorageOfManagers.storage.getKeys().stream().filter(key_i -> key > key_i).map(keys::add).count();
         }catch(NumberFormatException e){
-            RequestsManager.manager.answerForming(e.getMessage());
+            RequestsManager.manager.answerForming("Не удалось спарсить переданные вами данные");
         }
         if(keys.size() == StorageOfManagers.storage.getSize()){
             RequestsManager.manager.answerForming("Введённый вами ключ меньше всех ключей, что есть в коллекции, удаление элементов не было произведено");
@@ -227,7 +219,7 @@ public class ExecuteManager {
                 StorageOfManagers.storage.mapInit(StorageOfManagers.fileSystem.parseToList(data));
                 RequestsManager.manager.answerForming("Коллекция инициализирована");
             } catch (IOException e) {
-                RequestsManager.manager.answerForming(e.getMessage());
+                RequestsManager.manager.answerForming("Произошла ошибка при инициализации коллекции");
             }
         }
     }
@@ -311,7 +303,7 @@ public class ExecuteManager {
         try {
             command = getCommand(str[0].toLowerCase());
         } catch (NoSuchCommandException e) {
-            throw new RuntimeException(e);
+            RequestsManager.manager.answerForming("Сервер не смог распознать команду");
         }
         commandList.add(str[0]);
         String[] args = Arrays.copyOfRange(str, 1, str.length);

@@ -5,7 +5,8 @@ import org.example.details.StorageOfManagers;
 import org.example.island.commands.Command;
 import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class RequestsManager {
     private static Socket socket;
     public static AnswerManager manager;
+    private final static Logger logger = LoggerFactory.getLogger(RequestsManager.class);
 
     public RequestsManager(Socket socket){
         RequestsManager.socket = socket;
@@ -30,12 +32,13 @@ public class RequestsManager {
             while (true){
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
+                logger.info("Обработка запроса");
                 StorageOfManagers.executeManager.commandExecute(command);
                 manager.flush(manager.getMsg());
                 manager.getMsg().setArguments(new ArrayList<>());
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            RequestsManager.manager.answerForming("На этапе обработки выполнения запроса произошёл сбой, вам предлагается переподключится к серверу");
         }
     }
     public static Message getMessage() {

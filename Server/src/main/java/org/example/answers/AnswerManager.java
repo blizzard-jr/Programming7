@@ -3,6 +3,8 @@ package org.example.answers;
 import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
 import org.example.requests.RequestsManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +17,7 @@ public class AnswerManager {
     private Socket socket;
     private OutputStream ou;
     private Message msg = new Message();
+    private final Logger logger = LoggerFactory.getLogger(AnswerManager.class);
 
     public Message getMsg() {
         return msg;
@@ -39,6 +42,7 @@ public class AnswerManager {
     }
 
     public void flush(Message msg){
+        logger.info("Отправка ответа пользователю");
         byte[] data = Serialization.SerializeObject(msg);
         try {
             if(data != null){
