@@ -47,8 +47,8 @@ public class connectionManager {
                 logger.info("Получено новое подключение");
                 socketList.add(new RequestsManager(clientSocket));
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (Error e) {
+            logger.error("На сервере произошла непредвиденная ошибка, работа сервера завершена: " + e.getCause());
         }finally{
             server.close();
         }
