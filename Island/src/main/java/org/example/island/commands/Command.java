@@ -39,6 +39,9 @@ public abstract class Command implements Serializable {
         this.arguments.add(str);
 
     }
+    public void clearArg(){
+        this.arguments.clear();
+    }
 
     public ArrayList<Object> getArguments() {
         return arguments;

@@ -2,6 +2,7 @@ package org.example.requests;
 
 import org.example.answers.AnswerManager;
 import org.example.commandsManager.ExecuteManager;
+import org.example.commandsManager.Task;
 import org.example.details.StorageOfManagers;
 import org.example.island.commands.Command;
 import org.example.island.commands.Message;
@@ -14,53 +15,51 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 
-public class RequestsManager {
-    private static Socket socket;
-    public static AnswerManager answerManager;
+public class RequestsManager implements Runnable{
+    private Socket socket;
     private final static Logger logger = LoggerFactory.getLogger(RequestsManager.class);
     public static boolean clientContinue;
+    private ForkJoinPool processingPool = ForkJoinPool.commonPool();
 
 
 
     public RequestsManager(Socket socket){
         clientContinue = true;
-        RequestsManager.socket = socket;
-        answerManager = new AnswerManager(socket);
-        StorageOfManagers.setExecuteManager(new ExecuteManager());
-        processing();
+        this.socket = socket;
     }
-    public void processing(){
-        byte[] data = new byte[2048];
+
+    @Override
+    public void run() {
+        byte[] data = new byte[10000];
         InputStream stream = null;
         try {
             stream = socket.getInputStream();
             if(StorageOfManagers.fileSystem.getFileName().isEmpty()){
-                answerManager.answerForming("В данный момент сервер работает в режиме песочницы, так как коллекция не связана с файлом\nИзменения не будут сохранены после завершения работы");
-                answerManager.flush(answerManager.getMsg());
-                answerManager.getMsg().setArguments(new ArrayList<>());
+                StorageOfManagers.answerManager.answerForming("В данный момент сервер работает в режиме песочницы, так как коллекция не связана с файлом\nИзменения не будут сохранены после завершения работы");
+                StorageOfManagers.answerManager.flush(StorageOfManagers.answerManager.getMsg(), socket);
+                StorageOfManagers.answerManager.getMsg().setArguments(new ArrayList<>());
             }
             else{
-                answerManager.answerForming("Коллекция инициализирована");
-                answerManager.flush(answerManager.getMsg());
-                answerManager.getMsg().setArguments(new ArrayList<>());
+                StorageOfManagers.answerManager.answerForming("Коллекция инициализирована");
+                StorageOfManagers.answerManager.flush(StorageOfManagers.answerManager.getMsg(), socket);
+                StorageOfManagers.answerManager.getMsg().setArguments(new ArrayList<>());
             }
             while (true){
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
                 logger.info("Обработка запроса");
-                StorageOfManagers.executeManager.commandExecute(command);//Сделать проверку на ноль
-                answerManager.flush(answerManager.getMsg());
-                answerManager.getMsg().setArguments(new ArrayList<>());
-                if(!clientContinue){
-                    break;
-                }
+                processingPool.invoke(new Task(command, socket));
             }
         } catch (IOException e) {
-            answerManager.answerForming("На этапе обработки выполнения запроса произошёл сбой, вам предлагается переподключиться к серверу");
+            StorageOfManagers.answerManager.answerForming("На этапе обработки выполнения запроса произошёл сбой, вам предлагается переподключиться к серверу");
         }
     }
-    public static Message getMessage() {
+
+    public Message getMessage() {
         byte[] data = new byte[2048];
         InputStream stream = null;
         try {

@@ -25,8 +25,11 @@ public class UserInterface {
     private static Selector selectorConnect;
     protected static InputProcess console = new InputProcess();
     private static CommandsManager manage = new CommandsManager();
+    private static int port;
 
     public static void main(String[] args) {
+        System.out.println("Укажите порт сервера для подключения: ");
+        port = scanner.nextInt();
         System.out.println("Начинаем подключение к серверу\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
         connect();
         System.out.println("Соединение с сервером установлено");
@@ -86,7 +89,7 @@ public class UserInterface {
             try {
                 channel = SocketChannel.open();
                 channel.configureBlocking(false);
-                channel.connect(new InetSocketAddress("localhost", 4004));
+                channel.connect(new InetSocketAddress("localhost", port));
                 selectorConnect = Selector.open();
                 SelectionKey selectionKeyConnect = channel.register(selectorConnect, SelectionKey.OP_CONNECT);
                 if (selectorConnect.select() > 0) {

@@ -375,3 +375,234 @@
 152481 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
 В данный момент к серверу подключены 2 клиентов
 173454 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+745  [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+29183 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+29190 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+
+29192 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+728  [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+5731 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+5738 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+5740 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+8337 [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+19531 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+28009 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+138181 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+800  [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+4462 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+4469 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+15112 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+31912 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+31934 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+902  [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+4484 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+4494 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+10221 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+19759 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+19782 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+22895 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+22973 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+854  [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+4551 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+4561 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+8307 [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+17160 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+21522 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "Enter" или имя файла
+109755 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+109768 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+109827 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+757  [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+4017 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+4024 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+11096 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+804  [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+4053 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+4062 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+9483 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+9484 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+9500 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+13780 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+13783 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+16965 [main] INFO  o.example.requests.RequestsManager - Обработка запроса
+16966 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1036 [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+6906 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+6914 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+14500 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+14500 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+36977 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+929  [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+3429 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+3438 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+11710 [main] INFO  o.e.connections.connectionManager - Инициализирована пустая коллекция
+22675 [main] INFO  o.e.connections.connectionManager - yjdjt
+22675 [main] INFO  o.e.connections.connectionManager - Получено новое подключение
+22698 [main] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1367 [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+5708 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+5719 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+13544 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+1240 [main] INFO  o.e.connections.connectionManager - Укажите порт для сервера
+7428 [main] INFO  o.e.connections.connectionManager - Начало работы сервера
+7439 [main] ERROR o.e.connections.connectionManager - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+14430 [main] INFO  o.e.connections.connectionManager - Коллекция инициализирована из файла
+1128 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1135 [main] INFO  org.example.Main - Укажите порт для сервера
+6852 [main] INFO  org.example.Main - Начало работы сервера
+6853 [main] ERROR org.example.Main - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+847  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+854  [main] INFO  org.example.Main - Укажите порт для сервера
+3919 [main] INFO  org.example.Main - Начало работы сервера
+3919 [main] ERROR org.example.Main - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+15897 [main] INFO  org.example.Main - Коллекция инициализирована из файла
+35043 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+35068 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+41185 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+41250 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+44659 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+44660 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+84174 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+84178 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+88817 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+88819 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+91801 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+91826 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+96962 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+96973 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+104651 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+104653 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+120035 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+120036 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+123858 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+123866 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+134378 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+134581 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+786  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+793  [main] INFO  org.example.Main - Укажите порт для сервера
+3875 [main] INFO  org.example.Main - Начало работы сервера
+3876 [main] ERROR org.example.Main - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+10326 [main] INFO  org.example.Main - Коллекция инициализирована из файла
+24062 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+24084 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+29330 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+29415 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+33792 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+33803 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+36493 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+36514 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+48405 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+48408 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+81897 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+81899 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+94933 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+94939 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+98413 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+98415 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+741  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+748  [main] INFO  org.example.Main - Укажите порт для сервера
+5368 [main] INFO  org.example.Main - Начало работы сервера
+5369 [main] ERROR org.example.Main - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+11813 [main] INFO  org.example.Main - Коллекция инициализирована из файла
+22034 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+812  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+818  [main] INFO  org.example.Main - Укажите порт для сервера
+3130 [main] INFO  org.example.Main - Начало работы сервера
+3132 [main] ERROR org.example.Main - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+8725 [main] INFO  org.example.Main - Коллекция инициализирована из файла
+17576 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+17580 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+21460 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+21534 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+23988 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+23990 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+26468 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+26488 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+43020 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+43021 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+46256 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+46260 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+50427 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+50431 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+53317 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+53319 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+58558 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+58561 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+60935 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+60938 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+65223 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+65224 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+84788 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+84791 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+131151 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+131155 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+150451 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+150452 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+156363 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+156374 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+160365 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+160372 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+165092 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+165276 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+169307 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+169309 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+796  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+803  [main] INFO  org.example.Main - Укажите порт для сервера
+3570 [main] INFO  org.example.Main - Начало работы сервера
+3571 [main] ERROR org.example.Main - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+9296 [main] INFO  org.example.Main - Коллекция инициализирована из файла
+29606 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+29613 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+32718 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+32720 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+35466 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+35541 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+37974 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+37976 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+41270 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+41288 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+44681 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+44829 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+49634 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+49635 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+52191 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+52198 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+54946 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+54967 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю

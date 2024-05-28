@@ -124,6 +124,31 @@
     "creationDate" : "04-05-2024-21:39:06",
     "id" : 74
   },
+  "771" : {
+    "name" : "R777",
+    "studentsCount" : 77,
+    "shouldBeExpelled" : 1,
+    "coordinates" : {
+      "x" : 77.0,
+      "y" : 77.0
+    },
+    "formOfEducation" : "FULL_TIME_EDUCATION",
+    "semesterEnum" : "FIFTH",
+    "groupAdmin" : {
+      "name" : "77",
+      "height" : 77.0,
+      "weight" : 77.0,
+      "hairColor" : "WHITE",
+      "location" : {
+        "x" : 77,
+        "y" : 77,
+        "z" : 77,
+        "name" : "77"
+      }
+    },
+    "creationDate" : "29-05-2024-00:32:31",
+    "id" : 584
+  },
   "444" : {
     "name" : "U444",
     "studentsCount" : 44,

@@ -25,7 +25,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.connections.connectionManager</mainClass>
+                            <mainClass>org.example.connections.ConnectionManager</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

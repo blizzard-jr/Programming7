@@ -13,14 +13,18 @@ import org.example.requests.RequestsManager;
  */
 
 public class StorageOfManagers {
-    public static  Storage storage;
+    public static Storage storage;
     public static FileSystem fileSystem;
-    public  static ExecuteManager executeManager;
+    public static ExecuteManager executeManager;
+    public static AnswerManager answerManager;
+
+    public static void setAnswerManager(AnswerManager answerManager) {
+        StorageOfManagers.answerManager = answerManager;
+    }
 
     public static void setExecuteManager(ExecuteManager executeManager) {
         StorageOfManagers.executeManager = executeManager;
     }
-
     public static void setFileSystem(FileSystem fileSystem) {
         StorageOfManagers.fileSystem = fileSystem;
     }

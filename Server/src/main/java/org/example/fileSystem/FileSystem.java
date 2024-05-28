@@ -65,7 +65,7 @@ public class FileSystem {
         try {
             f = new FileOutputStream(fileName);
         } catch (FileNotFoundException | NullPointerException e) {
-            RequestsManager.answerManager.answerForming("Сохранение коллекции не произошло");
+            StorageOfManagers.answerManager.answerForming("Сохранение коллекции не произошло");
             return;
         }
         OutputStreamWriter writer = new OutputStreamWriter(f);
@@ -74,9 +74,9 @@ public class FileSystem {
         o.enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, SerializationFeature.INDENT_OUTPUT);
         try {
             o.writeValue(writer, map);
-            RequestsManager.answerManager.answerForming("Коллекция сохранена в файл");
+            StorageOfManagers.answerManager.answerForming("Коллекция сохранена в файл");
         } catch (IOException e) {
-            RequestsManager.answerManager.answerForming("Не удалось сохранить коллекцию в файл");
+            StorageOfManagers.answerManager.answerForming("Не удалось сохранить коллекцию в файл");
         }
     }
 
@@ -111,7 +111,7 @@ public class FileSystem {
                 }
             }
         }catch(IOException e){
-            RequestsManager.answerManager.answerForming("Проблема с парсингом файла или команда не найдена");
+            StorageOfManagers.answerManager.answerForming("Проблема с парсингом файла или команда не найдена");
         }
     }
 }

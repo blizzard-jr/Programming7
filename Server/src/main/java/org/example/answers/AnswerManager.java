@@ -22,26 +22,20 @@ public class AnswerManager {
     public Message getMsg() {
         return msg;
     }
-    public AnswerManager(Socket socket){
-        this.socket = socket;
-        try {
-            ou = socket.getOutputStream();
-        } catch (IOException e) {
-            RequestsManager.answerManager.answerForming(e.getMessage());
-        }
-    }
+
 
     public void answerForming(Object data){
         msg.setArguments(data);
     }
-    public void answerForming(Object[] data){
-        msg.setArguments(data);
-    }
-    public void answerForming(ArrayList<Object> data){
-        msg.setArguments(data);
-    }
 
-    public void flush(Message msg){
+
+    public void flush(Message msg, Socket socket){
+        this.socket = socket;
+        try {
+            ou = socket.getOutputStream();
+        } catch (IOException e) {
+            answerForming(e.getMessage());
+        }
         logger.info("Отправка ответа пользователю");
         byte[] data = Serialization.SerializeObject(msg);
         try {
@@ -49,7 +43,7 @@ public class AnswerManager {
                 ou.write(data);
             }
         } catch (IOException e) {
-            RequestsManager.answerManager.answerForming(e.getMessage());
+            answerForming(e.getMessage());
         }
     }
 }
