@@ -43,6 +43,7 @@ public class ExecuteManager {
         addCommand("executeFilterEdu", new Filter_less_than_form_of_education());
         addCommand("executeExit", new Exit());
         addCommand("executeHelp", new Help());
+        addCommand("executeMessage", new Message());
     }
     public void commandExecute(Command cmd, Socket clientSocket){
         msg.clearArg();
@@ -99,9 +100,14 @@ public class ExecuteManager {
             }
         }
     }
-    public void executeCLear(){
-        String answer = StorageOfManagers.storage.clear();
-        msg.setArguments(answer);
+    public void executeClear(){
+        if(StorageOfManagers.dBManager.executeCLear()){
+            msg.setArguments("Коллекция очищена");
+        }
+        else{
+            msg.setArguments("Произошла ошибочка");
+        }
+
     }
     public void executeCountEdu(ArrayList<Object> args){
         FormOfEducation form = (FormOfEducation) args.get(0);
@@ -165,47 +171,34 @@ public class ExecuteManager {
         msg.setArguments(StorageOfManagers.storage.toString());
     }
     public void executeInsert(ArrayList<Object> args){
-        StudyGroup obj = (StudyGroup) args.get(1);
-        Integer key = (Integer) args.get(0);
-        StorageOfManagers.storage.putWithKey(key, obj);
-        StorageOfManagers.storage.putMapKeys(key, obj.getId());
+        StorageOfManagers.dBManager.executeInsert(args);
+        StorageOfManagers.dBManager.collectionInit();
+        //StudyGroup obj = (StudyGroup) args.get(1);
+        //Integer key = (Integer) args.get(0);
+        //StorageOfManagers.storage.putWithKey(key, obj);
+        //StorageOfManagers.storage.putMapKeys(key, obj.getId());
         msg.setArguments("Объект успешно добавлен");
     }
 
     public void executeRemoveGreater(ArrayList<Object> args){
-        StudyGroup el = (StudyGroup) args.get(0);
-        long count = StorageOfManagers.storage.getValues().stream().filter(group -> el.compareTo(group) > 0).map(group -> StorageOfManagers.storage.removeElement(StorageOfManagers.storage.findKey(group.getId()))).count();
+        int count = StorageOfManagers.dBManager.executeRemoveGreater(args);
         msg.setArguments("В ходе исполнения команды было удалено " + count + " объектов");
     }
 
     public void executeRemove(ArrayList<Object> args){
-        int key = 0;
-        try{
-            key = (Integer) args.get(0);
-        }catch (NumberFormatException e){
-            msg.setArguments("Не удалось спарсить переданные вами данные");
-        }
-        if(StorageOfManagers.storage.removeElement(key)){
-            msg.setArguments("Объект успешно удалён");
+        if(StorageOfManagers.dBManager.executeRemove(args)){
+            msg.setArguments("Объект удалён успешно");
         }
         else{
-            msg.setArguments("Объект, соответсвующий введённому вами ключу в коллекции не найден");
+            msg.setArguments("Произошла ошибка в ходе выполнения команды, объект не был удалён");
         }
     }
     public void executeRemoveLower(ArrayList<Object> args){
-        ArrayList<Integer> keys = new ArrayList<>();
-        int key;
-        try{
-            key = Integer.parseInt((String) args.get(0));
-            long i = StorageOfManagers.storage.getKeys().stream().filter(key_i -> key > key_i).map(keys::add).count();
-        }catch(NumberFormatException e){
-            msg.setArguments("Не удалось спарсить переданные вами данные");
-        }
-        if(keys.size() == StorageOfManagers.storage.getSize()){
+        int count = StorageOfManagers.dBManager.executeRemoveLower(args);
+        if(count == 0){
             msg.setArguments("Введённый вами ключ меньше всех ключей, что есть в коллекции, удаление элементов не было произведено");
         }
         else{
-            long count = keys.stream().map(StorageOfManagers.storage::removeElement).count();
             msg.setArguments("В ходе исполнения команды было удалено " + count + " объектов");
         }
     }
@@ -224,9 +217,21 @@ public class ExecuteManager {
             msg.setArguments("Всего доброго!");
         }
         else if(data.equals(ServiceConst.AUTHORISATION)){
-
+            boolean success = StorageOfManagers.dBManager.authorisation((String) listArg.get(1), (String) listArg.get(2));
+            if(success){
+                msg.setArguments("Авторизация прошла успешно");
+            }
+            else{
+                msg.setArguments("Попытка завершилась неудачей");
+            }
         }else if(data.equals(ServiceConst.REGISTRATION)){
-
+            boolean success = StorageOfManagers.dBManager.registration((String) listArg.get(1), (String) listArg.get(2));
+            if(success){
+                msg.setArguments("Регистрация прошла успешно");
+            }
+            else{
+                msg.setArguments("Попытка завершилась неудачей");
+            }
         }
     }
     public void executeShow(){
@@ -241,11 +246,13 @@ public class ExecuteManager {
 
     }
     public void executeUpdate(ArrayList<Object> args){
-        StudyGroup element = (StudyGroup) args.get(1);
-        Integer id = (Integer) args.get(0);
-        element.setId(id);
-        StorageOfManagers.storage.replaceElement(id, element);
-        msg.setArguments("Объект успешно заменён");
+        if(StorageOfManagers.dBManager.executeUpdate(args)){
+            msg.setArguments("Объект успешно заменён");
+        }
+        else {
+            msg.setArguments("Объект не удалось заменить");
+        }
+
     }
     public void insertFormScript(ArrayList<String> args){
         try{

@@ -4,6 +4,8 @@ package org.example;
 import org.example.exceptions.*;
 import org.example.island.commands.*;
 import org.example.island.details.Serialization;
+import org.example.island.details.ServiceConst;
+
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -29,7 +31,7 @@ public class UserInterface {
 
     public static void main(String[] args) {
         System.out.println("Укажите порт сервера для подключения: ");
-        port = scanner.nextInt();
+        port = Integer.parseInt(scanner.nextLine());
         System.out.println("Начинаем подключение к серверу\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
         connect();
         System.out.println("Соединение с сервером установлено");
@@ -80,23 +82,22 @@ public class UserInterface {
     }
 
     public static void authentication(Message data, String login){
-        String[] userdata = new String[3];
-        userdata[0] = "Авторизация";
+        Object[] userdata = new Object[3];
+        userdata[0] = ServiceConst.AUTHORISATION;
         userdata[1] = login;
         System.out.println("Введите пароль:");
         String password = scanner.nextLine();
         userdata[2] = password;
         data.setArguments(userdata);
-        data.setArguments(userdata);
         outputData(Serialization.SerializeObject(data));
     }
     public static void registration(Message data){
-        String[] userdata = new String[3];
+        Object[] userdata = new Object[3];
         System.out.println("Придумайте логин:");
         String login = scanner.nextLine();
         System.out.println("Придумайте пароль:");
         String password = scanner.nextLine();
-        userdata[0] = "Регистрация";
+        userdata[0] = ServiceConst.REGISTRATION;
         userdata[1] = login;
         userdata[2] = password;
         data.setArguments(userdata);

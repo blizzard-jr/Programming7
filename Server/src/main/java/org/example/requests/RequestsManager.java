@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.net.Socket;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
@@ -47,7 +48,7 @@ public class RequestsManager implements Runnable{
                 processingPool.invoke(new Task(command, socket));
             }
         } catch (IOException e) {
-            System.out.println("Ой какой ужс");
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
     }
     public Message getMessage() {

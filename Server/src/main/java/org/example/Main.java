@@ -48,7 +48,7 @@ public class Main {
             Properties info = new Properties();
             Class.forName("org.postgresql.Driver");
             info.load(new FileInputStream("db.cfg"));
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:9992/studs", "s409127", "0UW5OUaZxbLaO1Cv");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:9911/studs", "s409127", "0UW5OUaZxbLaO1Cv");
             StorageOfManagers.setDataBaseManager(new DataBaseManager(connection));
             StorageOfManagers.dBManager.collectionInit();
         } catch (SQLException | IOException | ClassNotFoundException e) {
