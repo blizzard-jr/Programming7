@@ -33,17 +33,75 @@ public class UserInterface {
         System.out.println("Начинаем подключение к серверу\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
         connect();
         System.out.println("Соединение с сервером установлено");
-        Message msg = inputData();
-        if(msg != null) {
-            for (Object o : msg.getArguments()) {
-                System.out.println(o.toString());
+        System.out.println("Введите логин или нажмите \"Enter\" для регистрации:");
+        String answer = scanner.nextLine();
+        if(!answer.isEmpty()){
+            authentication(new Message(), answer);
+            Message bool = inputData();
+            while (!bool.getArguments().get(0).equals("Авторизация прошла успешно")){
+                for(Object str : bool.getArguments()){
+                    System.out.println(str);
+                }
+                System.out.println("Введите новый логин или \"Enter\" для выхода:");
+                String ans = scanner.nextLine();
+                if(!ans.isEmpty()){
+                    authentication(new Message(), ans);
+                    bool = inputData();
+                }
+                else{
+                    System.out.println("Всего доброго");
+                    System.exit(0);
+                }
             }
+            System.out.println(bool.getArguments().get(0));
+        }
+        else{
+            registration(new Message());
+            Message bool = inputData();
+            while (!bool.getArguments().get(0).equals("Регистрация прошла успешно")){
+                for(Object str : bool.getArguments()){
+                    System.out.println(str);
+                }
+                System.out.println("Попробуйте ещё раз - \"Tap something\" или \"Enter\" для выхода:");
+                String ans = scanner.nextLine();
+                if(!ans.isEmpty()){
+                    registration(new Message());
+                    bool = inputData();
+                }
+                else{
+                    System.out.println("Всего доброго");
+                    System.exit(0);
+                }
+            }
+            System.out.println(bool.getArguments().get(0));
         }
         System.out.println("Программа готова к работе");
         process();
     }
 
-
+    public static void authentication(Message data, String login){
+        String[] userdata = new String[3];
+        userdata[0] = "Авторизация";
+        userdata[1] = login;
+        System.out.println("Введите пароль:");
+        String password = scanner.nextLine();
+        userdata[2] = password;
+        data.setArguments(userdata);
+        data.setArguments(userdata);
+        outputData(Serialization.SerializeObject(data));
+    }
+    public static void registration(Message data){
+        String[] userdata = new String[3];
+        System.out.println("Придумайте логин:");
+        String login = scanner.nextLine();
+        System.out.println("Придумайте пароль:");
+        String password = scanner.nextLine();
+        userdata[0] = "Регистрация";
+        userdata[1] = login;
+        userdata[2] = password;
+        data.setArguments(userdata);
+        outputData(Serialization.SerializeObject(data));
+    }
     public static void process() {
         while (console.hasNextLine()) {
             try {

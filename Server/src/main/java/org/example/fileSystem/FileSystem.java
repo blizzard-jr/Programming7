@@ -6,10 +6,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.example.details.StorageOfManagers;
 import org.example.island.object.*;
-import org.example.requests.RequestsManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,13 +58,12 @@ public class FileSystem {
      * Метод сериализует данные из коллекции в файл
      * @param map
      */
-    public void parseToFile(LinkedHashMap<Integer, StudyGroup> map)  {
+    public String parseToFile(LinkedHashMap<Integer, StudyGroup> map)  {
         FileOutputStream f = null;
         try {
             f = new FileOutputStream(fileName);
         } catch (FileNotFoundException | NullPointerException e) {
-            StorageOfManagers.answerManager.answerForming("Сохранение коллекции не произошло");
-            return;
+            return "Сохранение коллекции не произошло";
         }
         OutputStreamWriter writer = new OutputStreamWriter(f);
         ObjectMapper o = new ObjectMapper();
@@ -74,9 +71,9 @@ public class FileSystem {
         o.enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, SerializationFeature.INDENT_OUTPUT);
         try {
             o.writeValue(writer, map);
-            StorageOfManagers.answerManager.answerForming("Коллекция сохранена в файл");
+            return "Коллекция сохранена в файл";
         } catch (IOException e) {
-            StorageOfManagers.answerManager.answerForming("Не удалось сохранить коллекцию в файл");
+            return "Не удалось сохранить коллекцию в файл";
         }
     }
 
@@ -84,7 +81,7 @@ public class FileSystem {
      * Метод для парсинга скрипта из файла
      * @param stream
      */
-    public void parseScript(FileInputStream stream)  {
+    public String parseScript(FileInputStream stream)  {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
         try {
             while (reader.ready()) {
@@ -110,8 +107,9 @@ public class FileSystem {
                     StorageOfManagers.executeManager.commandExecute(string);
                 }
             }
+            return "Выполнение скрипта завершено";
         }catch(IOException e){
-            StorageOfManagers.answerManager.answerForming("Проблема с парсингом файла или команда не найдена");
+            return ("Проблема с парсингом файла или команда не найдена");
         }
     }
 }

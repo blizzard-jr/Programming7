@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,18 +37,9 @@ public class RequestsManager implements Runnable{
     public void run() {
         byte[] data = new byte[10000];
         InputStream stream = null;
+        Message message = new Message();
         try {
             stream = socket.getInputStream();
-            if(StorageOfManagers.fileSystem.getFileName().isEmpty()){
-                StorageOfManagers.answerManager.answerForming("В данный момент сервер работает в режиме песочницы, так как коллекция не связана с файлом\nИзменения не будут сохранены после завершения работы");
-                StorageOfManagers.answerManager.flush(StorageOfManagers.answerManager.getMsg(), socket);
-                StorageOfManagers.answerManager.getMsg().setArguments(new ArrayList<>());
-            }
-            else{
-                StorageOfManagers.answerManager.answerForming("Коллекция инициализирована");
-                StorageOfManagers.answerManager.flush(StorageOfManagers.answerManager.getMsg(), socket);
-                StorageOfManagers.answerManager.getMsg().setArguments(new ArrayList<>());
-            }
             while (true){
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
@@ -55,10 +47,9 @@ public class RequestsManager implements Runnable{
                 processingPool.invoke(new Task(command, socket));
             }
         } catch (IOException e) {
-            StorageOfManagers.answerManager.answerForming("На этапе обработки выполнения запроса произошёл сбой, вам предлагается переподключиться к серверу");
+            System.out.println("Ой какой ужс");
         }
     }
-
     public Message getMessage() {
         byte[] data = new byte[2048];
         InputStream stream = null;

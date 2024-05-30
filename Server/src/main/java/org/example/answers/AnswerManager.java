@@ -14,27 +14,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AnswerManager {
-    private Socket socket;
     private OutputStream ou;
-    private Message msg = new Message();
     private final Logger logger = LoggerFactory.getLogger(AnswerManager.class);
 
-    public Message getMsg() {
-        return msg;
-    }
-
-
-    public void answerForming(Object data){
-        msg.setArguments(data);
-    }
-
-
     public void flush(Message msg, Socket socket){
-        this.socket = socket;
         try {
             ou = socket.getOutputStream();
         } catch (IOException e) {
-            answerForming(e.getMessage());
+            logger.error("Не получилось достать поток из клиента");
         }
         logger.info("Отправка ответа пользователю");
         byte[] data = Serialization.SerializeObject(msg);
@@ -43,7 +30,7 @@ public class AnswerManager {
                 ou.write(data);
             }
         } catch (IOException e) {
-            answerForming(e.getMessage());
+            logger.error("Не получилось отправить сообщение клиенту");
         }
     }
 }

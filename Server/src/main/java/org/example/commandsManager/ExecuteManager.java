@@ -2,6 +2,7 @@ package org.example.commandsManager;
 
 import org.example.details.StorageOfManagers;
 import org.example.island.commands.*;
+import org.example.island.details.ServiceConst;
 import org.example.island.details.exceptions.IllegalValueException;
 import org.example.island.details.exceptions.NoSuchCommandException;
 import org.example.island.object.*;
@@ -119,8 +120,7 @@ public class ExecuteManager {
         }
         if(!Execute_script.files.contains((String) args.get(0))){
             Execute_script.files.add((String) args.get(0));
-            StorageOfManagers.fileSystem.parseScript(stream);
-            msg.setArguments("Выполнение скрипта завершено");
+            msg.setArguments(StorageOfManagers.fileSystem.parseScript(stream));
         }
         else{
             msg.setArguments("Не не, слишком бесконечно получается");
@@ -210,7 +210,7 @@ public class ExecuteManager {
         }
     }
     public void executeSave(){
-        StorageOfManagers.fileSystem.parseToFile(StorageOfManagers.storage.getMap());
+        msg.setArguments(StorageOfManagers.fileSystem.parseToFile(StorageOfManagers.storage.getMap()));
     }
     public void executeExit(){
         executeSave();
@@ -218,11 +218,15 @@ public class ExecuteManager {
     }
 
     public void executeMessage(ArrayList<Object> listArg){
-        String data = (String) listArg.get(0);
+        Object data = listArg.get(0);
         if(data.equals("Завершение")){
             executeSave();
             msg.setArguments("Всего доброго!");
-            //Должны скинуть клиента
+        }
+        else if(data.equals(ServiceConst.AUTHORISATION)){
+
+        }else if(data.equals(ServiceConst.REGISTRATION)){
+
         }
     }
     public void executeShow(){

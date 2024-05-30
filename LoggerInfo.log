@@ -606,3 +606,47 @@
 52198 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 54946 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
 54967 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1031 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1039 [main] INFO  org.example.Main - Укажите порт для сервера
+251328 [main] INFO  org.example.Main - Начало работы сервера
+251330 [main] ERROR org.example.Main - Вы не передали имя файла инициализации и сохранения коллекции
+Сделайте это сейчас, иначе клиенты будут работать с пустой коллекцией, а их изменения не будут сохранены
+Для продолжения работы - "continue" или имя файла
+262957 [main] INFO  org.example.Main - Коллекция инициализирована из файла
+274365 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+274370 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+303402 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+303403 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+306446 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+306523 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+310329 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+310353 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+315713 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+315716 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+331395 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+331405 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+334739 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+334928 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+339099 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+339101 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+341416 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+341507 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1186 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1192 [main] INFO  org.example.Main - Укажите порт для сервера
+1096 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1102 [main] INFO  org.example.Main - Укажите порт для сервера
+1311 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1320 [main] INFO  org.example.Main - Укажите порт для сервера
+2002 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+2013 [main] INFO  org.example.Main - Укажите порт для сервера
+1539 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1547 [main] INFO  org.example.Main - Укажите порт для сервера
+1490 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1497 [main] INFO  org.example.Main - Укажите порт для сервера
+1672 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1682 [main] INFO  org.example.Main - Укажите порт для сервера
+1838 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1847 [main] INFO  org.example.Main - Укажите порт для сервера
+6402 [main] INFO  org.example.Main - Начало работы сервера
+32652 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+61459 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
