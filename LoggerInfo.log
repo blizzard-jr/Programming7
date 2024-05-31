@@ -1035,3 +1035,256 @@
 186684 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 189356 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
 189357 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1109 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1120 [main] INFO  org.example.Main - Укажите порт для сервера
+1204 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1212 [main] INFO  org.example.Main - Укажите порт для сервера
+5986 [main] INFO  org.example.Main - Начало работы сервера
+34465 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+50268 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+50429 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+53739 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+53824 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+91645 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+91853 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+98485 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+98501 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2146 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+2194 [main] INFO  org.example.Main - Укажите порт для сервера
+9868 [main] INFO  org.example.Main - Начало работы сервера
+19439 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+33277 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+43837 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+101262 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+275948 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2386 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+2419 [main] INFO  org.example.Main - Укажите порт для сервера
+1599 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1628 [main] INFO  org.example.Main - Укажите порт для сервера
+2044 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+2095 [main] INFO  org.example.Main - Укажите порт для сервера
+9834 [main] INFO  org.example.Main - Начало работы сервера
+23292 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+35327 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+66565 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+118695 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+480351 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1649 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1682 [main] INFO  org.example.Main - Укажите порт для сервера
+51411 [main] INFO  org.example.Main - Начало работы сервера
+71052 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+83007 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+101139 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+152122 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+244549 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1666 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1696 [main] INFO  org.example.Main - Укажите порт для сервера
+7351 [main] INFO  org.example.Main - Начало работы сервера
+19425 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+28385 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+39836 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+118928 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+451584 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1590 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1619 [main] INFO  org.example.Main - Укажите порт для сервера
+6779 [main] INFO  org.example.Main - Начало работы сервера
+19967 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+28546 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+37512 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+73706 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+230900 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1822 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1846 [main] INFO  org.example.Main - Укажите порт для сервера
+9444 [main] INFO  org.example.Main - Начало работы сервера
+17575 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+28271 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+39096 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+81055 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+196185 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+214387 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+219549 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1189 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1194 [main] INFO  org.example.Main - Укажите порт для сервера
+5960 [main] INFO  org.example.Main - Начало работы сервера
+17091 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+26163 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+26270 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+31351 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+31473 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+65236 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+65272 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+163715 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+163839 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+168333 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+168342 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+238074 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+238079 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+266261 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+266299 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+269535 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+269536 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+280334 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+280395 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+282836 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+282837 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+292803 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+292839 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1038 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1046 [main] INFO  org.example.Main - Укажите порт для сервера
+5207 [main] INFO  org.example.Main - Начало работы сервера
+18268 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+25833 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+25859 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+34866 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+34997 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+38841 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+39010 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+47292 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+47347 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+51639 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+51640 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+57619 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+57661 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+60096 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+60097 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1678 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1705 [main] INFO  org.example.Main - Укажите порт для сервера
+7696 [main] INFO  org.example.Main - Начало работы сервера
+27207 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+42101 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+53423 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+79607 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+171785 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+187573 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+290471 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+339643 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+339874 [ForkJoinPool.commonPool-worker-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+945  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+952  [main] INFO  org.example.Main - Укажите порт для сервера
+1269 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1279 [main] INFO  org.example.Main - Укажите порт для сервера
+4689 [main] INFO  org.example.Main - Начало работы сервера
+22943 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+34483 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+34605 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+130261 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+130409 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+454222 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+454377 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1441 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1462 [main] INFO  org.example.Main - Укажите порт для сервера
+7340 [main] INFO  org.example.Main - Начало работы сервера
+22440 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+31130 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+42428 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+70110 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+125814 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+143128 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+180845 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+195717 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+202763 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1529 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1561 [main] INFO  org.example.Main - Укажите порт для сервера
+1604 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1638 [main] INFO  org.example.Main - Укажите порт для сервера
+10070 [main] INFO  org.example.Main - Начало работы сервера
+135835 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+201209 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+210240 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+265992 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+884  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+889  [main] INFO  org.example.Main - Укажите порт для сервера
+700  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+705  [main] INFO  org.example.Main - Укажите порт для сервера
+4495 [main] INFO  org.example.Main - Начало работы сервера
+12504 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+29086 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+29179 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+174734 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+175026 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1473 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1499 [main] INFO  org.example.Main - Укажите порт для сервера
+1491 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1523 [main] INFO  org.example.Main - Укажите порт для сервера
+7116 [main] INFO  org.example.Main - Начало работы сервера
+69704 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+330237 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+342091 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+379153 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+413967 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1416 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1442 [main] INFO  org.example.Main - Укажите порт для сервера
+11365 [main] INFO  org.example.Main - Начало работы сервера
+24101 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+277036 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+282797 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+327362 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+355096 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1468 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1496 [main] INFO  org.example.Main - Укажите порт для сервера
+7360 [main] INFO  org.example.Main - Начало работы сервера
+21819 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+54344 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+78862 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1122 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1128 [main] INFO  org.example.Main - Укажите порт для сервера
+4899 [main] INFO  org.example.Main - Начало работы сервера
+12067 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+21880 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+21983 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+25213 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+25347 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+30347 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+30349 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+33490 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+33492 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+68107 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+68273 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+73069 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+73077 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+85957 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+85958 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+88583 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+88587 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+101869 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+101903 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1312 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1338 [main] INFO  org.example.Main - Укажите порт для сервера
+7314 [main] INFO  org.example.Main - Начало работы сервера
+12993 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+34139 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+35850 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+57027 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+85689 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1504 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1541 [main] INFO  org.example.Main - Укажите порт для сервера
+8789 [main] INFO  org.example.Main - Начало работы сервера
+21247 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+47467 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+55388 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+78441 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+153254 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+170017 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+172704 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1489 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1496 [main] INFO  org.example.Main - Укажите порт для сервера
+16647 [main] ERROR org.example.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+2070 [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+2110 [main] INFO  org.example.Main - Укажите порт для сервера
+44057 [main] ERROR org.example.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+938  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+946  [main] INFO  org.example.Main - Укажите порт для сервера
+11216 [main] INFO  org.example.Main - Начало работы сервера
+998  [main] ERROR org.example.Main - Вы не передали номер порта или передали не int значение
+1007 [main] INFO  org.example.Main - Укажите порт для сервера
+20359 [main] ERROR org.example.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+38728 [main] INFO  org.example.Main - Начало работы сервера
+50495 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение
+93221 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+93380 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+95672 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+95773 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+99942 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+99945 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+134396 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+134440 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю

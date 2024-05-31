@@ -11,7 +11,7 @@ import java.util.Collections;
 public class InsertNull extends Command{
     public InsertNull(){
         super("insert", "Добавить новый элемент с заданным ключом");
-        argumentCount = 2;
+        argumentCount = 4;
     }
     @Override
     public Command clientExecute(Object[] args) throws NoSuchCommandException {

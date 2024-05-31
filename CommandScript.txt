@@ -12,4 +12,19 @@ insert 676 P676 19 9
 11
 -645
 show
+insert 597 A056 19 2
+дистанционное
+первый
+-34
+-156
+Олег
+7
+98
+красный
+9
+Ломо
+13
+-645
+show
+filter_by_students_count 19
 execute_script C:\Users\Кот\IdeaProjects\Programming6\AnotherOneScript.txt

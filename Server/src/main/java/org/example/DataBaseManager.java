@@ -7,11 +7,13 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class DataBaseManager {
+    ReentrantLock locker = new ReentrantLock();
     private Connection connection;
-    private String U_login;
     public DataBaseManager(Connection connection){
         this.connection = connection;
     }
@@ -22,8 +24,10 @@ public class DataBaseManager {
             Person person = null;
             Coordinates coordinates = null;
             Statement statement = connection.createStatement();
+            locker.lock();
             ResultSet result = statement.executeQuery("SELECT * FROM StudyGroup");
             while(result.next()){
+                int id = result.getInt("id");
                 Long x = result.getLong("L_x");
                 long y = result.getLong("L_y");
                 int z = result.getInt("L_z");
@@ -37,22 +41,26 @@ public class DataBaseManager {
                 float coordinatesX = result.getFloat("C_x");
                 double coordinatesY = result.getDouble("C_y");
                 coordinates = new Coordinates(coordinatesX, coordinatesY);
+                LocalDateTime creationDate = result.getTimestamp("creationDate").toLocalDateTime();
                 int key = result.getInt("key");
                 String G_name = result.getString("S_name");
                 long studentsCount = result.getLong("studentsCount");
                 long shouldBeExpelled = result.getLong("shouldBeExpelled");
                 FormOfEducation form = FormOfEducation.getForm(result.getString("formOfEducation"));
                 Semester sem = Semester.getSem(result.getString("semester"));
-                StudyGroup el = new StudyGroup(G_name, studentsCount, shouldBeExpelled, coordinates, form, sem, person);
+                StudyGroup el = new StudyGroup(id, G_name, studentsCount, shouldBeExpelled, coordinates, creationDate, form, sem, person);
                 StorageOfManagers.storage.putWithKey(key, el);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            locker.unlock();
         }
     }
     public boolean authorisation(String login, String password){
         try {
             Statement statement = connection.createStatement();
+            locker.lock();
             ResultSet res = statement.executeQuery("SELECT login FROM UsersData");
             boolean flag = false;
             while(res.next()){
@@ -79,15 +87,17 @@ public class DataBaseManager {
                     flag = true;
                 }
             }
-            U_login = login;
             return flag;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            locker.unlock();
         }
     }
     public boolean registration(String login, String password){
         try {
             Statement statement = connection.createStatement();
+            locker.lock();
             ResultSet res = statement.executeQuery("SELECT login FROM UsersData");
             boolean flag = true;
             while(res.next()){
@@ -106,10 +116,11 @@ public class DataBaseManager {
             ps.setString(2, Arrays.toString(pass));
             ps.setString(3, salt);
             ps.executeUpdate();
-            U_login = login;
             return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            locker.unlock();
         }
     }
     public byte[] cached(String password, String salt){
@@ -132,14 +143,22 @@ public class DataBaseManager {
                 .toString();
         return generatedString;
     }
-    public boolean executeCLear(){
+    public boolean executeCLear(ArrayList<Object> args){
         try {
+            locker.lock();
             PreparedStatement groupSt = connection.prepareStatement("DELETE FROM Studygroup WHERE owner = ?");
-            groupSt.setString(1, U_login);
-            StorageOfManagers.storage.clear();
-            return groupSt.executeUpdate() != 0;
+            groupSt.setString(1, args.get(0).toString());
+            int count = groupSt.executeUpdate();
+            if(count > 0){
+                collectionInit();
+                return true;
+            }else{
+                return false;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            locker.unlock();
         }
     }
     public boolean executeInsert(ArrayList<Object> args){
@@ -149,7 +168,7 @@ public class DataBaseManager {
         Location location = person.getLocation();
         Coordinates coordinates = obj.getCoordinates();
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into StudyGroup values(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, ?)");
+            PreparedStatement statement = connection.prepareStatement("insert into StudyGroup values(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?)");
             statement.setInt(1,key);
             statement.setString(2, obj.getName());
             statement.setLong(3, obj.getStudentsCount());
@@ -166,12 +185,15 @@ public class DataBaseManager {
             statement.setLong(14, location.getY());
             statement.setLong(15, location.getZ());
             statement.setString(16, location.getName());
-            statement.setString(17, U_login);
+            statement.setString(17, args.get(2).toString());
+            locker.lock();
             statement.executeUpdate();
             collectionInit();
             return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            locker.unlock();
         }
         /*
         StorageOfManagers.storage.putWithKey(key, obj);
@@ -186,7 +208,8 @@ public class DataBaseManager {
         try {
             int count = 0;
             PreparedStatement groupSt = connection.prepareStatement("DELETE FROM Studygroup WHERE owner = ? AND id = ?");
-            groupSt.setString(1, U_login);
+            groupSt.setString(1, args.get(1).toString());
+            locker.lock();
             for(StudyGroup obj : StorageOfManagers.storage.getValues()){
                 if(el.compareTo(obj) > 0){
                     groupSt.setLong(2, obj.getId());
@@ -200,22 +223,28 @@ public class DataBaseManager {
             return count;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            locker.unlock();
         }
     }
 
-    public boolean executeRemove(ArrayList<Object> args){
+    public Integer executeRemove(ArrayList<Object> args){
         int key = 0;
+        int count = 0;
         try{
             key = (Integer) args.get(0);
             PreparedStatement groupSt = connection.prepareStatement("DELETE FROM Studygroup WHERE owner = ? AND key = ?");
-            groupSt.setString(1, U_login);
+            groupSt.setString(1, args.get(1).toString());
             groupSt.setInt(2, key);
-            groupSt.executeUpdate();
+            locker.lock();
+            count = groupSt.executeUpdate();
+            collectionInit();
+            return count;
         }catch (NumberFormatException | SQLException e){
-            return false;
+            return null;
+        }finally {
+            locker.unlock();
         }
-        collectionInit();
-        return true;
     }
     public Integer executeRemoveLower(ArrayList<Object> args){
         Set<Integer> keys;
@@ -223,9 +252,10 @@ public class DataBaseManager {
         try{
             int count = 0;
             PreparedStatement groupSt = connection.prepareStatement("DELETE FROM Studygroup WHERE owner = ? AND key = ?");
-            groupSt.setString(1, U_login);
+            groupSt.setString(1, args.get(1).toString());
             key = Integer.parseInt((String) args.get(0));
             keys = StorageOfManagers.storage.getKeys();
+            locker.lock();
             for(int k : keys){
                 if(k < key){
                     groupSt.setInt(2, k);
@@ -239,6 +269,8 @@ public class DataBaseManager {
             return count;
         }catch(NumberFormatException | SQLException e){
             return null;
+        }finally {
+            locker.unlock();
         }
     }
     public boolean executeUpdate(ArrayList<Object> args){
@@ -262,14 +294,15 @@ public class DataBaseManager {
             groupSt.setLong(13, element.getGroupAdmin().getLocation().getY());
             groupSt.setLong(14, element.getGroupAdmin().getLocation().getZ());
             groupSt.setString(15, element.getGroupAdmin().getLocation().getName());
-            groupSt.setString(16, U_login);
+            groupSt.setString(16, args.get(2).toString());
+            locker.lock();
             groupSt.executeUpdate();
             collectionInit();
             return true;
         } catch (SQLException e) {
             return false;
+        }finally {
+            locker.unlock();
         }
     }
-
-
 }

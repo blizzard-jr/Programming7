@@ -8,7 +8,7 @@ public class Message extends Command{
 
     public Message() {
         super("message", "Отправить текстовое сообщение");
-        argumentCount = 1;
+        argumentCount = 3;
     }
 
 

@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 public abstract class Command implements Serializable {
     private ArrayList<Object> arguments = new ArrayList<>();
-    protected int argumentCount = 0;
+    protected int argumentCount = 2;
     private String name;
     private String description;
 
@@ -61,7 +61,7 @@ public abstract class Command implements Serializable {
      * @throws NoSuchCommandException
      */
     public void checkArgs(Object[] args) throws NoSuchCommandException {
-        if(args.length != argumentCount){
+        if(args.length + 2 != argumentCount){
             throw new NoSuchCommandException("Неверное количество аргументов команды");
         }
     }

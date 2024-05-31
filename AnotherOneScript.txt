@@ -13,7 +13,7 @@ insert 476 J324 21 6
 -443
 show
 filter_less_than_form_of_education вечернее
-update 785 P444 44 4
+update 4 P444 44 4
 дистанционное
 первый
 0

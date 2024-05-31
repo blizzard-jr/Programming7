@@ -8,7 +8,7 @@ import org.example.island.object.FormOfEducation;
 public class Count_less_than_form_of_education extends Command{
     public Count_less_than_form_of_education(){
         super("count_less_than_form_of_education", "Вывести количество элементов, значение поля formOfEducation которых меньше заданного");
-        argumentCount = 1;
+        argumentCount = 3;
     }
 
     @Override

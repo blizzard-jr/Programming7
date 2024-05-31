@@ -41,15 +41,20 @@ public class StudyGroup implements Comparable<StudyGroup>, Serializable {
         setStudentsCount(studentsCount);
         setShouldBeExpelled(shouldBeExpelled);
         setCoordinates(coordinates);
-        this.creationDate = LocalDateTime.now();
-        this.id = idInit();
         setFormOfEducation(formOfEducation);
         setGroupAdmin(groupAdmin);
         setSemesterEnum(semesterEnum);
     }
-    public StudyGroup(){
-        this.id = idInit();
-        this.creationDate = LocalDateTime.now();
+    public StudyGroup(int id, String name, long studentsCount, long shouldBeExpelled, Coordinates coordinates, LocalDateTime creationDate, FormOfEducation formOfEducation, Semester semesterEnum, Person groupAdmin){
+        setId(id);
+        setName(name);
+        setStudentsCount(studentsCount);
+        setShouldBeExpelled(shouldBeExpelled);
+        setCoordinates(coordinates);
+        setCreationDate(creationDate);
+        setFormOfEducation(formOfEducation);
+        setGroupAdmin(groupAdmin);
+        setSemesterEnum(semesterEnum);
     }
 
 
@@ -161,23 +166,23 @@ public class StudyGroup implements Comparable<StudyGroup>, Serializable {
     public Person getGroupAdmin() {
         return groupAdmin;
     }
-    public int idInit(){
-        int id = (int) (Math.random() * 1000);
-        while(true){
-            if(idSet.contains(id)){
-                id += (long) (Math.random() * 10);
-            }
-            else{
-                idSet.add(id);
-                break;
-            }
-        }
-        return id;
-    }
+//    public int idInit(){
+//        int id = (int) (Math.random() * 1000);
+//        while(true){
+//            if(idSet.contains(id)){
+//                id += (long) (Math.random() * 10);
+//            }
+//            else{
+//                idSet.add(id);
+//                break;
+//            }
+//        }
+//        return id;
+//    }
 
     @Override
     public String toString(){
-        return "Name: " + this.name + ", StudentsCount: " + this.studentsCount + ", ShouldBeExpelled: " + this.shouldBeExpelled + ", Coordinates: " + this.coordinates.toString() + ", creationDate: " + this.creationDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy-HH-mm-ss")) + ", id: " + this.id + ", formOfEducation: " + this.formOfEducation + ", semesterEnum: " + this.semesterEnum + ", groupAdmin: " + this.groupAdmin.toString();
+        return "Name: " + this.name + ", StudentsCount: " + this.studentsCount + ", ShouldBeExpelled: " + this.shouldBeExpelled + ", Coordinates: " + this.coordinates.toString() + ", creationDate: " + this.creationDate + ", id: " + this.id + ", formOfEducation: " + this.formOfEducation + ", semesterEnum: " + this.semesterEnum + ", groupAdmin: " + this.groupAdmin.toString();
     }
     @Override
     public int compareTo(StudyGroup group){

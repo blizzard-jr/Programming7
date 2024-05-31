@@ -44,15 +44,23 @@ public class Main {
         return port;
     }
     public static void dbconnection(){
-        try {
-            Properties info = new Properties();
-            Class.forName("org.postgresql.Driver");
-            info.load(new FileInputStream("db.cfg"));
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:9911/studs", "s409127", "0UW5OUaZxbLaO1Cv");
-            StorageOfManagers.setDataBaseManager(new DataBaseManager(connection));
-            StorageOfManagers.dBManager.collectionInit();
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.println("Введите имя пользователя для подключения к бд:");
+                String user = scanner.nextLine();
+                System.out.println("Введите пароль: ");
+                String password = scanner.nextLine();
+                Properties info = new Properties();
+                //Class.forName("org.postgresql.Driver");
+                //info.load(new FileInputStream("db.cfg")); //0UW5OUaZxbLaO1Cv
+                Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:9911/studs", user, password);
+                StorageOfManagers.setDataBaseManager(new DataBaseManager(connection));
+                StorageOfManagers.dBManager.collectionInit();
+                break;
+            } catch (SQLException e) {
+                logger.error("Не удалось подключиться к бд по введённым вами данным, повторите попытку");
+            }
         }
 
     }

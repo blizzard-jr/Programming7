@@ -9,7 +9,7 @@ import org.example.island.object.StudyGroup;
 public class Remove_greater extends Command{
     public Remove_greater(){
         super("remove_greater", "Удалить из коллекции все элементы, превышающие заданный");
-        argumentCount = 3;
+        argumentCount = 5;
     }
 
     @Override

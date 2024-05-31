@@ -37,76 +37,87 @@ public class UserInterface {
         System.out.println("Соединение с сервером установлено");
         System.out.println("Введите логин или нажмите \"Enter\" для регистрации:");
         String answer = scanner.nextLine();
-        if(!answer.isEmpty()){
-            authentication(new Message(), answer);
-            Message bool = inputData();
-            while (!bool.getArguments().get(0).equals("Авторизация прошла успешно")){
-                for(Object str : bool.getArguments()){
-                    System.out.println(str);
-                }
-                System.out.println("Введите новый логин или \"Enter\" для выхода:");
-                String ans = scanner.nextLine();
-                if(!ans.isEmpty()){
-                    authentication(new Message(), ans);
-                    bool = inputData();
-                }
-                else{
-                    System.out.println("Всего доброго");
-                    System.exit(0);
-                }
-            }
-            System.out.println(bool.getArguments().get(0));
+        Object[] userdata;
+        if(answer.isEmpty()){
+            userdata = registration(new Message());
         }
         else{
-            registration(new Message());
-            Message bool = inputData();
-            while (!bool.getArguments().get(0).equals("Регистрация прошла успешно")){
-                for(Object str : bool.getArguments()){
-                    System.out.println(str);
-                }
-                System.out.println("Попробуйте ещё раз - \"Tap something\" или \"Enter\" для выхода:");
+            userdata = authentication(new Message(), answer);
+        }
+        System.out.println("Программа готова к работе");
+        userdata = Arrays.copyOfRange(userdata, 1, userdata.length);
+        process(userdata);
+    }
+
+    public static Object[] authentication(Message data, String login){
+        Object[] userdata = new Object[3];
+        Message bool;
+        int i = 1;
+        do {
+            data.clearArg();
+            if(i > 1) {
+                System.out.println("Введите новый логин или \"Enter\" для выхода:");
                 String ans = scanner.nextLine();
-                if(!ans.isEmpty()){
-                    registration(new Message());
-                    bool = inputData();
-                }
-                else{
+                if (!ans.isEmpty()) {
+                    userdata[1] = ans;
+                }else{
                     System.out.println("Всего доброго");
                     System.exit(0);
                 }
             }
-            System.out.println(bool.getArguments().get(0));
+            userdata[0] = ServiceConst.AUTHORISATION;
+            userdata[1] = login;
+            System.out.println("Введите пароль:");
+            String password = scanner.nextLine();
+            userdata[2] = password;
+            data.setArguments(userdata);
+            outputData(Serialization.SerializeObject(data));
+            bool = inputData();
+            for(Object str : bool.getArguments()){
+                System.out.println(str);
+            }
+            i ++;
+        }while (!bool.getArguments().get(0).equals("Авторизация прошла успешно"));
+        return userdata;
+    }
+    public static Object[] registration(Message data) {
+        Object[] userdata = new Object[3];
+        Message bool;
+        int i = 0;
+        do {
+            data.clearArg();
+            System.out.println("Придумайте логин:");
+            String login = scanner.nextLine();
+            System.out.println("Придумайте пароль:");
+            String password = scanner.nextLine();
+            userdata[0] = ServiceConst.REGISTRATION;
+            userdata[1] = login;
+            userdata[2] = password;
+            data.setArguments(userdata);
+            outputData(Serialization.SerializeObject(data));
+            bool = inputData();
+            for (Object str : bool.getArguments()) {
+                System.out.println(str);
+            }
+            i++;
+            if (i > 1) {
+                System.out.println("Попробуйте ещё раз - \"Tap something\" или \"Enter\" для выхода:");
+                String ans = scanner.nextLine();
+                if (!ans.isEmpty()) {
+                    continue;
+                } else {
+                    System.out.println("Всего доброго");
+                    System.exit(0);
+                }
+            }
+        }while (!bool.getArguments().get(0).equals("Регистрация прошла успешно"));
+            return userdata;
         }
-        System.out.println("Программа готова к работе");
-        process();
-    }
-
-    public static void authentication(Message data, String login){
-        Object[] userdata = new Object[3];
-        userdata[0] = ServiceConst.AUTHORISATION;
-        userdata[1] = login;
-        System.out.println("Введите пароль:");
-        String password = scanner.nextLine();
-        userdata[2] = password;
-        data.setArguments(userdata);
-        outputData(Serialization.SerializeObject(data));
-    }
-    public static void registration(Message data){
-        Object[] userdata = new Object[3];
-        System.out.println("Придумайте логин:");
-        String login = scanner.nextLine();
-        System.out.println("Придумайте пароль:");
-        String password = scanner.nextLine();
-        userdata[0] = ServiceConst.REGISTRATION;
-        userdata[1] = login;
-        userdata[2] = password;
-        data.setArguments(userdata);
-        outputData(Serialization.SerializeObject(data));
-    }
-    public static void process() {
+    public static void process(Object[] userData) {
         while (console.hasNextLine()) {
             try {
                 Command command = manage.commandForming(console.readWithMessage("---"));
+                command.setArguments(userData);
                 outputData(Serialization.SerializeObject(command));
                 Message msg = inputData();
                 if(msg != null){

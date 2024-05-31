@@ -13,7 +13,7 @@ public class Execute_script extends Command{
 
     public Execute_script(){
         super("execute_script", "Считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
-        argumentCount = 1;
+        argumentCount = 3;
     }
 
 

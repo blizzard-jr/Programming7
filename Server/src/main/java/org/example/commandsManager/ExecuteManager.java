@@ -49,7 +49,7 @@ public class ExecuteManager {
         msg.clearArg();
         try {
             Method mth;
-            if(cmd.getArgumentCount() > 0){
+            if(cmd.getArgumentCount() > 2 || cmd.getClass() == Clear.class){
                 mth = this.getClass().getMethod(commandEx.get(cmd.getClass()), cmd.getArguments().getClass());
                 mth.invoke(this, cmd.getArguments());
             }
@@ -62,7 +62,7 @@ public class ExecuteManager {
         }
         answerPool.invoke(new ResultSending(msg, clientSocket));
     }
-    public void commandExecute(String s)  {
+    public void commandExecute(String s, Object login)  {
         String[] str = parseCommand(s);
         Command command = null;
         try {
@@ -73,6 +73,8 @@ public class ExecuteManager {
         commandList.add(str[0]);
         String[] args = Arrays.copyOfRange(str, 1, str.length);
         command.setArguments(args);
+        command.setArguments(login);
+        commandExecute(command, );
     }
     public Map<String, Command> getCommandRegistry() {
         return commandRegistry;
@@ -100,8 +102,8 @@ public class ExecuteManager {
             }
         }
     }
-    public void executeClear(){
-        if(StorageOfManagers.dBManager.executeCLear()){
+    public void executeClear(ArrayList<Object> args){
+        if(StorageOfManagers.dBManager.executeCLear(args)){
             msg.setArguments("Коллекция очищена");
         }
         else{
@@ -126,7 +128,7 @@ public class ExecuteManager {
         }
         if(!Execute_script.files.contains((String) args.get(0))){
             Execute_script.files.add((String) args.get(0));
-            msg.setArguments(StorageOfManagers.fileSystem.parseScript(stream));
+            msg.setArguments(StorageOfManagers.fileSystem.parseScript(stream, args.get(1)));
         }
         else{
             msg.setArguments("Не не, слишком бесконечно получается");
@@ -172,7 +174,6 @@ public class ExecuteManager {
     }
     public void executeInsert(ArrayList<Object> args){
         StorageOfManagers.dBManager.executeInsert(args);
-        StorageOfManagers.dBManager.collectionInit();
         //StudyGroup obj = (StudyGroup) args.get(1);
         //Integer key = (Integer) args.get(0);
         //StorageOfManagers.storage.putWithKey(key, obj);
@@ -186,7 +187,7 @@ public class ExecuteManager {
     }
 
     public void executeRemove(ArrayList<Object> args){
-        if(StorageOfManagers.dBManager.executeRemove(args)){
+        if(StorageOfManagers.dBManager.executeRemove(args) > 0){
             msg.setArguments("Объект удалён успешно");
         }
         else{
@@ -202,21 +203,17 @@ public class ExecuteManager {
             msg.setArguments("В ходе исполнения команды было удалено " + count + " объектов");
         }
     }
-    public void executeSave(){
-        msg.setArguments(StorageOfManagers.fileSystem.parseToFile(StorageOfManagers.storage.getMap()));
-    }
+//    public void executeSave(){
+//        msg.setArguments(StorageOfManagers.fileSystem.parseToFile(StorageOfManagers.storage.getMap()));
+//    }
     public void executeExit(){
-        executeSave();
+        //executeSave();
         msg.setArguments("Всего доброго!");
     }
 
     public void executeMessage(ArrayList<Object> listArg){
         Object data = listArg.get(0);
-        if(data.equals("Завершение")){
-            executeSave();
-            msg.setArguments("Всего доброго!");
-        }
-        else if(data.equals(ServiceConst.AUTHORISATION)){
+        if(data.equals(ServiceConst.AUTHORISATION)){
             boolean success = StorageOfManagers.dBManager.authorisation((String) listArg.get(1), (String) listArg.get(2));
             if(success){
                 msg.setArguments("Авторизация прошла успешно");
@@ -273,7 +270,10 @@ public class ExecuteManager {
             Person admin = new Person(args.get(8), height, weight, color, loc);
             Coordinates coord = new Coordinates(coordinatesX, coordinatesY);
             StudyGroup el = new StudyGroup(args.get(1), studentsCount, shouldBeExpelled, coord, form, sem, admin);
-            StorageOfManagers.storage.putWithKey(key, el);
+            ArrayList<Object> data = new ArrayList<>();
+            data.add(key);
+            data.add(el);
+            StorageOfManagers.dBManager.executeInsert(data);
         }catch(NumberFormatException | IllegalValueException e){
             msg.setArguments("Значения команды insert  в скрипте не валидны");
         }
@@ -300,8 +300,10 @@ public class ExecuteManager {
             Person admin = new Person(args.get(8), height, weight, color, loc);
             Coordinates coord = new Coordinates(coordinatesX, coordinatesY);
             StudyGroup el = new StudyGroup(args.get(1), studentsCount, shouldBeExpelled, coord, form, sem, admin);
-            el.setId(id);
-            msg.setArguments(StorageOfManagers.storage.replaceElement(id, el));
+            ArrayList<Object> data = new ArrayList<>();
+            data.add(id);
+            data.add(el);
+            StorageOfManagers.dBManager.executeUpdate(data);
         }catch(NumberFormatException | IllegalValueException e){
             msg.setArguments("Значения команды update в скрипте не валидны");
         }

@@ -8,7 +8,7 @@ import org.example.island.details.exceptions.NoSuchCommandException;
 public class Filter_by_students_count extends Command{
     public Filter_by_students_count(){
         super("filter_by_students_count", "Вывести элементы, значение поля studentsCount которых равно заданному");
-        argumentCount = 1;
+        argumentCount = 3;
     }
 
 

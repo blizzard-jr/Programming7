@@ -9,7 +9,7 @@ import org.example.island.details.exceptions.NoSuchCommandException;
 public class UpdateId extends Command{
     public UpdateId(){
         super("update", "Обновить значение элемента коллекции, id которого равен заданному");
-        argumentCount = 2;
+        argumentCount = 4;
     }
 
     @Override

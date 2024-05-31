@@ -27,8 +27,6 @@ public class RequestsManager implements Runnable{
     public static boolean clientContinue;
     private ForkJoinPool processingPool = ForkJoinPool.commonPool();
 
-
-
     public RequestsManager(Socket socket){
         clientContinue = true;
         this.socket = socket;

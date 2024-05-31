@@ -43,10 +43,11 @@ public class CommandsManager {
     public Command commandForming(String s) throws NoSuchCommandException, org.example.island.details.exceptions.NoSuchCommandException {
         String[] str = parseCommand(s);
         Command command = getCommand(str[0].toLowerCase());
+        command.clearArg();
         commandList.add(str[0]);
-        String[] args = Arrays.copyOfRange(str, 1, str.length);
+        Object[] args = Arrays.copyOfRange(str, 1, str.length);
         if(command.getClass() == InsertNull.class || command.getClass() == UpdateId.class || command.getClass() == Remove_greater.class){
-            Object[] args1 = UserInterface.console.objectIdentity(args);
+            Object[] args1 = UserInterface.console.objectIdentity((String[]) args);
             command = command.clientExecute(args1);
         }
         else{
