@@ -87,7 +87,7 @@ public class FileSystem {
         try {
             while (reader.ready()) {
                 String string = reader.readLine();
-                if(string.split(" ")[0].equals("insert") || string.split(" ")[0].equals("update")){
+                if(string.split(" ")[0].equals("insert") || string.split(" ")[0].equals("update") || string.split(" ")[0].equals("remove_greater")){
                     String[] str = Arrays.copyOfRange(string.split(" "), 1, string.split(" ").length);
                     ArrayList<String> data = new ArrayList<>(Arrays.asList(str));
                     for (int i = 0; i < 12; i++) {
@@ -99,6 +99,9 @@ public class FileSystem {
                     }
                     else if(string.split(" ")[0].equals("update")){
                         StorageOfManagers.executeManager.updateFromScript(data);
+                    }
+                    else if(string.split(" ")[0].equals("remove_greater")){
+                        StorageOfManagers.executeManager.removeGreaterFromScript(data);
                     }
                 }
                 else if(string.isEmpty()){

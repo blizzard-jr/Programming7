@@ -46,7 +46,6 @@ public class ExecuteManager {
         addCommand("executeMessage", new Message());
     }
     public void commandExecute(Command cmd){
-        msg.clearArg();
         try {
             Method mth;
             if(cmd.getArgumentCount() > 3 || cmd.getClass() == Clear.class){
@@ -62,6 +61,7 @@ public class ExecuteManager {
         }
         ArrayList<Object> args = cmd.getArguments();
         answerPool.invoke(new ResultSending(msg, (Socket) args.get(args.size() - 1)));
+        msg.clearArg();
     }
     public void commandExecute(String s, Object login, Object password, Socket clientSocket)  {
         String[] str = parseCommand(s);
@@ -90,7 +90,6 @@ public class ExecuteManager {
             msg.setArguments(command.getName() + " - " + command.getDescription());
         }
     }
-
     public ArrayList<String> getCommandList() {
         return commandList;
     }
@@ -311,6 +310,7 @@ public class ExecuteManager {
             ArrayList<Object> data = new ArrayList<>();
             data.add(id);
             data.add(el);
+            data.add(args.get(16));
             StorageOfManagers.dBManager.executeUpdate(data);
         }catch(NumberFormatException | IllegalValueException e){
             msg.setArguments("Значения команды update в скрипте не валидны");
@@ -318,6 +318,27 @@ public class ExecuteManager {
         finally{
             commandList.add("update");
         }
+    }
+    public void removeGreaterFromScript(ArrayList<String> args){
+        long studentsCount = Long.parseLong(args.get(1));
+        long shouldBeExpelled = Long.parseLong(args.get(2));
+        FormOfEducation form = FormOfEducation.getForm(args.get(3));
+        Semester sem = Semester.getSem(args.get(4));
+        float coordinatesX = Float.parseFloat(args.get(5));
+        double coordinatesY = Double.parseDouble(args.get(6));
+        Float height = Float.parseFloat(args.get(8));
+        double weight = Double.parseDouble(args.get(9));
+        Color color = Color.getColor(args.get(10));
+        Long x = Long.parseLong(args.get(11));
+        long y = Long.parseLong(args.get(13));
+        int z = Integer.parseInt(args.get(14));
+        Location loc = new Location(x, y, z, args.get(12));
+        Person admin = new Person(args.get(7), height, weight, color, loc);
+        Coordinates coord = new Coordinates(coordinatesX, coordinatesY);
+        StudyGroup el = new StudyGroup(args.get(0), studentsCount, shouldBeExpelled, coord, form, sem, admin);
+        ArrayList<Object> data = new ArrayList<>();
+        data.add(el);
+        data.add(args.get(15));
     }
 
 

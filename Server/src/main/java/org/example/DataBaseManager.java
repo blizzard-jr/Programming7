@@ -278,7 +278,7 @@ public class DataBaseManager {
         Integer id = (Integer) args.get(0);
         PreparedStatement groupSt = null;
         try {
-            groupSt = connection.prepareStatement("UPDATE StudyGroup SET s_name = ?, studentscount = ?, shouldbeexpelled = ?, formOfEducation = ?, semester = ?, c_x = ?, c_y = ?, p_name = ?, p_weight = ?, p_height = ?, p_color = ?, l_x = ?, l_y = ?, l_z = ?, l_name = ? where owner = ?");
+            groupSt = connection.prepareStatement("UPDATE StudyGroup SET s_name = ?, studentscount = ?, shouldbeexpelled = ?, formOfEducation = ?, semester = ?, c_x = ?, c_y = ?, p_name = ?, p_weight = ?, p_height = ?, p_color = ?, l_x = ?, l_y = ?, l_z = ?, l_name = ? where owner = ? AND id = ?");
             groupSt.setString(1, element.getName());
             groupSt.setLong(2, element.getStudentsCount());
             groupSt.setLong(3, element.getShouldBeExpelled());
@@ -295,6 +295,7 @@ public class DataBaseManager {
             groupSt.setLong(14, element.getGroupAdmin().getLocation().getZ());
             groupSt.setString(15, element.getGroupAdmin().getLocation().getName());
             groupSt.setString(16, args.get(2).toString());
+            groupSt.setInt(17, id);
             locker.lock();
             groupSt.executeUpdate();
             collectionInit();
