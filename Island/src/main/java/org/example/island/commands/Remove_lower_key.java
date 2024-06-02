@@ -8,7 +8,7 @@ import org.example.island.details.exceptions.NoSuchCommandException;
 public class Remove_lower_key extends Command{
     public Remove_lower_key(){
         super("remove_lower_key", "Удалить из коллекции все элементы, ключ которых меньше, чем заданный");
-        argumentCount = 3;
+        argumentCount = 4;
     }
 
     @Override

@@ -61,7 +61,7 @@ public abstract class Command implements Serializable {
      * @throws NoSuchCommandException
      */
     public void checkArgs(Object[] args) throws NoSuchCommandException {
-        if(args.length + 2 != argumentCount){
+        if(args.length + 3 != argumentCount){
             throw new NoSuchCommandException("Неверное количество аргументов команды");
         }
     }

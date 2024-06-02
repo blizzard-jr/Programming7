@@ -65,8 +65,10 @@ public class UserInterface {
                     System.exit(0);
                 }
             }
+            else{
+                userdata[1] = login;
+            }
             userdata[0] = ServiceConst.AUTHORISATION;
-            userdata[1] = login;
             System.out.println("Введите пароль:");
             String password = scanner.nextLine();
             userdata[2] = password;
@@ -120,17 +122,28 @@ public class UserInterface {
                 command.setArguments(userData);
                 outputData(Serialization.SerializeObject(command));
                 Message msg = inputData();
-                if(msg != null){
+                if (msg != null) {
                     for (Object o : msg.getArguments()) {
                         System.out.println(o.toString());
                     }
-                    if(command.getClass() == (Exit.class)){
+                    if (command.getClass() == (Exit.class)) {
                         System.exit(0);
                     }
-                }else{
-                    continue;
                 }
-
+                if(command.getClass() == Execute_script.class){
+                    boolean flag = false;
+                    while(!flag) {
+                        msg = inputData();
+                        if (msg != null) {
+                            for (Object o : msg.getArguments()) {
+                                System.out.println(o.toString());
+                                if(o.equals("Выполнение скрипта 1 завершено")){
+                                    flag = true;
+                                }
+                            }
+                        }
+                    }
+                }
             } catch (IllegalValueException | NoSuchCommandException |
                      org.example.island.details.exceptions.NoSuchCommandException e) {
                 console.writeErr(e.getMessage());

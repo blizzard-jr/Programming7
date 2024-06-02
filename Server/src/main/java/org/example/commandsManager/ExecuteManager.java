@@ -45,11 +45,11 @@ public class ExecuteManager {
         addCommand("executeHelp", new Help());
         addCommand("executeMessage", new Message());
     }
-    public void commandExecute(Command cmd, Socket clientSocket){
+    public void commandExecute(Command cmd){
         msg.clearArg();
         try {
             Method mth;
-            if(cmd.getArgumentCount() > 2 || cmd.getClass() == Clear.class){
+            if(cmd.getArgumentCount() > 3 || cmd.getClass() == Clear.class){
                 mth = this.getClass().getMethod(commandEx.get(cmd.getClass()), cmd.getArguments().getClass());
                 mth.invoke(this, cmd.getArguments());
             }
@@ -60,9 +60,10 @@ public class ExecuteManager {
         } catch (NoSuchMethodException  | IllegalAccessException | InvocationTargetException e) {
             msg.setArguments("Во время выполнения команды произошла ошибка\nНе найден метод для исполнения данной команды");
         }
-        answerPool.invoke(new ResultSending(msg, clientSocket));
+        ArrayList<Object> args = cmd.getArguments();
+        answerPool.invoke(new ResultSending(msg, (Socket) args.get(args.size() - 1)));
     }
-    public void commandExecute(String s, Object login)  {
+    public void commandExecute(String s, Object login, Object password, Socket clientSocket)  {
         String[] str = parseCommand(s);
         Command command = null;
         try {
@@ -74,8 +75,11 @@ public class ExecuteManager {
         String[] args = Arrays.copyOfRange(str, 1, str.length);
         command.setArguments(args);
         command.setArguments(login);
-        commandExecute(command, );
+        command.setArguments(password);
+        command.setArguments(clientSocket);
+        commandExecute(command);
     }
+
     public Map<String, Command> getCommandRegistry() {
         return commandRegistry;
     }
@@ -128,11 +132,14 @@ public class ExecuteManager {
         }
         if(!Execute_script.files.contains((String) args.get(0))){
             Execute_script.files.add((String) args.get(0));
-            msg.setArguments(StorageOfManagers.fileSystem.parseScript(stream, args.get(1)));
+            msg.setArguments(StorageOfManagers.fileSystem.parseScript(stream, args.get(1), args.get(2), (Socket) args.get(args.size() - 1)));
+            msg.setArguments("Выполнение скрипта " + Execute_script.files.size() + " завершено");
+            Execute_script.files.remove((String) args.get(0));
         }
         else{
             msg.setArguments("Не не, слишком бесконечно получается");
         }
+
     }
     public void executeFilterStudentsCount(ArrayList<Object> args){
         List<String> list = new ArrayList<>();
@@ -273,6 +280,7 @@ public class ExecuteManager {
             ArrayList<Object> data = new ArrayList<>();
             data.add(key);
             data.add(el);
+            data.add(args.get(16));
             StorageOfManagers.dBManager.executeInsert(data);
         }catch(NumberFormatException | IllegalValueException e){
             msg.setArguments("Значения команды insert  в скрипте не валидны");

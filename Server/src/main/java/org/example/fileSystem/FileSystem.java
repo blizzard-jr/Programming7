@@ -9,6 +9,7 @@ import org.example.island.object.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.*;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -81,7 +82,7 @@ public class FileSystem {
      * Метод для парсинга скрипта из файла
      * @param stream
      */
-    public String parseScript(FileInputStream stream, Object login)  {
+    public String parseScript(FileInputStream stream, Object login, Object password, Socket clientsocket)  {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
         try {
             while (reader.ready()) {
@@ -99,16 +100,15 @@ public class FileSystem {
                     else if(string.split(" ")[0].equals("update")){
                         StorageOfManagers.executeManager.updateFromScript(data);
                     }
-
                 }
                 else if(string.isEmpty()){
                     break;
                 }
                 else{
-                    StorageOfManagers.executeManager.commandExecute(string, login);
+                    StorageOfManagers.executeManager.commandExecute(string, login, password, clientsocket);
                 }
             }
-            return "Выполнение скрипта завершено";
+            return "";
         }catch(IOException e){
             return ("Проблема с парсингом файла или команда не найдена");
         }

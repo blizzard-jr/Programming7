@@ -9,7 +9,7 @@ import org.example.island.object.FormOfEducation;
 public class Filter_less_than_form_of_education extends Command {
     public Filter_less_than_form_of_education(){
         super("filter_less_than_form_of_education", "Вывести элементы, значение поля formOfEducation которых меньше заданного");
-        argumentCount = 3;
+        argumentCount = 4;
     }
 
 

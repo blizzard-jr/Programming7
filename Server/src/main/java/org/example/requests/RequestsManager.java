@@ -43,7 +43,8 @@ public class RequestsManager implements Runnable{
                 int t = stream.read(data);
                 Command command = Serialization.DeserializeObject(data);
                 logger.info("Обработка запроса");
-                processingPool.invoke(new Task(command, socket));
+                command.setArguments(socket);
+                processingPool.invoke(new Task(command));
             }
         } catch (IOException e) {
             System.out.println(Arrays.toString(e.getStackTrace()));

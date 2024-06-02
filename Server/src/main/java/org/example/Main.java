@@ -56,6 +56,7 @@ public class Main {
                 //info.load(new FileInputStream("db.cfg")); //0UW5OUaZxbLaO1Cv
                 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:9911/studs", user, password);
                 StorageOfManagers.setDataBaseManager(new DataBaseManager(connection));
+                StorageOfManagers.setFileSystem(new FileSystem());
                 StorageOfManagers.dBManager.collectionInit();
                 break;
             } catch (SQLException e) {

@@ -9,7 +9,7 @@ import org.example.island.details.exceptions.NoSuchCommandException;
 public class Remove_key extends Command{
     public Remove_key(){
         super("remove", "Удалить элемент из коллекции по его ключу");
-        argumentCount = 3;
+        argumentCount = 4;
     }
 
     @Override

@@ -28,3 +28,5 @@ insert 597 A056 19 2
 show
 filter_by_students_count 19
 execute_script C:\Users\Кот\IdeaProjects\Programming6\AnotherOneScript.txt
+info
+
