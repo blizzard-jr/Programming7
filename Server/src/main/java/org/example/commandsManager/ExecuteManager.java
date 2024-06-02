@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
@@ -57,7 +58,7 @@ public class ExecuteManager {
                 mth.invoke(this);
             }
         } catch (NoSuchMethodException  | IllegalAccessException | InvocationTargetException e) {
-            msg.setArguments("Во время выполнения команды произошла ошибка\nНе найден метод для исполнения данной команды");
+            msg.setArguments("Во время выполнения команды произошла непредвиденная ошибка");
         }
         ArrayList<Object> args = cmd.getArguments();
         answerPool.invoke(new ResultSending(msg, (Socket) args.get(args.size() - 1)));
@@ -106,11 +107,15 @@ public class ExecuteManager {
         }
     }
     public void executeClear(ArrayList<Object> args){
-        if(StorageOfManagers.dBManager.executeCLear(args)){
-            msg.setArguments("Коллекция очищена");
-        }
-        else{
-            msg.setArguments("Произошла ошибочка");
+        try {
+            if(StorageOfManagers.dBManager.executeCLear(args) != 0){
+                msg.setArguments("Объекты, созданные вами, удалены из коллекции");
+            }
+            else{
+                msg.setArguments("В коллекции не нашлось объектов, принадлежащих вам");
+            }
+        } catch (SQLException e) {
+            msg.setArguments(e.getMessage());
         }
 
     }
@@ -179,29 +184,46 @@ public class ExecuteManager {
         msg.setArguments(StorageOfManagers.storage.toString());
     }
     public void executeInsert(ArrayList<Object> args){
-        StorageOfManagers.dBManager.executeInsert(args);
-        //StudyGroup obj = (StudyGroup) args.get(1);
-        //Integer key = (Integer) args.get(0);
-        //StorageOfManagers.storage.putWithKey(key, obj);
-        //StorageOfManagers.storage.putMapKeys(key, obj.getId());
-        msg.setArguments("Объект успешно добавлен");
+        int count = 0;
+        try {
+            count = StorageOfManagers.dBManager.executeInsert(args);
+        } catch (SQLException e) {
+            msg.setArguments(e.getMessage());
+        }
+        if(count != 0) {
+            msg.setArguments("Объект успешно добавлен");
+        }
     }
 
     public void executeRemoveGreater(ArrayList<Object> args){
-        int count = StorageOfManagers.dBManager.executeRemoveGreater(args);
+        int count = 0;
+        try {
+            count = StorageOfManagers.dBManager.executeRemoveGreater(args);
+        } catch (SQLException e) {
+            msg.setArguments(e.getMessage());
+        }
         msg.setArguments("В ходе исполнения команды было удалено " + count + " объектов");
     }
 
     public void executeRemove(ArrayList<Object> args){
-        if(StorageOfManagers.dBManager.executeRemove(args) > 0){
-            msg.setArguments("Объект удалён успешно");
-        }
-        else{
-            msg.setArguments("Произошла ошибка в ходе выполнения команды, объект не был удалён");
+        try {
+            if(StorageOfManagers.dBManager.executeRemove(args) > 0){
+                msg.setArguments("Объект удалён успешно");
+            }
+            else{
+                msg.setArguments("Произошла ошибка в ходе выполнения команды, объект не был удалён");
+            }
+        } catch (SQLException e) {
+            msg.setArguments(e.getMessage());
         }
     }
     public void executeRemoveLower(ArrayList<Object> args){
-        int count = StorageOfManagers.dBManager.executeRemoveLower(args);
+        int count = 0;
+        try {
+            count = StorageOfManagers.dBManager.executeRemoveLower(args);
+        } catch (SQLException e) {
+            msg.setArguments(e.getMessage());
+        }
         if(count == 0){
             msg.setArguments("Введённый вами ключ меньше всех ключей, что есть в коллекции, удаление элементов не было произведено");
         }
@@ -220,7 +242,12 @@ public class ExecuteManager {
     public void executeMessage(ArrayList<Object> listArg){
         Object data = listArg.get(0);
         if(data.equals(ServiceConst.AUTHORISATION)){
-            boolean success = StorageOfManagers.dBManager.authorisation((String) listArg.get(1), (String) listArg.get(2));
+            boolean success = false;
+            try {
+                success = StorageOfManagers.dBManager.authorisation((String) listArg.get(1), (String) listArg.get(2));
+            } catch (SQLException e) {
+                msg.setArguments(e.getMessage());
+            }
             if(success){
                 msg.setArguments("Авторизация прошла успешно");
             }
@@ -228,7 +255,12 @@ public class ExecuteManager {
                 msg.setArguments("Попытка завершилась неудачей");
             }
         }else if(data.equals(ServiceConst.REGISTRATION)){
-            boolean success = StorageOfManagers.dBManager.registration((String) listArg.get(1), (String) listArg.get(2));
+            boolean success = false;
+            try {
+                success = StorageOfManagers.dBManager.registration((String) listArg.get(1), (String) listArg.get(2));
+            } catch (SQLException e) {
+                msg.setArguments(e.getMessage());
+            }
             if(success){
                 msg.setArguments("Регистрация прошла успешно");
             }
@@ -249,11 +281,15 @@ public class ExecuteManager {
 
     }
     public void executeUpdate(ArrayList<Object> args){
-        if(StorageOfManagers.dBManager.executeUpdate(args)){
-            msg.setArguments("Объект успешно заменён");
-        }
-        else {
-            msg.setArguments("Объект не удалось заменить");
+        try {
+            if(StorageOfManagers.dBManager.executeUpdate(args) != 0){
+                msg.setArguments("Объект успешно заменён");
+            }
+            else {
+                msg.setArguments("Объект не удалось заменить");
+            }
+        } catch (SQLException e) {
+            msg.setArguments(e.getMessage());
         }
 
     }
@@ -281,8 +317,8 @@ public class ExecuteManager {
             data.add(el);
             data.add(args.get(16));
             StorageOfManagers.dBManager.executeInsert(data);
-        }catch(NumberFormatException | IllegalValueException e){
-            msg.setArguments("Значения команды insert  в скрипте не валидны");
+        }catch(NumberFormatException | IllegalValueException | SQLException e){
+            msg.setArguments("Выполнение команды insert завершилось ошибкой: " + e.getMessage());
         }
         finally{
             commandList.add("insert");
@@ -312,8 +348,8 @@ public class ExecuteManager {
             data.add(el);
             data.add(args.get(16));
             StorageOfManagers.dBManager.executeUpdate(data);
-        }catch(NumberFormatException | IllegalValueException e){
-            msg.setArguments("Значения команды update в скрипте не валидны");
+        }catch(NumberFormatException | IllegalValueException | SQLException e){
+            msg.setArguments("Выполнение команды update завершилось ошибкой: " + e.getMessage());
         }
         finally{
             commandList.add("update");

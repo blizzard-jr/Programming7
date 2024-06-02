@@ -2,13 +2,10 @@
 package org.example.details;
 
 
-import org.example.DataBaseManager;
+import org.example.commandsManager.DataBaseManager;
 import org.example.answers.AnswerManager;
 import org.example.commandsManager.ExecuteManager;
 import org.example.fileSystem.FileSystem;
-import org.example.requests.RequestsManager;
-
-import javax.xml.crypto.Data;
 
 
 /**

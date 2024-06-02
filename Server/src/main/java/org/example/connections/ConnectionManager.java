@@ -26,6 +26,7 @@ public class ConnectionManager {
             }
         } catch (Error | IOException e) {
             logger.error("На сервере произошла непредвиденная ошибка, работа сервера завершена: " + e.getCause());
+            System.exit(0);
         }
     }
 }

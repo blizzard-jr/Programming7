@@ -14,11 +14,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
 
 public class RequestsManager implements Runnable{
@@ -47,19 +42,19 @@ public class RequestsManager implements Runnable{
                 processingPool.invoke(new Task(command));
             }
         } catch (IOException e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
+            logger.error("Произошла непредвиденная ошибка на этапе обработки запроса");
         }
     }
-    public Message getMessage() {
-        byte[] data = new byte[2048];
-        InputStream stream = null;
-        try {
-            stream = socket.getInputStream();
-            int t = stream.read(data);
-            Message msg = Serialization.DeserializeObject(data);
-            return msg;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public Message getMessage() {
+//        byte[] data = new byte[2048];
+//        InputStream stream = null;
+//        try {
+//            stream = socket.getInputStream();
+//            int t = stream.read(data);
+//            Message msg = Serialization.DeserializeObject(data);
+//            return msg;
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }

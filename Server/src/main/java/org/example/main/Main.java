@@ -1,5 +1,6 @@
-package org.example;
+package org.example.main;
 
+import org.example.commandsManager.DataBaseManager;
 import org.example.answers.AnswerManager;
 import org.example.commandsManager.ExecuteManager;
 import org.example.connections.ConnectionManager;
@@ -9,13 +10,9 @@ import org.example.fileSystem.FileSystem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.sql.*;
-import java.util.LinkedHashMap;
-import java.util.Properties;
 import java.util.Scanner;
 
 public class Main {
@@ -51,10 +48,10 @@ public class Main {
                 String user = scanner.nextLine();
                 System.out.println("Введите пароль: ");
                 String password = scanner.nextLine();
-                Properties info = new Properties();
+                //Properties info = new Properties();
                 //Class.forName("org.postgresql.Driver");
                 //info.load(new FileInputStream("db.cfg")); //0UW5OUaZxbLaO1Cv
-                Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:9912/studs", user, password);
+                Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:9999/studs", user, password);
                 StorageOfManagers.setDataBaseManager(new DataBaseManager(connection));
                 StorageOfManagers.setFileSystem(new FileSystem());
                 StorageOfManagers.dBManager.collectionInit();
