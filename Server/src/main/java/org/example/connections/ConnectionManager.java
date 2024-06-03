@@ -11,9 +11,11 @@ import java.util.concurrent.Executors;
 
 public class ConnectionManager {
     private static Socket clientSocket;
-    ExecutorService executor = Executors.newCachedThreadPool();
+    private final ExecutorService executor = Executors.newCachedThreadPool();
+
     private final static Logger logger = LoggerFactory.getLogger(ConnectionManager.class);
     private ServerSocket server;
+    public volatile static int clientCount = 0;
     public ConnectionManager(ServerSocket server){
         this.server = server;
     }
@@ -21,7 +23,8 @@ public class ConnectionManager {
         try{
             while(true){
                 clientSocket = server.accept();
-                logger.info("Получено новое подключение");
+                logger.info("Получено новое подключение, " + (clientCount + 1) + " активных клиентов");
+                clientCount++;
                 executor.execute(new RequestsManager(clientSocket));
             }
         } catch (Error | IOException e) {

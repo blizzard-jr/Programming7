@@ -1,20 +1,19 @@
 package org.example.requests;
 
-import org.example.answers.AnswerManager;
-import org.example.commandsManager.ExecuteManager;
 import org.example.commandsManager.Task;
-import org.example.details.StorageOfManagers;
+import org.example.connections.ConnectionManager;
 import org.example.island.commands.Command;
+import org.example.island.commands.Exit;
 import org.example.island.commands.Message;
 import org.example.island.details.Serialization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.util.concurrent.ForkJoinPool;
+
+import static org.example.connections.ConnectionManager.clientCount;
 
 public class RequestsManager implements Runnable{
     private Socket socket;
@@ -40,7 +39,13 @@ public class RequestsManager implements Runnable{
                 logger.info("Обработка запроса");
                 command.setArguments(socket);
                 processingPool.invoke(new Task(command));
+                if(command.getClass() == Exit.class){
+                    break;
+                }
+                data = new byte[10000];
             }
+            logger.info("Отключение клиента, " + (clientCount - 1) + " активных клиентов");
+            clientCount--;
         } catch (IOException e) {
             logger.error("Произошла непредвиденная ошибка на этапе обработки запроса");
         }

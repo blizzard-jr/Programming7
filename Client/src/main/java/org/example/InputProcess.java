@@ -6,13 +6,15 @@ import org.example.exceptions.IllegalValueException;
 import org.example.island.object.*;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputProcess  {
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
     /**
      * Метод читает ввод пользователя с предварительным выводом сообщения, внутри используется валидация для строк
      * @param message

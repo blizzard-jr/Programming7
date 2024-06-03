@@ -1572,3 +1572,66 @@
 219391 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 224672 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
 224677 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+820  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+828  [main] INFO  org.example.main.Main - Укажите порт для сервера
+15022 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+1288 [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+1299 [main] INFO  org.example.main.Main - Укажите порт для сервера
+24332 [main] INFO  org.example.main.Main - Начало работы сервера
+38346 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 0 активных клиентов
+38351 [main] INFO  o.e.connections.ConnectionManager - Отключение клиента, 1 активных клиентов
+46188 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+46288 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+937  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+944  [main] INFO  org.example.main.Main - Укажите порт для сервера
+27848 [main] INFO  org.example.main.Main - Начало работы сервера
+36868 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+43761 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+43846 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+45840 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+45846 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+69497 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 2 активных клиентов
+76348 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+76714 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+78576 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+78580 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+88377 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+88380 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+88398 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Отключение клиента, 1 активных клиентов
+97024 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+97025 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+98939 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+98941 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+98943 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов
+946  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+953  [main] INFO  org.example.main.Main - Укажите порт для сервера
+11765 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+18061 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+26095 [main] INFO  org.example.main.Main - Начало работы сервера
+45531 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+52646 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+52762 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+58599 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+58607 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+84756 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+85004 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+91411 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+91504 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+248704 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+1251 [main] ERROR org.example.main.Main - Р’С‹ РЅРµ РїРµСЂРµРґР°Р»Рё РЅРѕРјРµСЂ РїРѕСЂС‚Р° РёР»Рё РїРµСЂРµРґР°Р»Рё РЅРµ int Р·РЅР°С‡РµРЅРёРµ
+1258 [main] INFO  org.example.main.Main - РЈРєР°Р¶РёС‚Рµ РїРѕСЂС‚ РґР»СЏ СЃРµСЂРІРµСЂР°
+799  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+805  [main] INFO  org.example.main.Main - Укажите порт для сервера
+15647 [main] INFO  org.example.main.Main - Начало работы сервера
+30940 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+36947 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+37080 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+39552 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+39629 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+63706 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+64057 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+69669 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+69673 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+121340 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+121342 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+121364 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов

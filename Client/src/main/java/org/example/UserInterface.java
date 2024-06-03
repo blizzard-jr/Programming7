@@ -12,6 +12,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
@@ -21,7 +22,7 @@ import java.util.*;
  */
 
 public class UserInterface {
-    private static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
     private static ByteBuffer buffer = ByteBuffer.allocate(10000);
     private static SocketChannel channel;
     private static Selector selectorConnect;
@@ -148,16 +149,14 @@ public class UserInterface {
                      org.example.island.details.exceptions.NoSuchCommandException e) {
                 console.writeErr(e.getMessage());
             } catch (NoSuchElementException e) {
-                Message m = new Message();
-                m.setArguments("Завершение");
-                outputData(Serialization.SerializeObject(m));
-                Message msg = inputData();
-                for (Object o : msg.getArguments()) {
-                    System.out.println(o.toString());
-                }
+                System.out.println("Работа клиента завершена");
+                outputData(Serialization.SerializeObject(new Exit()));
                 System.exit(0);
             }
         }
+        System.out.println("Работа клиента завершена");
+        outputData(Serialization.SerializeObject(new Exit()));
+        System.exit(0);
     }
 
     public static void connect() {

@@ -231,11 +231,8 @@ public class ExecuteManager {
             msg.setArguments("В ходе исполнения команды было удалено " + count + " объектов");
         }
     }
-//    public void executeSave(){
-//        msg.setArguments(StorageOfManagers.fileSystem.parseToFile(StorageOfManagers.storage.getMap()));
-//    }
     public void executeExit(){
-        //executeSave();
+
         msg.setArguments("Всего доброго!");
     }
 
