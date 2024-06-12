@@ -1,9 +1,16 @@
 package org.example.controllers;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import org.example.UserInterface;
 import org.example.island.commands.Message;
+
+import java.io.IOException;
+
+import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
 public class EnterScene {
     @FXML
@@ -31,7 +38,16 @@ public class EnterScene {
         UserInterface.setRegister(register.isSelected());
         UserInterface.connect();
         UserInterface.authentication(new Message());
-        new MainScene().clash();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getResource("/mainScene.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        UserInterface.getStage().setScene(new Scene(root));
+        UserInterface.getStage().show();
     }
     public void exceptionMessage(Message msg){
         StringBuilder str = new StringBuilder();

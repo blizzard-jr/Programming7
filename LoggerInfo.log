@@ -1676,3 +1676,89 @@
 87814 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 88433 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
 88440 [pool-1-thread-2] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+925  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+933  [main] INFO  org.example.main.Main - Укажите порт для сервера
+28159 [main] INFO  org.example.main.Main - Начало работы сервера
+54328 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+54482 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+54593 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+113856 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+919  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+927  [main] INFO  org.example.main.Main - Укажите порт для сервера
+16554 [main] INFO  org.example.main.Main - Начало работы сервера
+197698 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+206839 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+207123 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1361 [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+1368 [main] INFO  org.example.main.Main - Укажите порт для сервера
+14573 [main] INFO  org.example.main.Main - Начало работы сервера
+39702 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+39878 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+39949 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+63014 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+1213 [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+1220 [main] INFO  org.example.main.Main - Укажите порт для сервера
+16290 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+35310 [main] INFO  org.example.main.Main - Начало работы сервера
+59035 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+59198 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+59266 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+126973 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+1016 [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+1022 [main] INFO  org.example.main.Main - Укажите порт для сервера
+27745 [main] INFO  org.example.main.Main - Начало работы сервера
+48324 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+48461 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+48551 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+62176 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+849  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+857  [main] INFO  org.example.main.Main - Укажите порт для сервера
+10964 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+17067 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+32584 [main] INFO  org.example.main.Main - Начало работы сервера
+53161 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+53343 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+53447 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+82198 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+1036 [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+1043 [main] INFO  org.example.main.Main - Укажите порт для сервера
+14474 [main] INFO  org.example.main.Main - Начало работы сервера
+33932 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+34146 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+34210 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1277 [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+1284 [main] INFO  org.example.main.Main - Укажите порт для сервера
+15267 [main] INFO  org.example.main.Main - Начало работы сервера
+34009 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+34195 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+34264 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+48478 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+986  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+992  [main] INFO  org.example.main.Main - Укажите порт для сервера
+9844 [main] INFO  org.example.main.Main - Начало работы сервера
+28962 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+29193 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+29247 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+40533 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+961  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+968  [main] INFO  org.example.main.Main - Укажите порт для сервера
+10025 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+16261 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+21149 [main] INFO  org.example.main.Main - Начало работы сервера
+44428 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+44647 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+44724 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+66958 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+1126 [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+1133 [main] INFO  org.example.main.Main - Укажите порт для сервера
+10925 [main] INFO  org.example.main.Main - Начало работы сервера
+31078 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+31261 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+31327 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+962  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+970  [main] INFO  org.example.main.Main - Укажите порт для сервера
+18711 [main] INFO  org.example.main.Main - Начало работы сервера
+40294 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+40487 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+40566 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+62096 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса

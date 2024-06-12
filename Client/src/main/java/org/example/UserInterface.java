@@ -50,6 +50,11 @@ public class UserInterface extends javafx.application.Application{
 //        userdata = Arrays.copyOfRange(userdata, 1, userdata.length);
 //        process(userdata);
     }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         UserInterface.stage = stage;
@@ -79,7 +84,7 @@ public class UserInterface extends javafx.application.Application{
         for(Object str : bool.getArguments()){
             System.out.println(str);
         }
-        if(!bool.getArguments().get(0).equals("Авторизация прошла успешно") || !bool.getArguments().get(0).equals("Регистрация прошла успешно")) {
+        if(!bool.getArguments().get(0).equals("Авторизация прошла успешно") && !bool.getArguments().get(0).equals("Регистрация прошла успешно")) {
             enterScene.exceptionMessage(bool);
         }
         return userdata;
