@@ -28,6 +28,14 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.3</version>
+        <configuration>
+          <mainClass>org.example.UserInterface</mainClass>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <properties>

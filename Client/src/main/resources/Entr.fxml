@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFA07A !important; -fx-background-radius: 15 !important; " xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.EnterScene">
+   <children>
+      <Label layoutX="244.0" layoutY="43.0" prefHeight="32.0" prefWidth="112.0" text="Welcome">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="187.0" layoutY="79.0" prefHeight="58.0" prefWidth="181.0" text="Log in to your account or register" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="login" layoutX="221.0" layoutY="147.0" />
+      <Label layoutX="179.0" layoutY="146.0" prefHeight="26.0" prefWidth="37.0" text="Login" />
+      <Label layoutX="161.0" layoutY="191.0" prefHeight="18.0" prefWidth="52.0" text="Password" />
+      <Button fx:id="enter" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" text="Enter" onAction="#enterClicked"/>
+      <CheckBox fx:id="register" layoutX="146.0" layoutY="275.0" mnemonicParsing="false" text="Register" />
+      <Label layoutX="186.0" layoutY="232.0" text="Port" />
+      <TextField fx:id="port" layoutX="221.0" layoutY="228.0" />
+      <PasswordField fx:id="password" layoutX="221.0" layoutY="187.0" />
+   </children>
+</AnchorPane>

@@ -1,6 +1,12 @@
 package org.example;
 //Журнал КОД от яндекс, почитать
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.example.controllers.EnterScene;
 import org.example.exceptions.*;
 import org.example.island.commands.*;
 import org.example.island.details.Serialization;
@@ -15,107 +21,69 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
 
 /**
  * Класс для взаимодействия с клиентом
  */
 
-public class UserInterface {
-    private static Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+public class UserInterface extends javafx.application.Application{
+    private static String login;
+    private static String password;
+    private static int port;
+    private static boolean register;
     private static ByteBuffer buffer = ByteBuffer.allocate(10000);
     private static SocketChannel channel;
     private static Selector selectorConnect;
     protected static InputProcess console = new InputProcess();
     private static CommandsManager manage = new CommandsManager();
-    private static int port;
+    private static EnterScene enterScene;
+    private static Stage stage;
 
-    public static void main(String[] args) {
-        System.out.println("Укажите порт сервера для подключения: ");
-        port = Integer.parseInt(scanner.nextLine());
-        System.out.println("Начинаем подключение к серверу\n*Пока соединение не будет завершено программа находиться в режиме ожидания\nВыйти можно по команде - \"exit\"");
-        connect();
-        System.out.println("Соединение с сервером установлено");
-        System.out.println("Введите логин или нажмите \"Enter\" для регистрации:");
-        String answer = scanner.nextLine();
-        Object[] userdata;
-        if(answer.isEmpty()){
-            userdata = registration(new Message());
+    public static void main(String[] args){
+        Application.launch();
+//        connect();
+//        Object[] userdata;
+//        userdata = authentication(new Message());
+//        System.out.println("Программа готова к работе");
+//        userdata = Arrays.copyOfRange(userdata, 1, userdata.length);
+//        process(userdata);
+    }
+    @Override
+    public void start(Stage stage) throws Exception {
+        UserInterface.stage = stage;
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getResource("/Entr.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root));
+        stage.show();
+        enterScene = loader.getController();
+    }
+
+    public static Object[] authentication(Message data){
+        Object[] userdata = new Object[3];
+        Message bool;
+        data.clearArg();
+        if(register){
+            userdata[0] = ServiceConst.REGISTRATION;
         }
         else{
-            userdata = authentication(new Message(), answer);
-        }
-        System.out.println("Программа готова к работе");
-        userdata = Arrays.copyOfRange(userdata, 1, userdata.length);
-        process(userdata);
-    }
-
-    public static Object[] authentication(Message data, String login){
-        Object[] userdata = new Object[3];
-        Message bool;
-        int i = 1;
-        do {
-            data.clearArg();
-            if(i > 1) {
-                System.out.println("Введите новый логин или \"Enter\" для выхода:");
-                String ans = scanner.nextLine();
-                if (!ans.isEmpty()) {
-                    userdata[1] = ans;
-                }else{
-                    System.out.println("Всего доброго");
-                    System.exit(0);
-                }
-            }
-            else{
-                userdata[1] = login;
-            }
             userdata[0] = ServiceConst.AUTHORISATION;
-            System.out.println("Введите пароль:");
-            String password = scanner.nextLine();
-            userdata[2] = password;
-            data.setArguments(userdata);
-            outputData(Serialization.SerializeObject(data));
-            bool = inputData();
-            for(Object str : bool.getArguments()){
-                System.out.println(str);
-            }
-            i ++;
-        }while (!bool.getArguments().get(0).equals("Авторизация прошла успешно"));
+        }
+        userdata[2] = password;
+        userdata[1] = login;
+        data.setArguments(userdata);
+        outputData(Serialization.SerializeObject(data));
+        bool = inputData();
+        for(Object str : bool.getArguments()){
+            System.out.println(str);
+        }
+        if(!bool.getArguments().get(0).equals("Авторизация прошла успешно") || !bool.getArguments().get(0).equals("Регистрация прошла успешно")) {
+            enterScene.exceptionMessage(bool);
+        }
         return userdata;
     }
-    public static Object[] registration(Message data) {
-        Object[] userdata = new Object[3];
-        Message bool;
-        int i = 0;
-        do {
-            data.clearArg();
-            System.out.println("Придумайте логин:");
-            String login = scanner.nextLine();
-            System.out.println("Придумайте пароль:");
-            String password = scanner.nextLine();
-            userdata[0] = ServiceConst.REGISTRATION;
-            userdata[1] = login;
-            userdata[2] = password;
-            data.setArguments(userdata);
-            outputData(Serialization.SerializeObject(data));
-            bool = inputData();
-            for (Object str : bool.getArguments()) {
-                System.out.println(str);
-            }
-            i++;
-            if (i > 1) {
-                System.out.println("Попробуйте ещё раз - \"Tap something\" или \"Enter\" для выхода:");
-                String ans = scanner.nextLine();
-                if (!ans.isEmpty()) {
-                    continue;
-                } else {
-                    System.out.println("Всего доброго");
-                    System.exit(0);
-                }
-            }
-        }while (!bool.getArguments().get(0).equals("Регистрация прошла успешно"));
-            return userdata;
-        }
     public static void process(Object[] userData) {
         while (console.hasNextLine()) {
             try {
@@ -233,5 +201,19 @@ public class UserInterface {
             }
         }
     }
+    public static void setRegister(boolean register) {
+        UserInterface.register = register;
+    }
 
+    public static void setPort(int port) {
+        UserInterface.port = port;
+    }
+
+    public static void setPassword(String password) {
+        UserInterface.password = password;
+    }
+
+    public static void setLogin(String login) {
+        UserInterface.login = login;
+    }
 }
