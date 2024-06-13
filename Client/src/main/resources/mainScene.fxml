@@ -64,7 +64,7 @@
                   </TableColumn>
                   <TableColumn fx:id="p_height" prefWidth="120.0" text="p_height">
                       <cellValueFactory>
-                          <PropertyValueFactory property="p-height" />
+                          <PropertyValueFactory property="p_height" />
                       </cellValueFactory>
                   </TableColumn>
                   <TableColumn fx:id="p_weight" prefWidth="120.0" text="p_weight">

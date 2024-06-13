@@ -13,6 +13,7 @@ import org.example.island.commands.*;
 import org.example.island.details.Serialization;
 import org.example.island.details.ServiceConst;
 import org.example.island.object.StudyGroup;
+import org.example.island.object.TableGroup;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -40,7 +41,7 @@ public class UserInterface extends javafx.application.Application{
     private static CommandsManager manage = new CommandsManager();
     private static EnterScene enterScene;
     private static Stage stage;
-    private static List<StudyGroup> data;
+    private static List<TableGroup> data;
 
     public static void main(String[] args){
         Application.launch();
@@ -82,14 +83,14 @@ public class UserInterface extends javafx.application.Application{
         outputData(Serialization.SerializeObject(data));
         bool = inputData();
         enterScene.exceptionMessage(null, (String) bool.getArguments().get(0));
-        UserInterface.data = (List<StudyGroup>) bool.getArguments().get(1);
+        UserInterface.data = (List<TableGroup>) bool.getArguments().get(1);
         if(!bool.getArguments().get(0).equals("Авторизация прошла успешно") && !bool.getArguments().get(0).equals("Регистрация прошла успешно")) {
             enterScene.exceptionMessage(bool);
         }
         return userdata;
     }
 
-    public static List<StudyGroup> getData() {
+    public static List<TableGroup> getData() {
         return data;
     }
 
