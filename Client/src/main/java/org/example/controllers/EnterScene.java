@@ -46,9 +46,19 @@ public class EnterScene {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        MainScene mainScene = loader.getController();
+        mainScene.collectionInit(UserInterface.getData());
         UserInterface.getStage().setScene(new Scene(root));
         UserInterface.getStage().show();
     }
+    public void exceptionMessage(String title, String text){
+        if(title != null){
+            alert.setTitle(title);
+        }
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+
     public void exceptionMessage(Message msg){
         StringBuilder str = new StringBuilder();
         for(Object obj : msg.getArguments()){

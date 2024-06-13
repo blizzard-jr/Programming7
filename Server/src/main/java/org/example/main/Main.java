@@ -7,12 +7,14 @@ import org.example.connections.ConnectionManager;
 import org.example.details.Storage;
 import org.example.details.StorageOfManagers;
 import org.example.fileSystem.FileSystem;
+import org.example.island.object.StudyGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.sql.*;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -40,6 +42,8 @@ public class Main {
         }
         return port;
     }
+
+
     public static void dbconnection(){
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -54,12 +58,10 @@ public class Main {
                 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:9999/studs", user, password);
                 StorageOfManagers.setDataBaseManager(new DataBaseManager(connection));
                 StorageOfManagers.setFileSystem(new FileSystem());
-                StorageOfManagers.dBManager.collectionInit();
                 break;
             } catch (SQLException e) {
                 logger.error("Не удалось подключиться к бд по введённым вами данным, повторите попытку");
             }
         }
-
     }
 }

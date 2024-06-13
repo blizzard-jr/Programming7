@@ -7,10 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.controllers.EnterScene;
+import org.example.controllers.MainScene;
 import org.example.exceptions.*;
 import org.example.island.commands.*;
 import org.example.island.details.Serialization;
 import org.example.island.details.ServiceConst;
+import org.example.island.object.StudyGroup;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -18,11 +20,9 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import static com.sun.javafx.scene.control.skin.Utils.getResource;
-
 
 /**
  * Класс для взаимодействия с клиентом
@@ -40,6 +40,7 @@ public class UserInterface extends javafx.application.Application{
     private static CommandsManager manage = new CommandsManager();
     private static EnterScene enterScene;
     private static Stage stage;
+    private static List<StudyGroup> data;
 
     public static void main(String[] args){
         Application.launch();
@@ -50,7 +51,6 @@ public class UserInterface extends javafx.application.Application{
 //        userdata = Arrays.copyOfRange(userdata, 1, userdata.length);
 //        process(userdata);
     }
-
     public static Stage getStage() {
         return stage;
     }
@@ -81,14 +81,18 @@ public class UserInterface extends javafx.application.Application{
         data.setArguments(userdata);
         outputData(Serialization.SerializeObject(data));
         bool = inputData();
-        for(Object str : bool.getArguments()){
-            System.out.println(str);
-        }
+        enterScene.exceptionMessage(null, (String) bool.getArguments().get(0));
+        UserInterface.data = (List<StudyGroup>) bool.getArguments().get(1);
         if(!bool.getArguments().get(0).equals("Авторизация прошла успешно") && !bool.getArguments().get(0).equals("Регистрация прошла успешно")) {
             enterScene.exceptionMessage(bool);
         }
         return userdata;
     }
+
+    public static List<StudyGroup> getData() {
+        return data;
+    }
+
     public static void process(Object[] userData) {
         while (console.hasNextLine()) {
             try {

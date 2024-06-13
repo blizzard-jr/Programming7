@@ -21,13 +21,14 @@ public class DataBaseManager {
     public DataBaseManager(Connection connection){
         this.connection = connection;
     }
-    public void collectionInit() throws SQLException {
+    public List<StudyGroup> collectionInit() throws SQLException {
         try {
             StorageOfManagers.storage.clear();
             Location location = null;
             Person person = null;
             Coordinates coordinates = null;
             Statement statement = connection.createStatement();
+            List<StudyGroup> data = new ArrayList<>();
             locker.lock();
             ResultSet result = statement.executeQuery("SELECT * FROM StudyGroup");
             while(result.next()){
@@ -54,7 +55,9 @@ public class DataBaseManager {
                 Semester sem = Semester.getSem(result.getString("semester"));
                 StudyGroup el = new StudyGroup(id, G_name, studentsCount, shouldBeExpelled, coordinates, creationDate, form, sem, person);
                 StorageOfManagers.storage.putWithKey(key, el);
+                data.add(el);
             }
+            return data;
         }finally {
             locker.unlock();
         }

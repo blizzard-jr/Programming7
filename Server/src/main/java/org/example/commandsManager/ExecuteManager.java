@@ -247,6 +247,11 @@ public class ExecuteManager {
             }
             if(success){
                 msg.setArguments("Авторизация прошла успешно");
+                try {
+                    msg.setArguments(StorageOfManagers.dBManager.collectionInit());
+                } catch (SQLException e) {
+                    msg.setArguments(e.getMessage());
+                }
             }
             else{
                 msg.setArguments("Попытка завершилась неудачей");
@@ -260,6 +265,11 @@ public class ExecuteManager {
             }
             if(success){
                 msg.setArguments("Регистрация прошла успешно");
+                try {
+                    msg.setArguments(StorageOfManagers.dBManager.collectionInit());
+                } catch (SQLException e) {
+                    msg.setArguments(e.getMessage());
+                }
             }
             else{
                 msg.setArguments("Попытка завершилась неудачей");
