@@ -13,7 +13,7 @@
       <TextField fx:id="F_st_count" layoutX="95.0" layoutY="99.0" />
       <TextField fx:id="F_p_weight" layoutX="418.0" layoutY="99.0" />
       <TextField fx:id="F_p_color" layoutX="418.0" layoutY="141.0" />
-      <TextField fx:id="F_schouldExp" layoutX="95.0" layoutY="141.0" />
+      <TextField fx:id="F_shouldExp" layoutX="95.0" layoutY="141.0" />
       <TextField fx:id="F_form" layoutX="95.0" layoutY="183.0" />
       <TextField fx:id="F_sem" layoutX="95.0" layoutY="227.0" />
       <TextField fx:id="F_l_x" layoutX="418.0" layoutY="183.0" />
