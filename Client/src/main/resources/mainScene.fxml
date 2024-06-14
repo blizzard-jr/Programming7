@@ -124,5 +124,6 @@
                 </image>
             </ImageView>
             <Label layoutX="58.0" layoutY="15.0" prefHeight="28.0" prefWidth="126.0" text="Label" />
+      <Button fx:id="insert" layoutX="5.0" layoutY="294.0" mnemonicParsing="false" text="insert" onAction="#executeInsert"/>
          </children>
 </AnchorPane>

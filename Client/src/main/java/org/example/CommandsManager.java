@@ -80,11 +80,4 @@ public class CommandsManager {
         return commandRegistry.getOrDefault(s, null);
     }
 
-
-    public ArrayList<String> getCommandList() {
-        return commandList;
-    }
-    public Map<String, Command> getCommandsReg(){
-        return commandRegistry;
-    }
 }

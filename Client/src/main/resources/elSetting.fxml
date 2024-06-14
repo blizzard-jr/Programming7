@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="72.0" prefWidth="62.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ChangeEl">
+<AnchorPane prefHeight="72.0" prefWidth="62.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ElSetting">
    <children>
       <VBox layoutX="6.0" layoutY="7.0" prefHeight="57.0" prefWidth="60.0">
          <children>

@@ -42,6 +42,7 @@ public class UserInterface extends javafx.application.Application{
     private static EnterScene enterScene;
     private static Stage stage;
     private static List<TableGroup> data;
+    private static Object[] log;
 
     public static void main(String[] args){
         Application.launch();
@@ -67,6 +68,10 @@ public class UserInterface extends javafx.application.Application{
         enterScene = loader.getController();
     }
 
+    public static Object[] getLog() {
+        return log;
+    }
+
     public static Object[] authentication(Message data){
         Object[] userdata = new Object[3];
         Message bool;
@@ -79,6 +84,7 @@ public class UserInterface extends javafx.application.Application{
         }
         userdata[2] = password;
         userdata[1] = login;
+        log = Arrays.copyOfRange(userdata, 1, userdata.length);
         data.setArguments(userdata);
         outputData(Serialization.SerializeObject(data));
         bool = inputData();
@@ -93,6 +99,7 @@ public class UserInterface extends javafx.application.Application{
     public static List<TableGroup> getData() {
         return data;
     }
+
 
     public static void process(Object[] userData) {
         while (console.hasNextLine()) {

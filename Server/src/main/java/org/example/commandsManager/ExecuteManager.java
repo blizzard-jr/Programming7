@@ -193,6 +193,11 @@ public class ExecuteManager {
         if(count != 0) {
             msg.setArguments("Объект успешно добавлен");
         }
+        try {
+            msg.setArguments(StorageOfManagers.dBManager.collectionInit());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void executeRemoveGreater(ArrayList<Object> args){
@@ -215,6 +220,12 @@ public class ExecuteManager {
             }
         } catch (SQLException e) {
             msg.setArguments(e.getMessage());
+        }finally {
+            try {
+                msg.setArguments(StorageOfManagers.dBManager.collectionInit());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
     public void executeRemoveLower(ArrayList<Object> args){
@@ -297,6 +308,13 @@ public class ExecuteManager {
             }
         } catch (SQLException e) {
             msg.setArguments(e.getMessage());
+        }
+        finally {
+            try {
+                msg.setArguments(StorageOfManagers.dBManager.collectionInit());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }

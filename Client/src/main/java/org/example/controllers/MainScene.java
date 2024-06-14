@@ -16,6 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.example.UserInterface;
+import org.example.island.commands.Command;
+import org.example.island.commands.Exit;
+import org.example.island.commands.InsertNull;
+import org.example.island.commands.Message;
+import org.example.island.details.Serialization;
 import org.example.island.object.TableGroup;
 import org.example.island.object.TableGroup;
 
@@ -24,6 +30,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static org.example.UserInterface.inputData;
+import static org.example.UserInterface.outputData;
 
 
 public class MainScene {
@@ -69,6 +78,9 @@ public class MainScene {
     private TableColumn<TableGroup, String> creationDate;
     @FXML
     private TableColumn<TableGroup, String> owner;
+    @FXML
+    private Button insert;
+    private ObservableList<TableGroup> list;
 
     public void initialize() {
         table.setRowFactory(tv -> {
@@ -86,6 +98,8 @@ public class MainScene {
                         FXMLLoader loader = new FXMLLoader();
                         loader.setLocation(getClass().getResource("/elSetting.fxml"));
                         Parent vboxMenu = loader.load();
+                        ElSetting setting = loader.getController();
+                        setting.init(this, anchor);
                         vboxMenu.setLayoutX(event.getSceneX());
                         vboxMenu.setLayoutY(event.getSceneY());
                         anchor.getChildren().add(vboxMenu);
@@ -97,41 +111,44 @@ public class MainScene {
             return row;
         });
     }
-//    public void v(Parent vboxMenu){
-//        EventHandler<MouseEvent> closeHandler = new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent e) {
-//                // Проверяем, что клик был вне vboxMenu
-//                if (vboxMenu != null && !vboxMenu.contains(e.getSceneX() - vboxMenu.getLayoutX(), e.getSceneY() - vboxMenu.getLayoutY())) {
-//                    anchor.getChildren().remove(vboxMenu);
-//                    anchor.removeEventHandler(MouseEvent.MOUSE_CLICKED, this);
-//                }
-//            }
-//        };
-//
-//        anchor.addEventHandler(MouseEvent.MOUSE_CLICKED, closeHandler);
-//    }
-//    public void showAct(){
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/elSetting.fxml"));
-//        Parent root = null;
-//        try {
-//            root = fxmlLoader.load();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        Scene scene = new Scene(root);
-//
-//        Stage popupStage = new Stage();
-//        popupStage.setScene(scene);
-//        popupStage.showAndWait();
-//    }
-    public void collectionInit(List<TableGroup> data){
-        ObservableList<TableGroup> list = FXCollections.observableList(data);// определить логику для команд, нажимаешь на строку таблицы - окно с действиями над объектом, остальные команды можно в меню скинуть
+
+    public ObservableList<TableGroup> getList() {
+        return list;
+    }
+
+    public void process(Command cmd) {
+        cmd.setArguments(UserInterface.getLog());
+        outputData(Serialization.SerializeObject(cmd));
+        Message msg = inputData();
+        collectionInit((List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
+    }
+
+    public void collectionInit(List<TableGroup> data) {
+        list = FXCollections.observableList(data);// определить логику для команд, нажимаешь на строку таблицы - окно с действиями над объектом, остальные команды можно в меню скинуть
         table.setItems(list);
     }
-    public void rowSelected(){
+
+    public void rowSelected() {
         System.out.println("ehhhff");
     }
 
+    public TableView<TableGroup> getTable() {
+        return table;
+    }
+
+    public void executeInsert() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Insert.fxml"));
+        try {
+            Parent p = loader.load();
+            InsertControl insertControl = loader.getController();
+            insertControl.init(this);
+            Scene scene = new Scene(p);
+            Stage st = new Stage();
+            st.setScene(scene);
+            st.showAndWait();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

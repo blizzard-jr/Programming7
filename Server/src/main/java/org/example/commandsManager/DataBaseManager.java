@@ -196,7 +196,6 @@ public class DataBaseManager {
                 executeRemove(ddt);
             }
             int count = statement.executeUpdate();
-            collectionInit();
             return count;
         } finally {
             locker.unlock();
@@ -249,7 +248,6 @@ public class DataBaseManager {
             groupSt.setInt(2, key);
             locker.lock();
             count = groupSt.executeUpdate();
-            collectionInit();
             return count;
         }catch (NumberFormatException e){
             return null;
@@ -309,7 +307,6 @@ public class DataBaseManager {
             groupSt.setInt(17, id);
             locker.lock();
             int count = groupSt.executeUpdate();//Проверка, сколько строк изменено
-            collectionInit();
             return count;
         }finally {
             locker.unlock();
