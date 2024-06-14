@@ -39,6 +39,9 @@ public class Storage {
                 (e1, e2) -> e1,
                 LinkedHashMap::new));
     }
+    public void sort(boolean upOrDown, String columnName){
+
+    }
 
 
     public Collection<StudyGroup> getValues(){

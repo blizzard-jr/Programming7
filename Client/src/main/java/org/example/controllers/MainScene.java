@@ -1,10 +1,8 @@
 package org.example.controllers;
 
 import javafx.animation.PauseTransition;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,13 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.skin.TableColumnHeader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -26,13 +23,10 @@ import org.example.UserInterface;
 import org.example.island.commands.*;
 import org.example.island.details.Serialization;
 import org.example.island.object.TableGroup;
-import org.example.island.object.TableGroup;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import static org.example.UserInterface.*;
 
@@ -99,9 +93,35 @@ public class MainScene {
     @FXML
     private ImageView galochka;
 
+
     private ObservableList<TableGroup> list;
 
     public void initialize() {
+        table.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            Node node = event.getPickResult().getIntersectedNode();
+            while (node != null && !(node instanceof TableColumnHeader) && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                node = node.getParent();
+            }
+            if (node instanceof TableColumnHeader) {
+                TableColumnHeader header = (TableColumnHeader) node;
+                String text = header.getTableColumn().getText();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/sort.fxml"));
+                try {
+                    Parent p = loader.load();
+                    SortAndFilter sortAndFilter = loader.getController();
+                    sortAndFilter.init(this, anchor, text);
+                    p.setLayoutX(event.getSceneX());
+                    p.setLayoutY(event.getSceneY());
+                    Scene scene = new Scene(p);
+                    Stage st = new Stage();
+                    st.setScene(scene);
+                    st.showAndWait();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
         table.setRowFactory(tv -> {
             TableRow<TableGroup> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
@@ -141,6 +161,12 @@ public class MainScene {
     }
     public ObservableList<TableGroup> getList() {
         return list;
+    }
+    private void Sort(MouseEvent event) {
+        if (event.getClickCount() > 0 && event.getTarget() instanceof TableColumnHeader) {
+            TableColumnHeader header = (TableColumnHeader) event.getTarget();
+            System.out.println("Заголовок столбца " + header.getTableColumn().getText() + " был кликнут.");
+        }
     }
 
     public void process(Command cmd) {
@@ -193,9 +219,6 @@ public class MainScene {
     }
     public static void animateCollection(List<TableGroup> collection){
         collection.forEach(t -> System.out.println(t.toString()));
-    }
-    public void rowSelected() {
-        System.out.println("ehhhff");
     }
 
     public TableView<TableGroup> getTable() {

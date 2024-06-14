@@ -45,6 +45,8 @@ public class ExecuteManager {
         addCommand("executeExit", new Exit());
         addCommand("executeHelp", new Help());
         addCommand("executeMessage", new Message());
+        addCommand("executeSort", new Sort());
+        addCommand("executeFilter", new Filter());
     }
     public void commandExecute(Command cmd){
         try {
@@ -93,6 +95,10 @@ public class ExecuteManager {
     }
     public ArrayList<String> getCommandList() {
         return commandList;
+    }
+
+    public void executeSort(ArrayList<Object> args){
+
     }
 
     public void executeHistory(){

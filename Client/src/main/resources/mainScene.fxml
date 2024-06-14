@@ -11,99 +11,99 @@
     <children>
         <ScrollPane layoutX="9.0" layoutY="51.0" prefHeight="243.0" prefWidth="756.0">
             <content>
-                <TableView fx:id="table" editable="true" >
+                <TableView fx:id="table" editable="true">
                     <columns>
-                        <TableColumn fx:id="id" prefWidth="120" text="id">
+                        <TableColumn fx:id="id"  prefWidth="120" sortable="false" text="id">
                             <cellValueFactory>
                                 <PropertyValueFactory property="id" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="key" prefWidth="120" text="key">
+                        <TableColumn fx:id="key" prefWidth="120" sortable="false" text="key">
                             <cellValueFactory>
                                 <PropertyValueFactory property="key" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="gr_name" prefWidth="120.0" text="gr_name">
+                        <TableColumn fx:id="gr_name" prefWidth="120.0" sortable="false" text="gr_name">
                             <cellValueFactory>
                                 <PropertyValueFactory property="gr_name" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="st_count" prefWidth="120.0" text="st_count">
+                        <TableColumn fx:id="st_count" prefWidth="120.0" sortable="false" text="st_count">
                             <cellValueFactory>
                                 <PropertyValueFactory property="st_count" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="shouldExp" prefWidth="120.0" text="shouldExp">
+                        <TableColumn fx:id="shouldExp" prefWidth="120.0" sortable="false" text="shouldExp">
                             <cellValueFactory>
                                 <PropertyValueFactory property="shouldExp" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="form" prefWidth="120.0" text="form">
+                        <TableColumn fx:id="form" prefWidth="120.0" sortable="false" text="form">
                             <cellValueFactory>
                                 <PropertyValueFactory property="form" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="sem" prefWidth="120.0" text="sem">
+                        <TableColumn fx:id="sem" prefWidth="120.0" sortable="false" text="sem">
                             <cellValueFactory>
                                 <PropertyValueFactory property="sem" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="c_x" prefWidth="120.0" text="c_x">
+                        <TableColumn fx:id="c_x" prefWidth="120.0" sortable="false" text="c_x">
                             <cellValueFactory>
                                 <PropertyValueFactory property="c_x" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="c_y" prefWidth="120.0" text="c_y">
+                        <TableColumn fx:id="c_y" prefWidth="120.0" sortable="false" text="c_y">
                             <cellValueFactory>
                                 <PropertyValueFactory property="c_y" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="p_name" prefWidth="120.0" text="p_name">
+                        <TableColumn fx:id="p_name" prefWidth="120.0" sortable="false" text="p_name">
                             <cellValueFactory>
                                 <PropertyValueFactory property="p_name" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="p_height" prefWidth="120.0" text="p_height">
+                        <TableColumn fx:id="p_height" prefWidth="120.0" sortable="false" text="p_height">
                             <cellValueFactory>
                                 <PropertyValueFactory property="p_height" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="p_weight" prefWidth="120.0" text="p_weight">
+                        <TableColumn fx:id="p_weight" prefWidth="120.0" sortable="false" text="p_weight">
                             <cellValueFactory>
                                 <PropertyValueFactory property="p_weight" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="p_color" prefWidth="120.0" text="p_color">
+                        <TableColumn fx:id="p_color" prefWidth="120.0" sortable="false" text="p_color">
                             <cellValueFactory>
                                 <PropertyValueFactory property="p_color" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="l_x" prefWidth="120.0" text="l_x">
+                        <TableColumn fx:id="l_x" prefWidth="120.0" sortable="false" text="l_x">
                             <cellValueFactory>
                                 <PropertyValueFactory property="l_x" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="l_y" prefWidth="120.0" text="l_y">
+                        <TableColumn fx:id="l_y" prefWidth="120.0" sortable="false" text="l_y">
                             <cellValueFactory>
                                 <PropertyValueFactory property="l_y" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="l_z" prefWidth="120.0" text="l_z">
+                        <TableColumn fx:id="l_z" prefWidth="120.0" sortable="false" text="l_z">
                             <cellValueFactory>
                                 <PropertyValueFactory property="l_z" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="l_name" prefWidth="120.0" text="l_name">
+                        <TableColumn fx:id="l_name" prefWidth="120.0" sortable="false" text="l_name">
                             <cellValueFactory>
                                 <PropertyValueFactory property="l_name" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="creationDate" prefWidth="120.0" text="creationDate">
+                        <TableColumn fx:id="creationDate" prefWidth="120.0" sortable="false" text="creationDate">
                             <cellValueFactory>
                                 <PropertyValueFactory property="creationDate" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="owner" prefWidth="120.0" text="owner">
+                        <TableColumn fx:id="owner" prefWidth="120.0" sortable="false" text="owner">
                             <cellValueFactory>
                                 <PropertyValueFactory property="owner" />
                             </cellValueFactory>
@@ -136,6 +136,6 @@
             </image>
         </ImageView>
 
-        <Canvas id="canvas" height="390.0" layoutY="320.0" width="780.0"/>
+        <Canvas id="canvas" height="390.0" layoutY="320.0" width="780.0" />
     </children>
 </AnchorPane>
