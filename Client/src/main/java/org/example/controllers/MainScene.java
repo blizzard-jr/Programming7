@@ -17,10 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.UserInterface;
-import org.example.island.commands.Command;
-import org.example.island.commands.Exit;
-import org.example.island.commands.InsertNull;
-import org.example.island.commands.Message;
+import org.example.island.commands.*;
 import org.example.island.details.Serialization;
 import org.example.island.object.TableGroup;
 import org.example.island.object.TableGroup;
@@ -31,8 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static org.example.UserInterface.inputData;
-import static org.example.UserInterface.outputData;
+import static org.example.UserInterface.*;
 
 
 public class MainScene {
@@ -120,14 +116,20 @@ public class MainScene {
         cmd.setArguments(UserInterface.getLog());
         outputData(Serialization.SerializeObject(cmd));
         Message msg = inputData();
-        collectionInit((List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
+        List<TableGroup> collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
+        if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())){
+            animateCollection(collection);
+        }
+        collectionInit(collection);
     }
 
     public void collectionInit(List<TableGroup> data) {
         list = FXCollections.observableList(data);// определить логику для команд, нажимаешь на строку таблицы - окно с действиями над объектом, остальные команды можно в меню скинуть
         table.setItems(list);
     }
-
+    public static void animateCollection(List<TableGroup> collection){
+        collection.forEach(t -> System.out.println(t.toString()));
+    }
     public void rowSelected() {
         System.out.println("ehhhff");
     }

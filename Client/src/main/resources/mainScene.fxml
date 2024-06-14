@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
@@ -124,6 +125,21 @@
                 </image>
             </ImageView>
             <Label layoutX="58.0" layoutY="15.0" prefHeight="28.0" prefWidth="126.0" text="Label" />
-      <Button fx:id="insert" layoutX="5.0" layoutY="294.0" mnemonicParsing="false" text="insert" onAction="#executeInsert"/>
+      <Button fx:id="insert" layoutX="5.0" layoutY="294.0" mnemonicParsing="false" onAction="#executeInsert" text="insert" />
+      <ImageView fitHeight="390.0" fitWidth="774.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@itmo.png" />
+         </image>
+         <viewport>
+            <Rectangle2D width="900.0" />
+         </viewport>
+      </ImageView>
+      
          </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <effect>
+      <ColorAdjust brightness="0.07" contrast="0.16" hue="0.02" />
+   </effect>
 </AnchorPane>

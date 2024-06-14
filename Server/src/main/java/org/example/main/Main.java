@@ -49,19 +49,16 @@ public class Main {
 
     public static void dbconnection(String url, String login, String password) throws ClassNotFoundException, SQLException{
         Scanner scanner = new Scanner(System.in);
-        try {
-            //Properties info = new Properties();
-            Class.forName("org.postgresql.Driver");
+        //Properties info = new Properties();
+        Class.forName("org.postgresql.Driver");
 
-            //info.load(new FileInputStream("db.cfg")); //0UW5OUaZxbLaO1Cv
+        //info.load(new FileInputStream("db.cfg")); //0UW5OUaZxbLaO1Cv
 
-            Connection connection = DriverManager.getConnection(url, login, password);
-            StorageOfManagers.setDataBaseManager(new DataBaseManager(connection));
-            StorageOfManagers.setFileSystem(new FileSystem());
+        Connection connection = DriverManager.getConnection(url, login, password);
+        StorageOfManagers.setDataBaseManager(new DataBaseManager(connection));
+        StorageOfManagers.setFileSystem(new FileSystem());
 
-        } catch (SQLException e) {
-            logger.error("Не удалось подключиться к бд по введённым вами данным, повторите попытку");
-        }
+
 
     }
 }

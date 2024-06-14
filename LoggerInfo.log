@@ -2092,3 +2092,22 @@
 22315 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 67312 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
 67332 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+208  [main] INFO  org.example.main.Main - Начало работы сервера
+210  [main] INFO  org.example.main.Main - Начало работы сервера
+14237 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+14265 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+14284 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+48283 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+48295 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+151552 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+151556 [ForkJoinPool.commonPool-worker-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+211  [main] INFO  org.example.main.Main - Начало работы сервера
+10701 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+10731 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+10749 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+17868 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+17873 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+232  [main] INFO  org.example.main.Main - Начало работы сервера
+8893 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+8925 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+8943 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю

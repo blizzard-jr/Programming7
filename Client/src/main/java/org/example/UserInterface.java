@@ -110,9 +110,6 @@ public class UserInterface extends javafx.application.Application{
                     for (Object o : msg.getArguments()) {
                         System.out.println(o.toString());
                     }
-                    if (ChangingCollectionCommand.class.isAssignableFrom(command.getClass())){
-                        animateCollection();
-                    }
                     if (command.getClass() == (Exit.class)) {
                         System.exit(0);
                     }
@@ -221,9 +218,7 @@ public class UserInterface extends javafx.application.Application{
     }
 
 
-    public static void animateCollection(){
-        getData().forEach(System.out::println);
-    }
+
     public static void setRegister(boolean register) {
         UserInterface.register = register;
     }
