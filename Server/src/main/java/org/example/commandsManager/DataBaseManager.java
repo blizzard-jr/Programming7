@@ -152,13 +152,7 @@ public class DataBaseManager {
             locker.lock();
             PreparedStatement groupSt = connection.prepareStatement("DELETE FROM Studygroup WHERE owner = ?");
             groupSt.setString(1, args.get(0).toString());
-            int count = groupSt.executeUpdate();
-            if(count > 0){
-                collectionInit();
-                return count;
-            }else{
-                return count;
-            }
+            return groupSt.executeUpdate();
         }finally {
             locker.unlock();
         }

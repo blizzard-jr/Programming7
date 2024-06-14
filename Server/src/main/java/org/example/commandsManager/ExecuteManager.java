@@ -109,13 +109,19 @@ public class ExecuteManager {
     public void executeClear(ArrayList<Object> args){
         try {
             if(StorageOfManagers.dBManager.executeCLear(args) != 0){
-                msg.setArguments("Объекты, созданные вами, удалены из коллекции");
+                msg.setArguments("ок");
             }
             else{
                 msg.setArguments("В коллекции не нашлось объектов, принадлежащих вам");
             }
         } catch (SQLException e) {
             msg.setArguments(e.getMessage());
+        }finally {
+            try {
+                msg.setArguments(StorageOfManagers.dBManager.collectionInit());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
@@ -191,7 +197,7 @@ public class ExecuteManager {
             msg.setArguments(e.getMessage());
         }
         if(count != 0) {
-            msg.setArguments("Объект успешно добавлен");
+            msg.setArguments("ок");
         }
         try {
             msg.setArguments(StorageOfManagers.dBManager.collectionInit());
@@ -213,7 +219,7 @@ public class ExecuteManager {
     public void executeRemove(ArrayList<Object> args){
         try {
             if(StorageOfManagers.dBManager.executeRemove(args) > 0){
-                msg.setArguments("Объект удалён успешно");
+                msg.setArguments("ок");
             }
             else{
                 msg.setArguments("Произошла ошибка в ходе выполнения команды, объект не был удалён");
@@ -301,7 +307,7 @@ public class ExecuteManager {
     public void executeUpdate(ArrayList<Object> args){
         try {
             if(StorageOfManagers.dBManager.executeUpdate(args) != 0){
-                msg.setArguments("Объект успешно заменён");
+                msg.setArguments("ок");
             }
             else {
                 msg.setArguments("Объект не удалось заменить");
