@@ -5,7 +5,7 @@ package org.example.island.commands;
 
 import org.example.island.details.exceptions.NoSuchCommandException;
 
-public class Remove_lower_key extends Command{
+public class Remove_lower_key extends Command implements ChangingCollectionCommand{
     public Remove_lower_key(){
         super("remove_lower_key", "Удалить из коллекции все элементы, ключ которых меньше, чем заданный");
         argumentCount = 4;

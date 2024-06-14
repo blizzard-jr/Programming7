@@ -7,12 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.controllers.EnterScene;
-import org.example.controllers.MainScene;
 import org.example.exceptions.*;
 import org.example.island.commands.*;
 import org.example.island.details.Serialization;
 import org.example.island.details.ServiceConst;
-import org.example.island.object.StudyGroup;
 import org.example.island.object.TableGroup;
 
 import java.io.*;
@@ -111,6 +109,9 @@ public class UserInterface extends javafx.application.Application{
                 if (msg != null) {
                     for (Object o : msg.getArguments()) {
                         System.out.println(o.toString());
+                    }
+                    if (ChangingCollectionCommand.class.isAssignableFrom(command.getClass())){
+                        animateCollection();
                     }
                     if (command.getClass() == (Exit.class)) {
                         System.exit(0);
@@ -217,6 +218,11 @@ public class UserInterface extends javafx.application.Application{
                 buffer.clear();
             }
         }
+    }
+
+
+    public static void animateCollection(){
+        getData().forEach(System.out::println);
     }
     public static void setRegister(boolean register) {
         UserInterface.register = register;

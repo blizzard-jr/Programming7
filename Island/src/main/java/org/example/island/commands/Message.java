@@ -11,7 +11,6 @@ public class Message extends Command{
         argumentCount = 4;
     }
 
-
     @Override
     public Command clientExecute(Object[] args) throws NoSuchCommandException {
         this.setArguments(args);

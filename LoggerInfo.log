@@ -2026,3 +2026,69 @@
 457920 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
 458038 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 514566 [pool-1-thread-1] ERROR o.example.requests.RequestsManager - Произошла непредвиденная ошибка на этапе обработки запроса
+143  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+145  [main] INFO  org.example.main.Main - Укажите порт для сервера
+11814 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+8643 [main] INFO  org.example.main.Main - Начало работы сервера
+151385 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+151409 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+151428 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+176708 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 2 активных клиентов
+176711 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+176713 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+178445 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 3 активных клиентов
+178447 [pool-1-thread-3] INFO  o.example.requests.RequestsManager - Обработка запроса
+178448 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+180388 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 4 активных клиентов
+180390 [pool-1-thread-4] INFO  o.example.requests.RequestsManager - Обработка запроса
+180391 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+181803 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 5 активных клиентов
+181806 [pool-1-thread-5] INFO  o.example.requests.RequestsManager - Обработка запроса
+181807 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+183962 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 6 активных клиентов
+183964 [pool-1-thread-6] INFO  o.example.requests.RequestsManager - Обработка запроса
+183965 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+203170 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 7 активных клиентов
+203179 [pool-1-thread-7] INFO  o.example.requests.RequestsManager - Обработка запроса
+203180 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+520312 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 8 активных клиентов
+520315 [pool-1-thread-8] INFO  o.example.requests.RequestsManager - Обработка запроса
+520318 [ForkJoinPool.commonPool-worker-3] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+54368 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+57097 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+10854 [main] INFO  org.example.main.Main - Начало работы сервера
+7783 [main] INFO  org.example.main.Main - Начало работы сервера
+17420 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+17444 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+17452 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+63369 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+21415 [main] ERROR org.example.main.Main - Не удалось подключиться к бд по введённым вами данным, повторите попытку
+9196 [main] INFO  org.example.main.Main - Начало работы сервера
+148  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+149  [main] INFO  org.example.main.Main - Укажите порт для сервера
+143  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+145  [main] INFO  org.example.main.Main - Укажите порт для сервера
+28744 [main] INFO  org.example.main.Main - Начало работы сервера
+57474 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+57493 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+62864 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+153183 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+153833 [ForkJoinPool.commonPool-worker-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+169972 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+170364 [ForkJoinPool.commonPool-worker-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+317398 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+144  [main] ERROR org.example.main.Main - Вы не передали номер порта или передали не int значение
+145  [main] INFO  org.example.main.Main - Укажите порт для сервера
+204  [main] INFO  org.example.main.Main - Начало работы сервера
+13354 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+13383 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+13397 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+209  [main] INFO  org.example.main.Main - Начало работы сервера
+19346 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+19375 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+19383 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+22304 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 2 активных клиентов
+22306 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+22315 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+67312 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+67332 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю

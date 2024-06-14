@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 
-public class InsertNull extends Command{
+public class InsertNull extends Command implements ChangingCollectionCommand{
     public InsertNull(){
         super("insert", "Добавить новый элемент с заданным ключом");
         argumentCount = 5;

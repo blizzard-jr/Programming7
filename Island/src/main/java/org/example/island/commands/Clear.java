@@ -3,7 +3,7 @@ package org.example.island.commands;
 
 import org.example.island.details.exceptions.NoSuchCommandException;
 
-public class Clear extends Command{
+public class Clear extends Command implements ChangingCollectionCommand{
     public Clear(){
         super("clear", "Очистить коллекцию");
     }

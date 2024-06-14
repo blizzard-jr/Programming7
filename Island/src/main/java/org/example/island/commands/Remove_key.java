@@ -6,7 +6,7 @@ package org.example.island.commands;
 import org.example.island.details.exceptions.IllegalValueException;
 import org.example.island.details.exceptions.NoSuchCommandException;
 
-public class Remove_key extends Command{
+public class Remove_key extends Command implements ChangingCollectionCommand{
     public Remove_key(){
         super("remove", "Удалить элемент из коллекции по его ключу");
         argumentCount = 4;
