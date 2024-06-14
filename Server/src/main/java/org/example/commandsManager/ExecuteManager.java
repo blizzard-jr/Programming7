@@ -294,13 +294,10 @@ public class ExecuteManager {
         }
     }
     public void executeShow(){
-        List<String> list = new ArrayList<>();
-        StorageOfManagers.storage.getValue().stream().forEach(group -> list.add(group.toString()));
-        if(!list.isEmpty()){
-            msg.setArguments(list.toArray());
-        }
-        else{
-            msg.setArguments("В коллекции пока нет элементов");
+        try {
+            msg.setArguments(StorageOfManagers.dBManager.collectionInit());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
     }

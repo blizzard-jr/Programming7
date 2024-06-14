@@ -102,7 +102,6 @@ public class MainScene {
     private ObservableList<TableGroup> list;
 
     public void initialize() {
-        login.setText(UserInterface.getLogin());
         table.setRowFactory(tv -> {
             TableRow<TableGroup> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
@@ -138,6 +137,7 @@ public class MainScene {
             });
             return row;
         });
+        login.setText(UserInterface.getLogin());
     }
     public ObservableList<TableGroup> getList() {
         return list;
@@ -147,30 +147,30 @@ public class MainScene {
         cmd.setArguments(UserInterface.getLog());
         outputData(Serialization.SerializeObject(cmd));
         Message msg = inputData();
-<<<<<<< HEAD
-        List<TableGroup> collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
         if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())){
+            List<TableGroup> collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
             animateCollection(collection);
-        }
-        collectionInit(collection);
-=======
-        StringBuilder text = new StringBuilder();
-        if(msg.getArguments().get(0).equals("ок")){
-            Image im = new Image("gal.png");
-            galochka.setImage(im);
-            PauseTransition delay = new PauseTransition(Duration.seconds(10));
-            delay.setOnFinished(event -> galochka.setImage(null));
-            delay.play();
+            collectionInit(collection);
+
+            if(msg.getArguments().get(0).equals("ок")){
+                Image im = new Image("gal.png");
+                galochka.setImage(im);
+                PauseTransition delay = new PauseTransition(Duration.seconds(10));
+                delay.setOnFinished(event -> galochka.setImage(null));
+                delay.play();
+            }else{
+                Image im = new Image("crestic.png");
+                galochka.setImage(im);
+                PauseTransition delay = new PauseTransition(Duration.seconds(10));
+                delay.setOnFinished(event -> galochka.setImage(null));
+                delay.play();
+            }
         }
         else {
+            StringBuilder text = new StringBuilder();
             for (Object obj : msg.getArguments()) {
                 text.append(obj).append("\n");
             }
-            Image im = new Image("crestic.png");
-            galochka.setImage(im);
-            PauseTransition delay = new PauseTransition(Duration.seconds(10));
-            delay.setOnFinished(event -> galochka.setImage(null));
-            delay.play();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/GeneralOutput.fxml"));
             try {
@@ -185,11 +185,6 @@ public class MainScene {
                 throw new RuntimeException(e);
             }
         }
-
-        List<TableGroup> newList = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
-        collectionInit(newList);
-        UserInterface.setData(newList);
->>>>>>> c4473719d2434526134fa9b2707c92d32aecc3e8
     }
 
     public void collectionInit(List<TableGroup> data) {
@@ -225,6 +220,7 @@ public class MainScene {
     public void executeExit(){
         Exit exit = new Exit();
         process(exit);
+        System.exit(0);
     }
     public void executeClear(){
         Clear clear = new Clear();

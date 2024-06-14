@@ -26,7 +26,7 @@ public class Main {
         int port = portInit(args);
         server = new ServerSocket(port);
         try {
-            dbconnection(args[1], args[2], args[3]); // host, login, pass for db connection
+            dbconnection("jdbc:postgresql://localhost:9999/studs", args[0], args[1]); // host, login, pass for db connection
         } catch (ClassNotFoundException | SQLException e) {
             logger.error("не удалось установить соединение с БД. программа будет завершена(");
             System.exit(1);
@@ -37,7 +37,7 @@ public class Main {
     public static int portInit(String[] args){
         int port;
         try{
-            port = Integer.parseInt(args[0]);
+            port = 4004;
         }catch (NumberFormatException | ArrayIndexOutOfBoundsException e){
             logger.error("Вы не передали номер порта или передали не int значение");
             logger.info("Укажите порт для сервера");
