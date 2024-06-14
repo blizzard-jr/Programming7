@@ -42,6 +42,9 @@ public class UserInterface extends javafx.application.Application{
     private static List<TableGroup> data;
     private static Object[] log;
 
+    public static void setData(List<TableGroup> data) {
+        UserInterface.data = data;
+    }
     public static void main(String[] args){
         Application.launch();
 //        connect();
@@ -178,6 +181,10 @@ public class UserInterface extends javafx.application.Application{
                 }
             }
         }
+    }
+
+    public static String getLogin() {
+        return login;
     }
 
     public static void outputData(byte[] data) {

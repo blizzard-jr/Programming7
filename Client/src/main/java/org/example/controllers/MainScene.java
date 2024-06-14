@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,11 +12,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.example.UserInterface;
 import org.example.island.commands.*;
 import org.example.island.details.Serialization;
@@ -76,13 +82,31 @@ public class MainScene {
     private TableColumn<TableGroup, String> owner;
     @FXML
     private Button insert;
+    @FXML
+    private Label login;
+    @FXML
+    private MenuItem exit;
+    @FXML
+    private MenuItem language;
+    @FXML
+    private MenuItem clear;
+    @FXML
+    private MenuItem info;
+    @FXML
+    private MenuItem history;
+    @FXML
+    private MenuItem removeLower;
+    @FXML
+    private ImageView galochka;
+
     private ObservableList<TableGroup> list;
 
     public void initialize() {
+        login.setText(UserInterface.getLogin());
         table.setRowFactory(tv -> {
             TableRow<TableGroup> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                if (!row.isEmpty() && event.getButton() == MouseButton.SECONDARY) {
                     try {
                         List<Node> anchorPanesToRemove = new ArrayList<>();
                         for (Node child : anchor.getChildren()) {
@@ -102,12 +126,19 @@ public class MainScene {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                }else{
+                    List<Node> anchorPanesToRemove = new ArrayList<>();
+                    for (Node child : anchor.getChildren()) {
+                        if (child instanceof AnchorPane) {
+                            anchorPanesToRemove.add(child);
+                        }
+                    }
+                    anchor.getChildren().removeAll(anchorPanesToRemove);
                 }
             });
             return row;
         });
     }
-
     public ObservableList<TableGroup> getList() {
         return list;
     }
@@ -116,11 +147,49 @@ public class MainScene {
         cmd.setArguments(UserInterface.getLog());
         outputData(Serialization.SerializeObject(cmd));
         Message msg = inputData();
+<<<<<<< HEAD
         List<TableGroup> collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
         if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())){
             animateCollection(collection);
         }
         collectionInit(collection);
+=======
+        StringBuilder text = new StringBuilder();
+        if(msg.getArguments().get(0).equals("ок")){
+            Image im = new Image("gal.png");
+            galochka.setImage(im);
+            PauseTransition delay = new PauseTransition(Duration.seconds(10));
+            delay.setOnFinished(event -> galochka.setImage(null));
+            delay.play();
+        }
+        else {
+            for (Object obj : msg.getArguments()) {
+                text.append(obj).append("\n");
+            }
+            Image im = new Image("crestic.png");
+            galochka.setImage(im);
+            PauseTransition delay = new PauseTransition(Duration.seconds(10));
+            delay.setOnFinished(event -> galochka.setImage(null));
+            delay.play();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GeneralOutput.fxml"));
+            try {
+                TextFlow parent = loader.load();
+                TextArea textArea = (TextArea) parent.getChildren().get(0);
+                textArea.setText(text.toString());
+                Scene scene = new Scene(parent);
+                Stage st = new Stage();
+                st.setScene(scene);
+                st.showAndWait();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        List<TableGroup> newList = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
+        collectionInit(newList);
+        UserInterface.setData(newList);
+>>>>>>> c4473719d2434526134fa9b2707c92d32aecc3e8
     }
 
     public void collectionInit(List<TableGroup> data) {
@@ -153,4 +222,21 @@ public class MainScene {
             throw new RuntimeException(e);
         }
     }
+    public void executeExit(){
+        Exit exit = new Exit();
+        process(exit);
+    }
+    public void executeClear(){
+        Clear clear = new Clear();
+        process(clear);
+    }
+    public void executeInfo(){
+        Info info = new Info();
+        process(info);
+    }
+    public void executeHistory(){
+        History history = new History();
+        process(history);
+    }
+
 }

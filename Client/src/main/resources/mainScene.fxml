@@ -116,7 +116,10 @@
          </content></ScrollPane>
             <MenuButton layoutX="696.0" layoutY="14.0" mnemonicParsing="false" text="Menu">
               <items>
-                <MenuItem mnemonicParsing="false" text="exit" />
+                <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#executeExit" text="exit" />
+                <MenuItem fx:id="clear" mnemonicParsing="false" onAction="#executeClear" text="clear" />
+                <MenuItem fx:id="info" mnemonicParsing="false" onAction="#executeInfo" text="info" />
+                <MenuItem fx:id="history" mnemonicParsing="false" onAction="#executeHistory" text="history" />
               </items>
             </MenuButton>
             <ImageView fitHeight="34.0" fitWidth="47.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -124,6 +127,7 @@
                     <Image url="@user.png" />
                 </image>
             </ImageView>
+<<<<<<< HEAD
             <Label layoutX="58.0" layoutY="15.0" prefHeight="28.0" prefWidth="126.0" text="Label" />
       <Button fx:id="insert" layoutX="5.0" layoutY="294.0" mnemonicParsing="false" onAction="#executeInsert" text="insert" />
       <ImageView fitHeight="390.0" fitWidth="774.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
@@ -135,6 +139,11 @@
          </viewport>
       </ImageView>
       
+=======
+            <Label fx:id="login" layoutX="58.0" layoutY="15.0" prefHeight="28.0" prefWidth="126.0" text="Label" />
+      <Button fx:id="insert" layoutX="5.0" layoutY="294.0" mnemonicParsing="false" onAction="#executeInsert" text="insert" />
+      <ImageView fx:id="galochka" fitHeight="34.0" fitWidth="46.0" layoutX="638.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+>>>>>>> c4473719d2434526134fa9b2707c92d32aecc3e8
          </children>
    <opaqueInsets>
       <Insets />
