@@ -3,22 +3,22 @@ package org.example.island.object;
 import java.io.Serializable;
 
 public class TableGroup implements Serializable { //Record?
-    private int id;
-    private int key;
+    private Integer id;
+    private Integer key;
     private String gr_name;
-    private long st_count;
-    private long shouldExp;
+    private Long st_count;
+    private Long shouldExp;
     private String form;
     private String sem;
-    private float c_x;
-    private double c_y;
+    private Float c_x;
+    private Double c_y;
     private String p_name;
     private Float p_height;
-    private double p_weight;
+    private Double p_weight;
     private String p_color;
     private Long l_x;
-    private long l_y;
-    private int l_z;
+    private Long l_y;
+    private Integer l_z;
     private String l_name;
     private String creationDate;
     private String owner;
@@ -59,11 +59,11 @@ public class TableGroup implements Serializable { //Record?
         this.gr_name = gr_name;
     }
 
-    public void setSt_count(int st_count) {
+    public void setSt_count(Long st_count) {
         this.st_count = st_count;
     }
 
-    public void setShouldExp(int shouldExp) {
+    public void setShouldExp(Long shouldExp) {
         this.shouldExp = shouldExp;
     }
 
@@ -75,11 +75,11 @@ public class TableGroup implements Serializable { //Record?
         this.sem = sem;
     }
 
-    public void setC_x(int c_x) {
+    public void setC_x(Float c_x) {
         this.c_x = c_x;
     }
 
-    public void setC_y(int c_y) {
+    public void setC_y(Double c_y) {
         this.c_y = c_y;
     }
 
@@ -91,7 +91,7 @@ public class TableGroup implements Serializable { //Record?
         this.p_height = p_height;
     }
 
-    public void setP_weight(int p_weight) {
+    public void setP_weight(Double p_weight) {
         this.p_weight = p_weight;
     }
 
@@ -103,7 +103,7 @@ public class TableGroup implements Serializable { //Record?
         this.l_x = l_x;
     }
 
-    public void setL_y(int l_y) {
+    public void setL_y(Long l_y) {
         this.l_y = l_y;
     }
 
