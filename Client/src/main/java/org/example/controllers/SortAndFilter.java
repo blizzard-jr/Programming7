@@ -54,6 +54,7 @@ public class SortAndFilter {
                     .sorted(Comparator.comparing((TableGroup obj) -> (Comparable) getFieldValueByName(obj, columnName)).reversed())
                     .collect(Collectors.toList());
             mainScene.collectionInit(list);
+            UserInterface.setData(list);
         }
     }
     public static Object getFieldValueByName(Object obj, String fieldName) {
@@ -81,5 +82,6 @@ public class SortAndFilter {
                 })
                 .collect(Collectors.toList());
         mainScene.collectionInit(list);
+        UserInterface.setData(list);
     }
 }

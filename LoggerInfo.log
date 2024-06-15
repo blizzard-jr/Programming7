@@ -2519,3 +2519,14 @@
 795743 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
 795746 [ForkJoinPool.commonPool-worker-5] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 795754 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Отключение клиента, 3 активных клиентов
+3191 [main] INFO  org.example.main.Main - Начало работы сервера
+59476 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+59666 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+59823 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+125465 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+125511 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+163925 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+163995 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+280703 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+280704 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+280707 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов
