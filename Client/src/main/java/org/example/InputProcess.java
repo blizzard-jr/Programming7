@@ -76,17 +76,17 @@ public class InputProcess  {
         return s;
     }
     public Color colorInit(String message){
-        System.out.println(message);
-        System.out.println("Допустимые значения: ");
-        for(Color color : Color.values()){
-            System.out.println(color.getRus());
-        }
-        String s = scanner.nextLine();
-        while(!Color.findColor(s) || s.isEmpty()){
-            writeErr("Значение константы не распознано, повторите ввод");
-            s = scanner.nextLine();
-        }
-        return Color.getColor(s);
+//        System.out.println(message);
+//        System.out.println("Допустимые значения: ");
+//        for(Color color : Color.values()){
+//            System.out.println(color.getRus());
+//        }
+//        String s = scanner.nextLine();
+//        while(!Color.findColor(s) || s.isEmpty()){
+//            writeErr("Значение константы не распознано, повторите ввод");
+//            s = scanner.nextLine();
+//        }
+        return Color.valueOf(message);
     }
 
     /**

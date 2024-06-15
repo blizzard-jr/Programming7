@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.island.commands.UpdateId;
@@ -25,13 +26,13 @@ public class ChangeEl {
     @FXML
     private TextField F_p_weight;
     @FXML
-    private TextField F_p_color;
+    private ChoiceBox F_p_color;
     @FXML
     private TextField F_shouldExp;
     @FXML
-    private TextField F_form;
+    private ChoiceBox F_form;
     @FXML
-    private TextField F_sem;
+    private ChoiceBox F_sem;
     @FXML
     private TextField F_l_x;
     @FXML
@@ -58,10 +59,10 @@ public class ChangeEl {
         F_p_height.setText(String.valueOf(gr.getP_height()));
         F_st_count.setText(String.valueOf(gr.getSt_count()));
         F_p_weight.setText(String.valueOf(gr.getP_weight()));
-        F_p_color.setText(gr.getP_color());
+        F_p_color.setValue(gr.getP_color());
         F_shouldExp.setText(String.valueOf(gr.getShouldExp()));
-        F_form.setText(gr.getForm());
-        F_sem.setText(gr.getSem());
+        F_form.setValue(gr.getForm());
+        F_sem.setValue(gr.getSem());
         F_l_x.setText(String.valueOf(gr.getL_x()));
         F_l_y.setText(String.valueOf(gr.getL_y()));
         F_c_x.setText(String.valueOf(gr.getC_x()));
@@ -78,11 +79,28 @@ public class ChangeEl {
 
     }
     public void apply(){
-        Coordinates coordinates = new Coordinates(Float.parseFloat(F_c_x.getText()), Double.parseDouble(F_c_y.getText()));
-        Location location = new Location(Long.parseLong(F_l_x.getText()), Long.parseLong(F_l_y.getText()), Integer.parseInt(F_l_z.getText()), F_l_name.getText());
-        Person person = new Person(F_p_name.getText(), Float.parseFloat(F_p_height.getText()), Double.parseDouble(F_p_weight.getText()),
-                Color.getColor(F_p_color.getText()), location);
-        StudyGroup studyGroup = new StudyGroup(F_gr_name.getText(), Long.parseLong(F_st_count.getText()), Long.parseLong(F_shouldExp.getText()), coordinates, FormOfEducation.getForm(F_form.getText()), Semester.getSem(F_sem.getText()), person);
+        Coordinates coordinates = new Coordinates(
+                Float.parseFloat(F_c_x.getText()),
+                Double.parseDouble(F_c_y.getText()));
+        Location location = new Location(
+                Long.parseLong(F_l_x.getText()),
+                Long.parseLong(F_l_y.getText()),
+                Integer.parseInt(F_l_z.getText()),
+                F_l_name.getText());
+        Person person = new Person(
+                F_p_name.getText(),
+                Float.parseFloat(F_p_height.getText()),
+                Double.parseDouble(F_p_weight.getText()),
+                Color.valueOf(F_p_color.getValue().toString()),
+                location);
+        StudyGroup studyGroup = new StudyGroup(
+                F_gr_name.getText(),
+                Long.parseLong(F_st_count.getText()),
+                Long.parseLong(F_shouldExp.getText()),
+                coordinates,
+                FormOfEducation.getForm(F_form.getValue().toString()),
+                Semester.getSem(F_sem.getValue().toString()),
+                person);
         Object[] args = new Object[2];
         args[0] = id;
         args[1] = studyGroup;
@@ -91,13 +109,6 @@ public class ChangeEl {
         mainScene.process(updateId);
         Stage st = (Stage) apply.getScene().getWindow();
         st.close();
-
-
-
-
-
-
-
 
 
 

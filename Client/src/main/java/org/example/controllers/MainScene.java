@@ -204,7 +204,7 @@ public class MainScene {
                 ArrayList<TableGroup> deletedElems = getDeletedElems(collection,
                         (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
                 if (deletedElems != null ) animation.setElemsToDelete(deletedElems);
-                animation.startAnimation(collection);
+                animateCollection(collection);
             }
 
             collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
@@ -261,7 +261,6 @@ public class MainScene {
     }
 
     public void animateCollection(List<TableGroup> collection) {
-
         GraphicsContext gc = canvas.getGraphicsContext2D();
         Animation animation = new org.example.controllers.Animation(gc, collection, canvas.getWidth(), canvas.getHeight());
         animation.startAnimation(collection);

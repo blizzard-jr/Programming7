@@ -2612,3 +2612,87 @@
 1923083 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 13 активных клиентов
 1923097 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
 1923100 [ForkJoinPool.commonPool-worker-9] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2666745 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
+2666749 [ForkJoinPool.commonPool-worker-11] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2677543 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
+2677547 [ForkJoinPool.commonPool-worker-11] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2679403 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
+2679405 [ForkJoinPool.commonPool-worker-11] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2679550 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
+2679553 [ForkJoinPool.commonPool-worker-11] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2704549 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
+2704553 [ForkJoinPool.commonPool-worker-11] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2714452 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
+2714456 [ForkJoinPool.commonPool-worker-11] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+3061749 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
+3061752 [ForkJoinPool.commonPool-worker-13] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+3703732 [pool-1-thread-13] INFO  o.example.requests.RequestsManager - Обработка запроса
+8998521 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 14 активных клиентов
+8998537 [pool-1-thread-15] INFO  o.example.requests.RequestsManager - Обработка запроса
+8998540 [ForkJoinPool.commonPool-worker-15] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9116489 [pool-1-thread-15] INFO  o.example.requests.RequestsManager - Обработка запроса
+9168646 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 15 активных клиентов
+9168656 [pool-1-thread-16] INFO  o.example.requests.RequestsManager - Обработка запроса
+9168659 [ForkJoinPool.commonPool-worker-17] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9344590 [pool-1-thread-16] INFO  o.example.requests.RequestsManager - Обработка запроса
+9352258 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 16 активных клиентов
+9352273 [pool-1-thread-17] INFO  o.example.requests.RequestsManager - Обработка запроса
+9352276 [ForkJoinPool.commonPool-worker-19] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9410838 [pool-1-thread-17] INFO  o.example.requests.RequestsManager - Обработка запроса
+9703604 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 17 активных клиентов
+9703620 [pool-1-thread-19] INFO  o.example.requests.RequestsManager - Обработка запроса
+9703622 [ForkJoinPool.commonPool-worker-21] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9760771 [pool-1-thread-19] INFO  o.example.requests.RequestsManager - Обработка запроса
+9768601 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 18 активных клиентов
+9768612 [pool-1-thread-20] INFO  o.example.requests.RequestsManager - Обработка запроса
+9768614 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9787620 [pool-1-thread-20] INFO  o.example.requests.RequestsManager - Обработка запроса
+9787625 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9793052 [pool-1-thread-20] INFO  o.example.requests.RequestsManager - Обработка запроса
+9793055 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9795223 [pool-1-thread-20] INFO  o.example.requests.RequestsManager - Обработка запроса
+9795227 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9796549 [pool-1-thread-20] INFO  o.example.requests.RequestsManager - Обработка запроса
+9796552 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9825134 [pool-1-thread-20] INFO  o.example.requests.RequestsManager - Обработка запроса
+9834049 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 19 активных клиентов
+9834063 [pool-1-thread-21] INFO  o.example.requests.RequestsManager - Обработка запроса
+9834064 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9836298 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 20 активных клиентов
+9836299 [pool-1-thread-22] INFO  o.example.requests.RequestsManager - Обработка запроса
+9836299 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9838652 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 21 активных клиентов
+9838655 [pool-1-thread-23] INFO  o.example.requests.RequestsManager - Обработка запроса
+9838665 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9856979 [pool-1-thread-23] INFO  o.example.requests.RequestsManager - Обработка запроса
+9856984 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9907178 [pool-1-thread-23] INFO  o.example.requests.RequestsManager - Обработка запроса
+9907180 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9908208 [pool-1-thread-23] INFO  o.example.requests.RequestsManager - Обработка запроса
+9908212 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9915673 [pool-1-thread-23] INFO  o.example.requests.RequestsManager - Обработка запроса
+9915676 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9953917 [pool-1-thread-23] INFO  o.example.requests.RequestsManager - Обработка запроса
+9953917 [pool-1-thread-22] INFO  o.example.requests.RequestsManager - Обработка запроса
+9953917 [pool-1-thread-21] INFO  o.example.requests.RequestsManager - Обработка запроса
+9961019 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 22 активных клиентов
+9961033 [pool-1-thread-26] INFO  o.example.requests.RequestsManager - Обработка запроса
+9961036 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+9998677 [pool-1-thread-26] INFO  o.example.requests.RequestsManager - Обработка запроса
+9998684 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+10003948 [pool-1-thread-26] INFO  o.example.requests.RequestsManager - Обработка запроса
+10003952 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+10005163 [pool-1-thread-26] INFO  o.example.requests.RequestsManager - Обработка запроса
+10005168 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+10005787 [pool-1-thread-26] INFO  o.example.requests.RequestsManager - Обработка запроса
+10005791 [ForkJoinPool.commonPool-worker-22] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+10146503 [pool-1-thread-26] INFO  o.example.requests.RequestsManager - Обработка запроса
+10153201 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 23 активных клиентов
+10153217 [pool-1-thread-27] INFO  o.example.requests.RequestsManager - Обработка запроса
+10153221 [ForkJoinPool.commonPool-worker-24] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+10172817 [pool-1-thread-27] INFO  o.example.requests.RequestsManager - Обработка запроса
+10172821 [ForkJoinPool.commonPool-worker-24] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+10182511 [pool-1-thread-27] INFO  o.example.requests.RequestsManager - Обработка запроса
+10182514 [ForkJoinPool.commonPool-worker-24] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+10184704 [pool-1-thread-27] INFO  o.example.requests.RequestsManager - Обработка запроса
+10184707 [ForkJoinPool.commonPool-worker-24] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю

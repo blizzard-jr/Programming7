@@ -27,7 +27,7 @@ public class Animation {
     private double canvasWidth;
     private double canvasHeight;
     private static HashMap<Integer, MyRectangle> elements = new HashMap<Integer, MyRectangle>();
-    private static ArrayList<Integer> toDelete;
+    private static ArrayList<Integer> toDelete= new ArrayList<>();
     public Animation(GraphicsContext gc, List<TableGroup> collection, double canvasWidth, double canvasHeight) {
         this.collection = collection;
         this.canvasWidth = canvasWidth;
@@ -37,7 +37,7 @@ public class Animation {
     }
 
     public static void setElemsToDelete(ArrayList<TableGroup> deletedElems) {
-        deletedElems.forEach(v -> toDelete.add(v.getId()));
+        if (!deletedElems.isEmpty()) deletedElems.forEach(v -> toDelete.add(v.getId()));
     }
 
 

@@ -2,6 +2,8 @@ package org.example.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.island.commands.InsertNull;
@@ -21,13 +23,13 @@ public class InsertControl {
     @FXML
     private TextField F_p_weight;
     @FXML
-    private TextField F_p_color;
+    private ChoiceBox F_p_color;
     @FXML
     private TextField F_shouldExp;
     @FXML
-    private TextField F_form;
+    private ChoiceBox F_form;
     @FXML
-    private TextField F_sem;
+    private ChoiceBox F_sem;
     @FXML
     private TextField F_l_x;
     @FXML
@@ -46,13 +48,32 @@ public class InsertControl {
 
     public void init(MainScene mainScene){
         this.mainScene = mainScene;
+        F_form.getItems().addAll(FormOfEducation.values());
+        F_p_color.getItems().addAll(Color.values());
+        F_sem.getItems().addAll(Semester.values());
+
     }
     public void insert(){
         Coordinates coordinates = new Coordinates(Float.parseFloat(F_c_x.getText()), Double.parseDouble(F_c_y.getText()));
-        Location location = new Location(Long.parseLong(F_l_x.getText()), Long.parseLong(F_l_y.getText()), Integer.parseInt(F_l_z.getText()), F_l_name.getText());
-        Person person = new Person(F_p_name.getText(), Float.parseFloat(F_p_height.getText()), Double.parseDouble(F_p_weight.getText()),
-                Color.getColor(F_p_color.getText()), location);
-        StudyGroup studyGroup = new StudyGroup(F_gr_name.getText(), Long.parseLong(F_st_count.getText()), Long.parseLong(F_shouldExp.getText()), coordinates, FormOfEducation.getForm(F_form.getText()), Semester.getSem(F_sem.getText()), person);
+        Location location = new Location(
+                Long.parseLong(F_l_x.getText()),
+                Long.parseLong(F_l_y.getText()),
+                Integer.parseInt(F_l_z.getText()),
+                F_l_name.getText());
+        Person person = new Person(
+                F_p_name.getText(),
+                Float.parseFloat(F_p_height.getText()),
+                Double.parseDouble(F_p_weight.getText()),
+                Color.valueOf(F_p_color.getValue().toString()),
+                location);
+        StudyGroup studyGroup = new StudyGroup(
+                F_gr_name.getText(),
+                Long.parseLong(F_st_count.getText()),
+                Long.parseLong(F_shouldExp.getText()),
+                coordinates,
+                FormOfEducation.valueOf(F_form.getValue().toString()),
+                Semester.valueOf( F_sem.getValue().toString()),
+                person);
         Object[] args = new Object[2];
         args[0] = Integer.parseInt(F_key.getText());
         args[1] = studyGroup;

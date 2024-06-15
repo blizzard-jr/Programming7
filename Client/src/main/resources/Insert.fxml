@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="474.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.InsertControl">
     <children>
         <TextField fx:id="F_key" layoutX="95.0" layoutY="20.0" />
@@ -12,10 +11,10 @@
         <TextField fx:id="F_p_height" layoutX="418.0" layoutY="60.0" />
         <TextField fx:id="F_st_count" layoutX="95.0" layoutY="99.0" />
         <TextField fx:id="F_p_weight" layoutX="418.0" layoutY="99.0" />
-        <TextField fx:id="F_p_color" layoutX="418.0" layoutY="141.0" />
+        <ChoiceBox fx:id="F_p_color" layoutX="418.0" layoutY="141.0" prefHeight="26.0" prefWidth="160.0" />
         <TextField fx:id="F_shouldExp" layoutX="95.0" layoutY="141.0" />
-        <TextField fx:id="F_form" layoutX="95.0" layoutY="183.0" />
-        <TextField fx:id="F_sem" layoutX="95.0" layoutY="227.0" />
+        <ChoiceBox fx:id="F_form" layoutX="95.0" layoutY="183.0" prefHeight="18.0" prefWidth="160.0" />
+        <ChoiceBox fx:id="F_sem" layoutX="95.0" layoutY="227.0" prefHeight="26.0" prefWidth="160.0" />
         <TextField fx:id="F_l_x" layoutX="418.0" layoutY="183.0" />
         <TextField fx:id="F_l_y" layoutX="418.0" layoutY="227.0" />
         <TextField fx:id="F_c_x" layoutX="95.0" layoutY="273.0" />
@@ -38,6 +37,6 @@
         <Label layoutX="373.0" layoutY="231.0" text="l_y" />
         <Label layoutX="373.0" layoutY="277.0" text="l_z" />
         <Label layoutX="361.0" layoutY="320.0" text="l_name" />
-        <Button fx:id="insert" layoutX="276.0" layoutY="405.0" mnemonicParsing="false" text="Insert" onAction="#insert"/>
+        <Button fx:id="insert" layoutX="276.0" layoutY="405.0" mnemonicParsing="false" onAction="#insert" text="Insert" />
     </children>
 </AnchorPane>

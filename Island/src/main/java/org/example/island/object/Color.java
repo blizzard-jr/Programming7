@@ -26,14 +26,14 @@ public enum Color implements Serializable {
         }
         return false;
     }
-    public static Color getColor(String s){
-        for(Color value : Color.values()){
-            if(value.getRus().equalsIgnoreCase(s)){
-                return value;
-            }
-        }
-        throw new IllegalValueException("Константа не распознана");
-    }
+//    public static Color getColor(String s){
+//        for(Color value : Color.values()){
+//            if(value.equalsIgnoreCase(s)){
+//                return value;
+//            }
+//        }
+//        throw new IllegalValueException("Константа не распознана");
+//    }
 
 
 }
