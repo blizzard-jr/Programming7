@@ -92,9 +92,15 @@ public class MainScene {
     private MenuItem removeLower;
     @FXML
     private ImageView galochka;
+    @FXML
+    private Button refresh;
 
 
     private ObservableList<TableGroup> list;
+    public void refresh(){
+        process(new Show());
+
+    }
 
     public void initialize() {
         table.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
@@ -103,6 +109,13 @@ public class MainScene {
                 node = node.getParent();
             }
             if (node instanceof TableColumnHeader) {
+                List<Node> anchorPanesToRemove = new ArrayList<>();
+                for (Node child : anchor.getChildren()) {
+                    if (child instanceof AnchorPane) {
+                        anchorPanesToRemove.add(child);
+                    }
+                }
+                anchor.getChildren().removeAll(anchorPanesToRemove);
                 TableColumnHeader header = (TableColumnHeader) node;
                 String text = header.getTableColumn().getText();
                 FXMLLoader loader = new FXMLLoader();
@@ -113,10 +126,7 @@ public class MainScene {
                     sortAndFilter.init(this, anchor, text);
                     p.setLayoutX(event.getSceneX());
                     p.setLayoutY(event.getSceneY());
-                    Scene scene = new Scene(p);
-                    Stage st = new Stage();
-                    st.setScene(scene);
-                    st.showAndWait();
+                    anchor.getChildren().add(p);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

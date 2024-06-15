@@ -3,12 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="91.0" prefWidth="127.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.SortAndFilter">
+<AnchorPane prefHeight="91.0" prefWidth="127.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.SortAndFilter">
    <children>
-      <Button fx:id="sort" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Sort" onAction="#sort"/>
-      <Button fx:id="filter" layoutX="13.0" layoutY="49.0" mnemonicParsing="false" text="Flter" onAction="#filter"/>
-      <ToggleButton fx:id="upOrDown" layoutX="61.0" layoutY="14.0" mnemonicParsing="false" text="Up" onAction="#upOrDown"/>
+      <Button fx:id="sort" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
+      <Button fx:id="filter" layoutX="13.0" layoutY="49.0" mnemonicParsing="false" onAction="#filter" text="Flter" />
+      <ToggleButton fx:id="upOrDown" layoutX="61.0" layoutY="14.0" mnemonicParsing="false" onAction="#upOrDown" text="Up" />
       <TextField fx:id="filterValue" layoutX="61.0" layoutY="48.0" prefHeight="26.0" prefWidth="51.0" />
    </children>
 </AnchorPane>

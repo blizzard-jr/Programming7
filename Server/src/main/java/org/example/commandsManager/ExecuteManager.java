@@ -296,6 +296,7 @@ public class ExecuteManager {
     }
     public void executeShow(){
         try {
+            msg.setArguments("ок");
             msg.setArguments(StorageOfManagers.dBManager.collectionInit());
         } catch (SQLException e) {
             throw new RuntimeException(e);
