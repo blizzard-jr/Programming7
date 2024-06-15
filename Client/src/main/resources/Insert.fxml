@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="474.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.InsertControl">
     <children>
@@ -38,5 +39,6 @@
         <Label layoutX="373.0" layoutY="277.0" text="l_z" />
         <Label layoutX="361.0" layoutY="320.0" text="l_name" />
         <Button fx:id="insert" layoutX="276.0" layoutY="405.0" mnemonicParsing="false" onAction="#insert" text="Insert" />
+   <Text fx:id="error_message" layoutX="122.0" layoutY="384.0" wrappingWidth="369.0" />
     </children>
 </AnchorPane>
