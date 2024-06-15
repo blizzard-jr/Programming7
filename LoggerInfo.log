@@ -2742,3 +2742,18 @@
 54643 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 56511 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
 56517 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+208  [main] INFO  org.example.main.Main - Начало работы сервера
+8697 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+8727 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+8735 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+11895 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 2 активных клиентов
+11897 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+11899 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+15033 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 3 активных клиентов
+15035 [pool-1-thread-3] INFO  o.example.requests.RequestsManager - Обработка запроса
+15036 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+19129 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 4 активных клиентов
+19132 [pool-1-thread-4] INFO  o.example.requests.RequestsManager - Обработка запроса
+19153 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+27977 [pool-1-thread-4] INFO  o.example.requests.RequestsManager - Обработка запроса
+27979 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю

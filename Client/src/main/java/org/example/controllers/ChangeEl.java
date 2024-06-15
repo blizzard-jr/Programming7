@@ -7,11 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.island.commands.UpdateId;
-import org.example.island.object.*;
-
-import java.time.LocalDateTime;
-import java.util.Locale;
+import org.island.commands.UpdateId;
+import org.island.object.*;
 
 public class ChangeEl {
     //Добавить логику управления изменения и добавления объекта

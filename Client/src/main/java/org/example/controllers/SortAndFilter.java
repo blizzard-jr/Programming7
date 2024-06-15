@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import org.example.UserInterface;
-import org.example.island.object.TableGroup;
+import org.island.object.TableGroup;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;

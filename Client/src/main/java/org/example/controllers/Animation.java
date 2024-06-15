@@ -11,7 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.island.object.TableGroup;
+import org.island.object.TableGroup;
 
 import javafx.scene.input.MouseEvent;
 
@@ -19,7 +19,6 @@ import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class Animation {
     private List<TableGroup> collection;

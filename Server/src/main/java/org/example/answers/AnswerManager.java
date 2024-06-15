@@ -1,17 +1,13 @@
 package org.example.answers;
 
-import org.example.island.commands.Message;
-import org.example.island.details.Serialization;
-import org.example.requests.RequestsManager;
+import org.island.commands.Message;
+import org.island.details.Serialization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AnswerManager {
     private OutputStream ou;

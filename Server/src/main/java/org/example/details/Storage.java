@@ -1,6 +1,6 @@
 package org.example.details;
 
-import org.example.island.object.StudyGroup;
+import org.island.object.StudyGroup;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;

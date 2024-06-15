@@ -2,10 +2,8 @@ package org.example;
 
 
 import org.example.exceptions.NoSuchCommandException;
-import org.example.island.commands.*;
-import org.example.island.object.StudyGroup;
+import org.island.commands.*;
 
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,7 +38,7 @@ public class CommandsManager {
     public void addCommand(Command cmd){
         commandRegistry.put(cmd.getName(), cmd);
     }
-    public Command commandForming(String s) throws NoSuchCommandException, org.example.island.details.exceptions.NoSuchCommandException {
+    public Command commandForming(String s) throws NoSuchCommandException, org.island.details.exceptions.NoSuchCommandException {
         String[] str = parseCommand(s);
         Command command = getCommand(str[0].toLowerCase());
         command.clearArg();

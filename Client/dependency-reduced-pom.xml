@@ -21,7 +21,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.example.UserInterface</mainClass>
+                  <mainClass>org.example.NewMain</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -33,7 +33,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.3</version>
         <configuration>
-          <mainClass>org.example.UserInterface</mainClass>
+          <mainClass>org.example.NewMain</mainClass>
         </configuration>
       </plugin>
     </plugins>

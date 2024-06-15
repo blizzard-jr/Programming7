@@ -1,7 +1,7 @@
 package org.example.commandsManager;
 
 import org.example.details.StorageOfManagers;
-import org.example.island.object.*;
+import org.island.object.*;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class DataBaseManager {
     ReentrantLock locker = new ReentrantLock();

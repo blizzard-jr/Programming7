@@ -23,9 +23,9 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.UserInterface;
-import org.example.island.commands.*;
-import org.example.island.details.Serialization;
-import org.example.island.object.TableGroup;
+import org.island.commands.*;
+import org.island.details.Serialization;
+import org.island.object.TableGroup;
 
 import java.io.IOException;
 import java.util.ArrayList;
