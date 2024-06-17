@@ -20,6 +20,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.TextFlow;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.UserInterface;
@@ -27,6 +28,7 @@ import org.island.commands.*;
 import org.island.details.Serialization;
 import org.island.object.TableGroup;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +101,16 @@ public class MainScene {
     private ImageView galochka;
     @FXML
     private Button refresh;
+    @FXML
+    private MenuItem script;
+    @FXML
+    private MenuItem lower;
+    @FXML
+    private MenuItem greater;
+    @FXML
+    private TextField Rkey;
+
+
     private Animation animation;
     private List<TableGroup> collection;
 
@@ -109,6 +121,39 @@ public class MainScene {
         process(new Show());
 
     }
+    public void executeScript(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if(selectedFile != null){
+            Execute_script scripts = new Execute_script();
+            scripts.setArguments(selectedFile.getName());
+            process(scripts);
+        }
+    }
+    public void executeRemoveGreater(){
+        InsertControl.setExInsert(false);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Insert.fxml"));
+        try {
+            Parent p = loader.load();
+            InsertControl insertControl = loader.getController();
+            insertControl.init(this);
+            Scene scene = new Scene(p);
+            Stage st = new Stage();
+            st.setScene(scene);
+            st.showAndWait();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void executeRemoveLower(){
+        int key = Integer.parseInt(Rkey.getText());
+        Remove_lower_key removeLowerKey = new Remove_lower_key();
+        removeLowerKey.setArguments(key);
+        process(removeLowerKey);
+    }
+
 
     public void initialize() {
         table.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
@@ -193,20 +238,17 @@ public class MainScene {
             System.out.println("Заголовок столбца " + header.getTableColumn().getText() + " был кликнут.");
         }
     }
-
     public void process(Command cmd) {
         cmd.setArguments(UserInterface.getLog());
         outputData(Serialization.SerializeObject(cmd));
         Message msg = inputData();
         if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())) {
-
             if (collection != null) {
                 ArrayList<TableGroup> deletedElems = getDeletedElems(collection,
                         (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
                 if (deletedElems != null ) animation.setElemsToDelete(deletedElems);
                 animateCollection(collection);
             }
-
             collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
             animateCollection(collection);
             collectionInit(collection);

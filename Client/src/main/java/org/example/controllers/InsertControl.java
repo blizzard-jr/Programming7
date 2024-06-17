@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.island.commands.InsertNull;
+import org.island.commands.Remove_greater;
 import org.island.object.*;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -50,15 +51,44 @@ public class InsertControl {
     private Text error_message;
     private MainScene mainScene;
 
-    public void init(MainScene mainScene){
+    public static void setExInsert(boolean exInsert) {
+        InsertControl.exInsert = exInsert;
+    }
+
+    private static boolean exInsert = true;
+
+    public void init(MainScene mainScene) {
         this.mainScene = mainScene;
         F_form.getItems().addAll(FormOfEducation.values());
         F_p_color.getItems().addAll(Color.values());
         F_sem.getItems().addAll(Semester.values());
 
     }
-    public void insert(){
+
+    public void insert() {
         AtomicBoolean ok = new AtomicBoolean(false);
+        StudyGroup studyGroup = objInit();
+        if(studyGroup != null) {
+            if (exInsert) {
+                Object[] args = new Object[2];
+                args[0] = Integer.parseInt(F_key.getText());
+                args[1] = studyGroup;
+                InsertNull insertNull = new InsertNull();
+                insertNull.setArguments(args);
+                mainScene.process(insertNull);
+            } else {
+                Remove_greater removeGreater = new Remove_greater();
+                removeGreater.setArguments(studyGroup);
+                mainScene.process(removeGreater);
+                exInsert = true;
+            }
+        }
+        ok.set(true);
+        Stage st = (Stage) insert.getScene().getWindow();
+        st.close();
+    }
+
+    public StudyGroup objInit() {
         try {
             Coordinates coordinates = new Coordinates(Float.parseFloat(F_c_x.getText()), Double.parseDouble(F_c_y.getText()));
             Location location = new Location(
@@ -80,22 +110,13 @@ public class InsertControl {
                     FormOfEducation.valueOf(F_form.getValue().toString()),
                     Semester.valueOf(F_sem.getValue().toString()),
                     person);
-            Object[] args = new Object[2];
-            args[0] = Integer.parseInt(F_key.getText());
-            args[1] = studyGroup;
-            InsertNull insertNull = new InsertNull();
-            insertNull.setArguments(args);
-            mainScene.process(insertNull);
-
-            ok.set(true);
-
-        } catch(Exception e){
+            return studyGroup;
+        } catch (Exception e) {
             error_message.setText("введены невалидные данные( повторите попытку");
             Stage st = (Stage) insert.getScene().getWindow();
             st.showAndWait();
+            return null;
         }
-        Stage st = (Stage) insert.getScene().getWindow();
-        st.close();
     }
 
 }

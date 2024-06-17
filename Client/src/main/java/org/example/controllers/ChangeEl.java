@@ -95,8 +95,8 @@ public class ChangeEl {
                 Long.parseLong(F_st_count.getText()),
                 Long.parseLong(F_shouldExp.getText()),
                 coordinates,
-                FormOfEducation.getForm(F_form.getValue().toString()),
-                Semester.getSem(F_sem.getValue().toString()),
+                FormOfEducation.valueOf(F_form.getValue().toString()),
+                Semester.valueOf(F_sem.getValue().toString()),
                 person);
         Object[] args = new Object[2];
         args[0] = id;
@@ -106,14 +106,6 @@ public class ChangeEl {
         mainScene.process(updateId);
         Stage st = (Stage) apply.getScene().getWindow();
         st.close();
-
-
-
-
-
-
-
-
     }
     public void updateEl(){
         FXMLLoader loader = new FXMLLoader();

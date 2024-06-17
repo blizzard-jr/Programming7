@@ -1,40 +1,39 @@
-update 24 P125 12 5
-очное
-пятый
+insert 24 P125 12 5
+EVENING_CLASSES
+FIFTH
 0
 34
 Алексей
 26
 77
-чёрный
+BLACK
 111
 Гривцова
 115
 -6
-update 25 A999 99 9
-вечернее
-четвёртый
+insert 25 A999 99 9
+EVENING_CLASSES
+FOURTH
 -2
 45
 Николай
 22
 94
-белый
+WHITE
 13
 Биржа
 -9
 -645
-update 23 R250 46 6
-очное
-четвёртый
+insert 23 R250 46 6
+EVENING_CLASSES
+FIRST
 -234
 -1
 Дарья
 89
 52
-оранжевый
+ORANGE
 13
 Кронва
 11
 -645
-execute_script C:\Users\Кот\IdeaProjects\Programming6\AnotherOneScript.txt

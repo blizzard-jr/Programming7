@@ -225,9 +225,6 @@ public class DataBaseManager {
                     count ++;
                 }
             }
-            if(count > 0){
-                collectionInit();
-            }
             return count;
         }finally {
             locker.unlock();
@@ -258,7 +255,7 @@ public class DataBaseManager {
             int count = 0;
             PreparedStatement groupSt = connection.prepareStatement("DELETE FROM Studygroup WHERE owner = ? AND key = ?");
             groupSt.setString(1, args.get(1).toString());
-            key = Integer.parseInt((String) args.get(0));
+            key = (int) args.get(0);
             keys = StorageOfManagers.storage.getKeys();
             locker.lock();
             for(int k : keys){
@@ -267,9 +264,6 @@ public class DataBaseManager {
                     groupSt.executeUpdate();
                     count ++;
                 }
-            }
-            if(count > 0){
-                collectionInit();
             }
             return count;
         }catch(NumberFormatException e){

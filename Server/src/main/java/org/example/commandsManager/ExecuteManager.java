@@ -7,6 +7,7 @@ import org.island.details.exceptions.IllegalValueException;
 import org.island.details.exceptions.NoSuchCommandException;
 import org.island.object.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
@@ -141,9 +142,15 @@ public class ExecuteManager {
         }
         if(!Execute_script.files.contains((String) args.get(0))){
             Execute_script.files.add((String) args.get(0));
+            msg.setArguments("ок");
             msg.setArguments(StorageOfManagers.fileSystem.parseScript(stream, args.get(1), args.get(2), (Socket) args.get(args.size() - 1)));
             msg.setArguments("Выполнение скрипта " + Execute_script.files.size() + " завершено");
             Execute_script.files.remove((String) args.get(0));
+            try {
+                msg.setArguments(StorageOfManagers.dBManager.collectionInit());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
         else{
             msg.setArguments("Не не, слишком бесконечно получается");
@@ -209,10 +216,11 @@ public class ExecuteManager {
         int count = 0;
         try {
             count = StorageOfManagers.dBManager.executeRemoveGreater(args);
+            msg.setArguments("ок");
+            msg.setArguments(StorageOfManagers.dBManager.collectionInit());
         } catch (SQLException e) {
             msg.setArguments(e.getMessage());
         }
-        msg.setArguments("В ходе исполнения команды было удалено " + count + " объектов");
     }
 
     public void executeRemove(ArrayList<Object> args){
@@ -237,18 +245,13 @@ public class ExecuteManager {
         int count = 0;
         try {
             count = StorageOfManagers.dBManager.executeRemoveLower(args);
+            msg.setArguments("ок");
+            msg.setArguments(StorageOfManagers.dBManager.collectionInit());
         } catch (SQLException e) {
             msg.setArguments(e.getMessage());
         }
-        if(count == 0){
-            msg.setArguments("Введённый вами ключ меньше всех ключей, что есть в коллекции, удаление элементов не было произведено");
-        }
-        else{
-            msg.setArguments("В ходе исполнения команды было удалено " + count + " объектов");
-        }
     }
     public void executeExit(){
-
         msg.setArguments("Всего доброго!");
     }
 
@@ -326,8 +329,8 @@ public class ExecuteManager {
             int key = Integer.parseInt(args.get(0));
             long studentsCount = Long.parseLong(args.get(2));
             long shouldBeExpelled = Long.parseLong(args.get(3));
-            FormOfEducation form = FormOfEducation.getForm(args.get(4));
-            Semester sem = Semester.getSem(args.get(5));
+            FormOfEducation form = FormOfEducation.valueOf(args.get(4));
+            Semester sem = Semester.valueOf(args.get(5));
             float coordinatesX = Float.parseFloat(args.get(6));
             double coordinatesY = Double.parseDouble(args.get(7));
             Float height = Float.parseFloat(args.get(9));
@@ -357,8 +360,8 @@ public class ExecuteManager {
             int id = Integer.parseInt(args.get(0));
             long studentsCount = Long.parseLong(args.get(2));
             long shouldBeExpelled = Long.parseLong(args.get(3));
-            FormOfEducation form = FormOfEducation.getForm(args.get(4));
-            Semester sem = Semester.getSem(args.get(5));
+            FormOfEducation form = FormOfEducation.valueOf(args.get(4));
+            Semester sem = Semester.valueOf(args.get(5));
             float coordinatesX = Float.parseFloat(args.get(6));
             double coordinatesY = Double.parseDouble(args.get(7));
             Float height = Float.parseFloat(args.get(9));
@@ -386,8 +389,8 @@ public class ExecuteManager {
     public void removeGreaterFromScript(ArrayList<String> args){
         long studentsCount = Long.parseLong(args.get(1));
         long shouldBeExpelled = Long.parseLong(args.get(2));
-        FormOfEducation form = FormOfEducation.getForm(args.get(3));
-        Semester sem = Semester.getSem(args.get(4));
+        FormOfEducation form = FormOfEducation.valueOf(args.get(3));
+        Semester sem = Semester.valueOf(args.get(4));
         float coordinatesX = Float.parseFloat(args.get(5));
         double coordinatesY = Double.parseDouble(args.get(6));
         Float height = Float.parseFloat(args.get(8));

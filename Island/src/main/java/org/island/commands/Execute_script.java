@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Execute_script extends Command{
+public class Execute_script extends Command implements ChangingCollectionCommand{
     public static Set<String> files = new HashSet<String>();
 
 

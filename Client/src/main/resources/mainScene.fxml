@@ -120,6 +120,12 @@
                 <MenuItem fx:id="clear" mnemonicParsing="false" onAction="#executeClear" text="clear" />
                 <MenuItem fx:id="info" mnemonicParsing="false" onAction="#executeInfo" text="info" />
                 <MenuItem fx:id="history" mnemonicParsing="false" onAction="#executeHistory" text="history" />
+            <MenuItem fx:id="script" mnemonicParsing="false" onAction="#executeScript" text="execite_script" />
+            <MenuItem fx:id="lower" mnemonicParsing="false" onAction="#executeRemoveLower" text="removeLower">
+               <graphic>
+                  <TextField fx:id="Rkey" prefWidth="50" alignment="CENTER_RIGHT" />
+               </graphic></MenuItem>
+            <MenuItem fx:id="greater" mnemonicParsing="false" onAction="#executeRemoveGreater" text="removeGreater" />
             </items>
         </MenuButton>
         <ImageView fitHeight="34.0" fitWidth="47.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -136,7 +142,7 @@
             </image>
         </ImageView>
 
-        <Canvas fx:id="canvas"  height="390.0" layoutY="320.0" width="780.0" />
+        <Canvas fx:id="canvas" height="390.0" layoutY="320.0" width="780.0" />
       <Button fx:id="refresh" layoutX="633.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
     </children>
 </AnchorPane>
