@@ -62,6 +62,10 @@ public class ExecuteManager {
         ArrayList<Object> args = cmd.getArguments();
         answerPool.invoke(new ResultSending(msg, (Socket) args.get(args.size() - 1)));
         msg.clearArg();
+        args.remove(args.size() - 1);
+        args.remove(args.size() - 2);
+        args.remove(args.size() - 3);
+        commandList.add(cmd.getName() + " " + args);
     }
     public void commandExecute(String s, Object login, Object password, Socket clientSocket)  {
         String[] str = parseCommand(s);
@@ -71,7 +75,6 @@ public class ExecuteManager {
         } catch (NoSuchCommandException e) {
             msg.setArguments("Сервер не смог распознать команду");
         }
-        commandList.add(str[0]);
         String[] args = Arrays.copyOfRange(str, 1, str.length);
         command.setArguments(args);
         command.setArguments(login);

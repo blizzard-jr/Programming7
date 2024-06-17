@@ -41,20 +41,20 @@ public class SortAndFilter {
     }
 
     public void sort(){
+        List<TableGroup> list = UserInterface.getData();
         if(!upOrDown.isSelected()){
-            List<TableGroup> list = UserInterface.getData();
             list = (List<TableGroup>) list.stream()
                     .sorted(Comparator.comparing((TableGroup obj) -> (Comparable) getFieldValueByName(obj, columnName)))
                     .collect(Collectors.toList());
+            UserInterface.setData(list);
             mainScene.collectionInit(list);
         }
         else{
-            List<TableGroup> list = UserInterface.getData();
             list = (List<TableGroup>) list.stream()
                     .sorted(Comparator.comparing((TableGroup obj) -> (Comparable) getFieldValueByName(obj, columnName)).reversed())
                     .collect(Collectors.toList());
-            mainScene.collectionInit(list);
             UserInterface.setData(list);
+            mainScene.collectionInit(list);
         }
     }
     public static Object getFieldValueByName(Object obj, String fieldName) {
@@ -81,7 +81,7 @@ public class SortAndFilter {
                     }
                 })
                 .collect(Collectors.toList());
-        mainScene.collectionInit(list);
         UserInterface.setData(list);
+        mainScene.collectionInit(list);
     }
 }

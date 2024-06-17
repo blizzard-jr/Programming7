@@ -3,15 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="107.0" prefWidth="55.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.LangControl">
    <children>
       <VBox prefHeight="106.0" prefWidth="50.0">
          <children>
-            <Button fx:id="Brus" mnemonicParsing="false" onAction="#rus" text="Rus" />
-            <Button fx:id="Bengl" mnemonicParsing="false" prefHeight="2.0" prefWidth="52.0" onAction="#engl" text="Engl" />
-            <Button fx:id="Beest" mnemonicParsing="false" onAction="#eest" text="Eest" />
-            <Button fx:id="Blatw" mnemonicParsing="false" onAction="#latw" text="latw" />
+            <Button fx:id="rus" mnemonicParsing="false" onAction="#rus" text="Rus" />
+            <Button fx:id="eest" mnemonicParsing="false" onAction="#eest" text="Eest" />
+            <Button fx:id="latw" mnemonicParsing="false" onAction="#latw" text="latw" />
+            <Button fx:id="engl" mnemonicParsing="false" onAction="#engl" prefHeight="2.0" prefWidth="52.0" text="Engl" />
          </children>
       </VBox>
    </children>

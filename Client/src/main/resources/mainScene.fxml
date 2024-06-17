@@ -114,7 +114,7 @@
                     </opaqueInsets>
                 </TableView>
             </content></ScrollPane>
-        <MenuButton layoutX="696.0" layoutY="14.0" mnemonicParsing="false" text="Menu">
+        <MenuButton fx:id="menu" layoutX="696.0" layoutY="14.0" mnemonicParsing="false" text="Menu">
             <items>
                 <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#executeExit" text="exit" />
                 <MenuItem fx:id="clear" mnemonicParsing="false" onAction="#executeClear" text="clear" />
@@ -123,9 +123,10 @@
             <MenuItem fx:id="script" mnemonicParsing="false" onAction="#executeScript" text="execite_script" />
             <MenuItem fx:id="lower" mnemonicParsing="false" onAction="#executeRemoveLower" text="removeLower">
                <graphic>
-                  <TextField fx:id="Rkey" prefWidth="50" alignment="CENTER_RIGHT" />
+                  <TextField fx:id="Rkey" alignment="CENTER_RIGHT" prefWidth="50" />
                </graphic></MenuItem>
             <MenuItem fx:id="greater" mnemonicParsing="false" onAction="#executeRemoveGreater" text="removeGreater" />
+            <MenuItem fx:id="MainLang" mnemonicParsing="false" onAction="#executeLang" text="Language" />
             </items>
         </MenuButton>
         <ImageView fitHeight="34.0" fitWidth="47.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">

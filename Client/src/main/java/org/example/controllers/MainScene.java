@@ -32,6 +32,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import static org.example.UserInterface.*;
 
@@ -109,16 +111,19 @@ public class MainScene {
     private MenuItem greater;
     @FXML
     private TextField Rkey;
-
-
     private Animation animation;
     private List<TableGroup> collection;
-
-
     private ObservableList<TableGroup> list;
+    private ResourceBundle bundle;
 
     public void refresh() {
         process(new Show());
+    }
+
+    public void init(ResourceBundle bundle){
+        this.bundle = bundle;
+    }
+    public void executeLang(){
 
     }
     public void executeScript(){
@@ -243,15 +248,15 @@ public class MainScene {
         outputData(Serialization.SerializeObject(cmd));
         Message msg = inputData();
         if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())) {
-            if (collection != null) {
-                ArrayList<TableGroup> deletedElems = getDeletedElems(collection,
+            if (UserInterface.getData() != null) {
+                ArrayList<TableGroup> deletedElems = getDeletedElems(UserInterface.getData(),
                         (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
                 if (deletedElems != null ) animation.setElemsToDelete(deletedElems);
-                animateCollection(collection);
+                animateCollection(UserInterface.getData());
             }
-            collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
-            animateCollection(collection);
-            collectionInit(collection);
+            UserInterface.setData((List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
+            animateCollection(UserInterface.getData());
+            collectionInit(UserInterface.getData());
 
             if (msg.getArguments().get(0).equals("ок")) {
                 Image im = new Image("gal.png");
@@ -299,7 +304,6 @@ public class MainScene {
         list = FXCollections.observableList(data);// определить логику для команд, нажимаешь на строку таблицы - окно с действиями над объектом, остальные команды можно в меню скинуть
         table.setItems(list);
         animateCollection(data);
-
     }
 
     public void animateCollection(List<TableGroup> collection) {
@@ -348,5 +352,38 @@ public class MainScene {
         History history = new History();
         process(history);
     }
-
+    public void setLocale(ResourceBundle bundle){
+        id.setText(bundle.getString("id"));
+        key.setText(bundle.getString("key"));
+        gr_name.setText(bundle.getString("gr_name"));
+        st_count.setText(bundle.getString("st_count"));
+        shouldExp.setText(bundle.getString("shouldExp"));
+        form.setText(bundle.getString("form"));
+        sem.setText(bundle.getString("sem"));
+        c_x.setText(bundle.getString("c_x"));
+        c_y.setText(bundle.getString("c_y"));
+        p_name.setText(bundle.getString("p_name"));
+        p_height.setText(bundle.getString("p_height"));
+        p_weight.setText(bundle.getString("p_weight"));
+        p_color.setText(bundle.getString("p_color"));
+        l_x.setText(bundle.getString("l_x"));
+        l_y.setText(bundle.getString("l_y"));
+        l_z.setText(bundle.getString("l_z"));
+        l_name.setText(bundle.getString("l_name"));
+        creationDate.setText(bundle.getString("creationDate"));
+        owner.setText(bundle.getString("owner"));
+        insert.setText(bundle.getString("insert"));
+        login.setText(bundle.getString("login"));
+        exit.setText(bundle.getString("exit"));
+        language.setText(bundle.getString("language"));
+        clear.setText(bundle.getString("clear"));
+        info.setText(bundle.getString("info"));
+        history.setText(bundle.getString("history"));
+        removeLower.setText(bundle.getString("removeLower"));
+        refresh.setText(bundle.getString("refresh"));
+        script.setText(bundle.getString("script"));
+        lower.setText(bundle.getString("lower"));
+        greater.setText(bundle.getString("greater"));
+        this.bundle = bundle;
+    }
 }
