@@ -8,10 +8,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.controllers.EnterScene;
 import org.example.exceptions.*;
-import org.example.island.commands.*;
-import org.example.island.details.Serialization;
-import org.example.island.details.ServiceConst;
-import org.example.island.object.TableGroup;
+import org.island.commands.Command;
+import org.island.commands.Execute_script;
+import org.island.commands.Exit;
+import org.island.commands.Message;
+import org.island.details.Serialization;
+import org.island.details.ServiceConst;
+import org.island.object.TableGroup;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -132,7 +135,7 @@ public class UserInterface extends javafx.application.Application{
                     }
                 }
             } catch (IllegalValueException | NoSuchCommandException |
-                     org.example.island.details.exceptions.NoSuchCommandException e) {
+                     org.island.details.exceptions.NoSuchCommandException e) {
                 console.writeErr(e.getMessage());
             } catch (NoSuchElementException e) {
                 System.out.println("Работа клиента завершена");

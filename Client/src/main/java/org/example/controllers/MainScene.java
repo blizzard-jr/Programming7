@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.skin.TableColumnHeader;
@@ -20,9 +23,9 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.UserInterface;
-import org.example.island.commands.*;
-import org.example.island.details.Serialization;
-import org.example.island.object.TableGroup;
+import org.island.commands.*;
+import org.island.details.Serialization;
+import org.island.object.TableGroup;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,6 +35,8 @@ import static org.example.UserInterface.*;
 
 
 public class MainScene {
+    @FXML
+    public Canvas canvas;
     @FXML
     private AnchorPane anchor;
     @FXML
@@ -94,10 +99,13 @@ public class MainScene {
     private ImageView galochka;
     @FXML
     private Button refresh;
+    private Animation animation;
+    private List<TableGroup> collection;
 
 
     private ObservableList<TableGroup> list;
-    public void refresh(){
+
+    public void refresh() {
         process(new Show());
 
     }
@@ -155,7 +163,7 @@ public class MainScene {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                }else{
+                } else {
                     List<Node> anchorPanesToRemove = new ArrayList<>();
                     for (Node child : anchor.getChildren()) {
                         if (child instanceof AnchorPane) {
@@ -168,10 +176,17 @@ public class MainScene {
             return row;
         });
         login.setText(UserInterface.getLogin());
+        canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, this::handleMouseClick);
     }
+
+    public void handleMouseClick(MouseEvent event) {
+        org.example.controllers.Animation.handleMouseClick(event);
+    }
+
     public ObservableList<TableGroup> getList() {
         return list;
     }
+
     private void Sort(MouseEvent event) {
         if (event.getClickCount() > 0 && event.getTarget() instanceof TableColumnHeader) {
             TableColumnHeader header = (TableColumnHeader) event.getTarget();
@@ -183,26 +198,33 @@ public class MainScene {
         cmd.setArguments(UserInterface.getLog());
         outputData(Serialization.SerializeObject(cmd));
         Message msg = inputData();
-        if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())){
-            List<TableGroup> collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
+        if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())) {
+
+            if (collection != null) {
+                ArrayList<TableGroup> deletedElems = getDeletedElems(collection,
+                        (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
+                if (deletedElems != null ) animation.setElemsToDelete(deletedElems);
+                animateCollection(collection);
+            }
+
+            collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
             animateCollection(collection);
             collectionInit(collection);
 
-            if(msg.getArguments().get(0).equals("ок")){
+            if (msg.getArguments().get(0).equals("ок")) {
                 Image im = new Image("gal.png");
                 galochka.setImage(im);
                 PauseTransition delay = new PauseTransition(Duration.seconds(10));
                 delay.setOnFinished(event -> galochka.setImage(null));
                 delay.play();
-            }else{
+            } else {
                 Image im = new Image("crestic.png");
                 galochka.setImage(im);
                 PauseTransition delay = new PauseTransition(Duration.seconds(10));
                 delay.setOnFinished(event -> galochka.setImage(null));
                 delay.play();
             }
-        }
-        else {
+        } else {
             StringBuilder text = new StringBuilder();
             for (Object obj : msg.getArguments()) {
                 text.append(obj).append("\n");
@@ -223,12 +245,25 @@ public class MainScene {
         }
     }
 
+    private ArrayList<TableGroup> getDeletedElems(List<TableGroup> collection, List<TableGroup> tableGroups) {
+        if (collection.size() > tableGroups.size()) {
+            collection.removeAll(tableGroups);
+            return (ArrayList<TableGroup>) collection;
+        }
+        return null;
+    }
+
     public void collectionInit(List<TableGroup> data) {
         list = FXCollections.observableList(data);// определить логику для команд, нажимаешь на строку таблицы - окно с действиями над объектом, остальные команды можно в меню скинуть
         table.setItems(list);
+        animateCollection(data);
+
     }
-    public static void animateCollection(List<TableGroup> collection){
-        collection.forEach(t -> System.out.println(t.toString()));
+
+    public void animateCollection(List<TableGroup> collection) {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        Animation animation = new org.example.controllers.Animation(gc, collection, canvas.getWidth(), canvas.getHeight());
+        animation.startAnimation(collection);
     }
 
     public TableView<TableGroup> getTable() {
@@ -250,20 +285,24 @@ public class MainScene {
             throw new RuntimeException(e);
         }
     }
-    public void executeExit(){
+
+    public void executeExit() {
         Exit exit = new Exit();
         process(exit);
         System.exit(0);
     }
-    public void executeClear(){
+
+    public void executeClear() {
         Clear clear = new Clear();
         process(clear);
     }
-    public void executeInfo(){
+
+    public void executeInfo() {
         Info info = new Info();
         process(info);
     }
-    public void executeHistory(){
+
+    public void executeHistory() {
         History history = new History();
         process(history);
     }

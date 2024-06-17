@@ -1,7 +1,7 @@
 package org.example.commandsManager;
 
 import org.example.details.StorageOfManagers;
-import org.example.island.commands.Message;
+import org.island.commands.Message;
 
 import java.net.Socket;
 import java.util.concurrent.RecursiveAction;

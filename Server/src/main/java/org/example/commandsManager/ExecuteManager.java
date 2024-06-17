@@ -1,12 +1,12 @@
 package org.example.commandsManager;
 
 import org.example.details.StorageOfManagers;
-import org.example.island.commands.*;
-import org.example.island.details.ServiceConst;
-import org.example.island.details.exceptions.IllegalValueException;
-import org.example.island.details.exceptions.NoSuchCommandException;
-import org.example.island.object.*;
-import org.example.requests.RequestsManager;
+import org.island.commands.*;
+import org.island.details.ServiceConst;
+import org.island.details.exceptions.IllegalValueException;
+import org.island.details.exceptions.NoSuchCommandException;
+import org.island.object.*;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
@@ -15,8 +15,6 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
-import java.util.concurrent.RecursiveTask;
 
 
 public class ExecuteManager {
@@ -334,7 +332,7 @@ public class ExecuteManager {
             double coordinatesY = Double.parseDouble(args.get(7));
             Float height = Float.parseFloat(args.get(9));
             double weight = Double.parseDouble(args.get(10));
-            Color color = Color.getColor(args.get(11));
+            Color color = Color.valueOf(args.get(11));
             Long x = Long.parseLong(args.get(12));
             long y = Long.parseLong(args.get(14));
             int z = Integer.parseInt(args.get(15));
@@ -365,7 +363,7 @@ public class ExecuteManager {
             double coordinatesY = Double.parseDouble(args.get(7));
             Float height = Float.parseFloat(args.get(9));
             double weight = Double.parseDouble(args.get(10));
-            Color color = Color.getColor(args.get(11));
+            Color color = Color.valueOf(args.get(11));
             Long x = Long.parseLong(args.get(12));
             long y = Long.parseLong(args.get(14));
             int z = Integer.parseInt(args.get(15));
@@ -394,7 +392,7 @@ public class ExecuteManager {
         double coordinatesY = Double.parseDouble(args.get(6));
         Float height = Float.parseFloat(args.get(8));
         double weight = Double.parseDouble(args.get(9));
-        Color color = Color.getColor(args.get(10));
+        Color color = Color.valueOf(args.get(10));
         Long x = Long.parseLong(args.get(11));
         long y = Long.parseLong(args.get(13));
         int z = Integer.parseInt(args.get(14));

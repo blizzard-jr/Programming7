@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import org.example.UserInterface;
-import org.example.island.commands.Message;
+import org.island.commands.Message;
 
 import java.io.IOException;
 

@@ -1,7 +1,7 @@
 package org.example.commandsManager;
 
 import org.example.details.StorageOfManagers;
-import org.example.island.object.*;
+import org.island.object.*;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class DataBaseManager {
     ReentrantLock locker = new ReentrantLock();
@@ -41,7 +40,7 @@ public class DataBaseManager {
                 String P_name = result.getString("P_name");
                 Float height = result.getFloat("P_height");
                 double weight = result.getDouble("P_weight");
-                Color color = Color.getColor(result.getString("P_color"));
+                Color color = Color.valueOf(result.getString("P_color"));
                 person = new Person(P_name, height, weight, color, location);
                 float coordinatesX = result.getFloat("C_x");
                 double coordinatesY = result.getDouble("C_y");
@@ -51,12 +50,15 @@ public class DataBaseManager {
                 String G_name = result.getString("S_name");
                 long studentsCount = result.getLong("studentsCount");
                 long shouldBeExpelled = result.getLong("shouldBeExpelled");
-                FormOfEducation form = FormOfEducation.getForm(result.getString("formOfEducation"));
-                Semester sem = Semester.getSem(result.getString("semester"));
+                FormOfEducation form = FormOfEducation.valueOf(result.getString("formOfEducation"));
+                Semester sem = Semester.valueOf(result.getString("semester"));
                 String owner = result.getString("owner");
                 StudyGroup el = new StudyGroup(id, G_name, studentsCount, shouldBeExpelled, coordinates, creationDate, form, sem, person);
                 StorageOfManagers.storage.putWithKey(key, el);
-                TableGroup group = new TableGroup(id, key, G_name, studentsCount, shouldBeExpelled, form.getRus(), sem.getRus(), coordinatesX, coordinatesY, P_name, height, weight, color.getRus(), x, y, z, name, creationDate.toString(), owner);
+                TableGroup group = new TableGroup(id, key, G_name,
+                        studentsCount, shouldBeExpelled, form.toString(),
+                        sem.toString(), coordinatesX, coordinatesY,
+                        P_name, height, weight, color.toString(), x, y, z, name, creationDate.toString(), owner);
                 data.add(group);
             }
             return data;
@@ -169,14 +171,14 @@ public class DataBaseManager {
             statement.setString(2, obj.getName());
             statement.setLong(3, obj.getStudentsCount());
             statement.setLong(4, obj.getShouldBeExpelled());
-            statement.setString(5, obj.getFormOfEducation().getRus());
-            statement.setString(6, obj.getSemesterEnum().getRus());
+            statement.setString(5, obj.getFormOfEducation().toString());
+            statement.setString(6, obj.getSemesterEnum().toString());
             statement.setFloat(7, coordinates.getX());
             statement.setDouble(8, coordinates.getY());
             statement.setString(9, person.getName());
             statement.setFloat(10, person.getHeight());
             statement.setDouble(11, person.getWeight());
-            statement.setString(12, person.getHairColor().getRus());
+            statement.setString(12, person.getHairColor().toString());
             statement.setLong(13, location.getX());
             statement.setLong(14, location.getY());
             statement.setLong(15, location.getZ());
@@ -285,14 +287,14 @@ public class DataBaseManager {
             groupSt.setString(1, element.getName());
             groupSt.setLong(2, element.getStudentsCount());
             groupSt.setLong(3, element.getShouldBeExpelled());
-            groupSt.setString(4, element.getFormOfEducation().getRus());
-            groupSt.setString(5, element.getSemesterEnum().getRus());
+            groupSt.setString(4, element.getFormOfEducation().toString());
+            groupSt.setString(5, element.getSemesterEnum().toString());
             groupSt.setFloat(6, element.getCoordinates().getX());
             groupSt.setDouble(7, element.getCoordinates().getY());
             groupSt.setString(8, element.getGroupAdmin().getName());
             groupSt.setDouble(9, element.getGroupAdmin().getWeight());
             groupSt.setFloat(10, element.getGroupAdmin().getHeight());
-            groupSt.setString(11, element.getGroupAdmin().getHairColor().getRus());
+            groupSt.setString(11, element.getGroupAdmin().getHairColor().toString());
             groupSt.setLong(12, element.getGroupAdmin().getLocation().getX());
             groupSt.setLong(13, element.getGroupAdmin().getLocation().getY());
             groupSt.setLong(14, element.getGroupAdmin().getLocation().getZ());

@@ -7,10 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.example.island.commands.Remove_key;
+import org.island.commands.Remove_key;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class ElSetting {
     @FXML
