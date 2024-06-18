@@ -13,12 +13,12 @@
             <content>
                 <TableView fx:id="table" editable="true">
                     <columns>
-                        <TableColumn fx:id="id" prefWidth="120" sortable="false" text="id">
+                        <TableColumn fx:id="id" prefWidth="120.0" sortable="false" text="id">
                             <cellValueFactory>
                                 <PropertyValueFactory property="id" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="key" prefWidth="120" sortable="false" text="key">
+                        <TableColumn fx:id="key" prefWidth="120.0" sortable="false" text="key">
                             <cellValueFactory>
                                 <PropertyValueFactory property="key" />
                             </cellValueFactory>
@@ -114,7 +114,7 @@
                     </opaqueInsets>
                 </TableView>
             </content></ScrollPane>
-        <MenuButton fx:id="menu" layoutX="696.0" layoutY="14.0" mnemonicParsing="false" text="Menu">
+        <MenuButton fx:id="menu" layoutX="702.0" layoutY="14.0" mnemonicParsing="false" text="Menu">
             <items>
                 <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#executeExit" text="exit" />
                 <MenuItem fx:id="clear" mnemonicParsing="false" onAction="#executeClear" text="clear" />
@@ -134,9 +134,9 @@
                 <Image url="@user.png" />
             </image>
         </ImageView>
-        <Label fx:id="login" layoutX="58.0" layoutY="15.0" prefHeight="28.0" prefWidth="126.0" text="Label" />
+        <Label fx:id="login" layoutX="58.0" layoutY="15.0" prefHeight="28.0" prefWidth="126.0" />
         <Button fx:id="insert" layoutX="5.0" layoutY="294.0" mnemonicParsing="false" onAction="#executeInsert" text="insert" />
-        <ImageView fx:id="galochka" fitHeight="34.0" fitWidth="46.0" layoutX="575.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="galochka" fitHeight="34.0" fitWidth="46.0" layoutX="546.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView id="background-image" fitHeight="390.0" fitWidth="787.0" layoutX="-5.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@itmo.png" />
@@ -144,6 +144,6 @@
         </ImageView>
 
         <Canvas fx:id="canvas" height="390.0" layoutY="320.0" width="780.0" />
-      <Button fx:id="refresh" layoutX="633.0" layoutY="14.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+      <Button fx:id="refresh" alignment="TOP_RIGHT" layoutX="608.0" layoutY="13.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" text="Refresh" />
     </children>
 </AnchorPane>

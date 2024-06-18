@@ -64,7 +64,6 @@ public class ExecuteManager {
         msg.clearArg();
         args.remove(args.size() - 1);
         args.remove(args.size() - 2);
-        args.remove(args.size() - 3);
         commandList.add(cmd.getName() + " " + args);
     }
     public void commandExecute(String s, Object login, Object password, Socket clientSocket)  {

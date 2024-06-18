@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFA07A !important; -fx-background-radius: 15 !important; " xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.EnterScene">
    <children>
-      <Label fx:id="welcome" layoutX="244.0" layoutY="43.0" prefHeight="32.0" text="Welcome">
+      <Label fx:id="welcome" alignment="TOP_CENTER" layoutX="244.0" layoutY="43.0" prefHeight="32.0" text="Welcome">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font>
@@ -17,11 +17,11 @@
          </font>
       </Label>
       <TextField fx:id="login" layoutX="221.0" layoutY="147.0" />
-      <Label fx:id="log" layoutX="179.0" layoutY="146.0" prefHeight="26.0"  text="Login" />
-      <Label fx:id="pass" layoutX="161.0" layoutY="191.0" prefHeight="18.0"  text="Password" />
+      <Label fx:id="log" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="45.0" layoutY="150.0" prefHeight="18.0" prefWidth="163.0" text="Login" textAlignment="RIGHT" />
+      <Label fx:id="pass" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="42.0" layoutY="191.0" prefHeight="18.0" prefWidth="170.0" text="Password" textAlignment="RIGHT" />
       <Button fx:id="enter" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#enterClicked" text="Enter" />
       <CheckBox fx:id="register" layoutX="146.0" layoutY="275.0" mnemonicParsing="false" text="Register" />
-      <Label fx:id="ports" layoutX="186.0" layoutY="232.0" text="Port" />
+      <Label fx:id="ports" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="45.0" layoutY="232.0" prefHeight="18.0" prefWidth="163.0" text="Port" textAlignment="RIGHT" />
       <TextField fx:id="port" layoutX="221.0" layoutY="228.0" />
       <PasswordField fx:id="password" layoutX="221.0" layoutY="187.0" />
       <Button fx:id="Lang" layoutX="511.0" layoutY="14.0" mnemonicParsing="false" onAction="#choseLang" text="Langueage" />

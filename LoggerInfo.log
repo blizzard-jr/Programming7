@@ -3084,3 +3084,85 @@
 45316 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
 45520 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
 45632 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2670 [main] INFO  org.example.main.Main - Начало работы сервера
+32800 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+32992 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+33133 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+415657 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 2 активных клиентов
+415830 [pool-1-thread-3] INFO  o.example.requests.RequestsManager - Обработка запроса
+415972 [pool-1-thread-3] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+557113 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 3 активных клиентов
+557279 [pool-1-thread-5] INFO  o.example.requests.RequestsManager - Обработка запроса
+557372 [pool-1-thread-5] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+859483 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 4 активных клиентов
+859679 [pool-1-thread-7] INFO  o.example.requests.RequestsManager - Обработка запроса
+859793 [pool-1-thread-7] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1110574 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 5 активных клиентов
+1110825 [pool-1-thread-9] INFO  o.example.requests.RequestsManager - Обработка запроса
+1110910 [pool-1-thread-9] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2168 [main] INFO  org.example.main.Main - Начало работы сервера
+60349 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+60531 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+60665 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+100805 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 2 активных клиентов
+100978 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+101054 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+2203 [main] INFO  org.example.main.Main - Начало работы сервера
+85652 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+85849 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+86022 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+373871 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 2 активных клиентов
+374027 [pool-1-thread-3] INFO  o.example.requests.RequestsManager - Обработка запроса
+374110 [pool-1-thread-3] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+1929 [main] INFO  org.example.main.Main - Начало работы сервера
+27310 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+27547 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+27680 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+37326 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+37327 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+37329 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов
+1367 [main] ERROR org.example.main.Main - не удалось установить соединение с БД. программа будет завершена(
+2068 [main] INFO  org.example.main.Main - Начало работы сервера
+117612 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+117747 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+118007 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+144302 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+144303 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+144305 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов
+1298 [main] ERROR org.example.main.Main - не удалось установить соединение с БД. программа будет завершена(
+2228 [main] INFO  org.example.main.Main - Начало работы сервера
+2117 [main] INFO  org.example.main.Main - Начало работы сервера
+2078 [main] INFO  org.example.main.Main - Начало работы сервера
+36698 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+36919 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+37088 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+111188 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+111190 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+111193 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов
+2630 [main] INFO  org.example.main.Main - Начало работы сервера
+27786 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+27993 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+28117 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+34821 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+34838 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+48725 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+48727 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+48729 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов
+102088 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+102247 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+102342 [pool-1-thread-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+169670 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+169673 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+169676 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов
+522375 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+522558 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+522707 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+577555 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+577557 [pool-1-thread-2] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+577559 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов
+758091 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+758257 [pool-1-thread-3] INFO  o.example.requests.RequestsManager - Обработка запроса
+758343 [pool-1-thread-3] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+801153 [pool-1-thread-3] INFO  o.example.requests.RequestsManager - Обработка запроса
+801155 [ForkJoinPool.commonPool-worker-5] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+801159 [pool-1-thread-3] INFO  o.example.requests.RequestsManager - Отключение клиента, 0 активных клиентов

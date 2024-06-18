@@ -76,6 +76,10 @@ public class UserInterface extends javafx.application.Application{
         return log;
     }
 
+    public static String getPassword() {
+        return password;
+    }
+
     public static Object[] authentication(Message data){
         Object[] userdata = new Object[3];
         Message bool;

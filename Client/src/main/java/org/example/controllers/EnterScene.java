@@ -38,9 +38,8 @@ public class EnterScene {
     private Label log;
     @FXML
     private Label ports;
-    private MainScene mainScene;
-    private FXMLLoader loader = new FXMLLoader();
-    private ResourceBundle bundle = ResourceBundle.getBundle("resources_en_US", new Locale("en", "US"));
+    private LangControl langControl;
+    private ResourceBundle bundle = ResourceBundle.getBundle("resources_en_NZ", new Locale("en", "NZ"));
 
 
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -63,6 +62,7 @@ public class EnterScene {
         UserInterface.setRegister(register.isSelected());
         UserInterface.connect();
         UserInterface.authentication(new Message());
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getResource("/mainScene.fxml"));
         Parent root = null;
         try {
@@ -70,7 +70,7 @@ public class EnterScene {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        mainScene = loader.getController();
+        MainScene mainScene = loader.getController();
         mainScene.init(bundle);
         mainScene.collectionInit(UserInterface.getData());
         UserInterface.getStage().setScene(new Scene(root));
@@ -81,9 +81,8 @@ public class EnterScene {
         loader.setLocation(getClass().getResource("/Language.fxml"));
         try {
             Parent parent = loader.load();
-            LangControl langControl = loader.getController();
+            langControl = loader.getController();
             langControl.initEntr(this);
-            langControl.initMain(mainScene);
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -91,7 +90,6 @@ public class EnterScene {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
     public void setLocale(ResourceBundle bundle){
         ports.setText(bundle.getString("ports"));

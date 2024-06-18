@@ -90,15 +90,13 @@ public class MainScene {
     @FXML
     private MenuItem exit;
     @FXML
-    private MenuItem language;
+    private MenuItem MainLang;
     @FXML
     private MenuItem clear;
     @FXML
     private MenuItem info;
     @FXML
     private MenuItem history;
-    @FXML
-    private MenuItem removeLower;
     @FXML
     private ImageView galochka;
     @FXML
@@ -111,6 +109,8 @@ public class MainScene {
     private MenuItem greater;
     @FXML
     private TextField Rkey;
+    @FXML
+    private MenuButton menu;
     private Animation animation;
     private List<TableGroup> collection;
     private ObservableList<TableGroup> list;
@@ -121,10 +121,23 @@ public class MainScene {
     }
 
     public void init(ResourceBundle bundle){
-        this.bundle = bundle;
+        setLocale(bundle);
     }
     public void executeLang(){
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Language.fxml"));
+        try {
+            Parent parent = loader.load();
+            LangControl langControl = loader.getController();
+            langControl.initMain(this);
+            langControl.setMainOrEntr(true);
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void executeScript(){
         FileChooser fileChooser = new FileChooser();
@@ -373,13 +386,12 @@ public class MainScene {
         creationDate.setText(bundle.getString("creationDate"));
         owner.setText(bundle.getString("owner"));
         insert.setText(bundle.getString("insert"));
-        login.setText(bundle.getString("login"));
         exit.setText(bundle.getString("exit"));
-        language.setText(bundle.getString("language"));
+        MainLang.setText(bundle.getString("MainLang"));
+        menu.setText(bundle.getString("menu"));
         clear.setText(bundle.getString("clear"));
         info.setText(bundle.getString("info"));
         history.setText(bundle.getString("history"));
-        removeLower.setText(bundle.getString("removeLower"));
         refresh.setText(bundle.getString("refresh"));
         script.setText(bundle.getString("script"));
         lower.setText(bundle.getString("lower"));
