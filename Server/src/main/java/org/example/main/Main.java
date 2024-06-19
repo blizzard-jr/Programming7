@@ -26,7 +26,7 @@ public class Main {
         int port = portInit(args);
         server = new ServerSocket(port);
         try {
-            dbconnection("jdbc:postgresql://localhost:5432/studs", args[0], args[1]); // host, login, pass for db connection
+            dbconnection(args[0], args[1], args[2]); // host, login, pass for db connection
         } catch (ClassNotFoundException | SQLException e) {
             logger.error("не удалось установить соединение с БД. программа будет завершена(");
             System.exit(1);

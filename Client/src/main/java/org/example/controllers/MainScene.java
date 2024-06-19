@@ -260,8 +260,9 @@ public class MainScene {
         cmd.setArguments(UserInterface.getLog());
         outputData(Serialization.SerializeObject(cmd));
         Message msg = inputData();
-        List<TableGroup> collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
         if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())) {
+            List<TableGroup> collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
+
             if (UserInterface.getData() != null) {
                 ArrayList<Integer> deletedElems = getDeletedElems(
                         UserInterface.getData(),

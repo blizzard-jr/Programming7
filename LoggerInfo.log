@@ -3971,3 +3971,23 @@
 1504329 [ForkJoinPool.commonPool-worker-11] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
 1512342 [pool-1-thread-14] INFO  o.example.requests.RequestsManager - Обработка запроса
 1512347 [ForkJoinPool.commonPool-worker-11] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+242  [main] INFO  org.example.main.Main - Начало работы сервера
+16309 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+16340 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+16352 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+23943 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 2 активных клиентов
+23948 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+23962 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+394653 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+394665 [ForkJoinPool.commonPool-worker-3] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+403076 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+403105 [ForkJoinPool.commonPool-worker-3] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+407935 [pool-1-thread-2] INFO  o.example.requests.RequestsManager - Обработка запроса
+407941 [ForkJoinPool.commonPool-worker-3] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+210  [main] INFO  org.example.main.Main - Начало работы сервера
+9073 [main] INFO  o.e.connections.ConnectionManager - Получено новое подключение, 1 активных клиентов
+9099 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+9120 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+13552 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
+13557 [ForkJoinPool.commonPool-worker-1] INFO  org.example.answers.AnswerManager - Отправка ответа пользователю
+15510 [pool-1-thread-1] INFO  o.example.requests.RequestsManager - Обработка запроса
