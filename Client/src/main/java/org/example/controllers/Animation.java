@@ -20,30 +20,24 @@ import org.island.object.TableGroup;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 
 public class Animation {
-    private List<TableGroup> collection;
-    private GraphicsContext gc;
-    private double canvasWidth;
-    private double canvasHeight;
+    public static GraphicsContext gc;
+    public static double canvasWidth;
+    public static double canvasHeight;
     private static HashMap<Integer, MyRectangle> elements = new HashMap<Integer, MyRectangle>();
-    private static ArrayList<Integer> toDelete= new ArrayList<>();
-    public Animation(GraphicsContext gc, List<TableGroup> collection, double canvasWidth, double canvasHeight) {
-        this.collection = collection;
-        this.canvasWidth = canvasWidth;
-        this.canvasHeight = canvasHeight;
-        this.gc = gc;
+    public static ArrayList<Integer> toDelete;
 
-    }
-
-    public static void setElemsToDelete(ArrayList<TableGroup> deletedElems) {
-        if (!deletedElems.isEmpty()) deletedElems.forEach(v -> toDelete.add(v.getId()));
-    }
+//    public Animation(GraphicsContext gc, double canvasWidth, double canvasHeight) {
+//        canvasWidth = canvasWidth;
+//        this.canvasHeight = canvasHeight;
+//        this.gc = gc;
+//
+//    }
 
 
-    private class MyRectangle {
+    public static class MyRectangle {
         private javafx.beans.property.DoubleProperty x = new javafx.beans.property.SimpleDoubleProperty();
         private javafx.beans.property.DoubleProperty y = new javafx.beans.property.SimpleDoubleProperty();
         double width, height;
@@ -86,7 +80,7 @@ public class Animation {
         }
     }
 
-    public void drawShapes() {
+    public static void drawShapes() {
         gc.clearRect(0, 0, canvasWidth, canvasHeight);
 
         for (MyRectangle rect : elements.values()) {
@@ -101,13 +95,11 @@ public class Animation {
     }
 
 
-    public void initializeCollection(List<TableGroup> collection) {
-
+    public static void initializeCollection(List<TableGroup> collection) {
         for (TableGroup elem : collection) {
-
-            Color color = Color.color((double) (elem.getOwner().hashCode() % 9) / 10,
-                    (double) (elem.getOwner().hashCode() % 8) / 10,
-                    (double) (elem.getOwner().hashCode() % 5) / 10);
+            Color color = Color.color((double) Math.abs(elem.getOwner().hashCode() % 9) / 10,
+                    (double) Math.abs(elem.getOwner().hashCode() % 8) / 10,
+                    (double) Math.abs(elem.getOwner().hashCode() % 5) / 10);
             MyRectangle rect = new MyRectangle(
                     Math.round(canvasWidth / 2 + (elem.getC_x() % 500)),
                     (int) Math.round(canvasHeight / 2 + (elem.getC_y() % 500)),
@@ -121,15 +113,16 @@ public class Animation {
 
     }
 
-    public void startAnimation(List<TableGroup> collection) {
+    public static void startAnimation(List<TableGroup> collection) {
         initializeCollection(collection);
+        System.out.println("START ANIMATION");
         Timeline timeline = new Timeline();
 
         for (MyRectangle rect : elements.values()) {
             double startX = (canvasWidth - rect.width) / 2;
             double startY = (canvasHeight - rect.height) / 2 + 100;
 
-            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.8),
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.6),
                     new javafx.animation.KeyValue(rect.xProperty(), rect.targetX),
                     new javafx.animation.KeyValue(rect.yProperty(), rect.targetY)
             );
@@ -142,35 +135,41 @@ public class Animation {
         timeline.setOnFinished(event -> boom());
         timeline.play();
 
+
+
     }
-    public void boom(){
+
+    public static void boom() {
         gc.clearRect(0, 0, canvasWidth, canvasHeight);
+        if (toDelete == null) {
+            drawShapes();
+            return;
+        }
 
         for (MyRectangle rect : elements.values()) {
-            double canvasWidth = gc.getCanvas().getWidth();
-            double canvasHeight = gc.getCanvas().getHeight();
-            if (toDelete != null && toDelete.contains(rect.tableGroup.getId())){
-                try{
-                    Image image = new Image("boom.png");
-                    double bgX = 20;
-                    double bgY = 20;
-                    gc.drawImage(image, rect.getX(), rect.getY(),50,50);
-                } catch (NullPointerException e){
-                    gc.setFill(Color.ORANGE);
-                    gc.fillOval(rect.getX(), rect.getY(),30,30);
-                }
-
-                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
-                    drawShapes();
-                }));
-                timeline.setCycleCount(1);
-                timeline.play();
-
+            if (toDelete.contains(rect.tableGroup.getId())){
+                System.out.println("да надо удалять айди"+rect.tableGroup.getId());
+                gc.drawImage(new Image("boom.png"), rect.targetX, rect.targetY, 100, 100);
+            } else {
+                System.out.println("нет не надо удалять рисую прямоуг"+rect.tableGroup.getId());
+                gc.setFill(rect.color);
+                gc.fillRect(rect.targetX, rect.targetY, rect.width, rect.height);
             }
-            else drawShapes();
 
-            if (toDelete != null && ! toDelete.isEmpty())toDelete.clear();
         }
+        Timeline hideImageTimeline = new Timeline(new KeyFrame(Duration.seconds(0.3), event -> drawOnFinishAfterBoom()));
+        hideImageTimeline.setCycleCount(1);
+        hideImageTimeline.play();
+    }
+
+
+    public static void drawOnFinishAfterBoom() {
+        System.out.println("i am in draw on finish");
+        elements.entrySet().removeIf(entry -> toDelete.contains(entry.getValue().tableGroup.getId()));
+
+        toDelete.clear();
+        drawShapes();
+        System.out.println("FINISHED ANIMATION");
     }
 
 

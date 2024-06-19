@@ -260,15 +260,17 @@ public class MainScene {
         cmd.setArguments(UserInterface.getLog());
         outputData(Serialization.SerializeObject(cmd));
         Message msg = inputData();
+        List<TableGroup> collection = (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1);
         if (ChangingCollectionCommand.class.isAssignableFrom(cmd.getClass())) {
             if (UserInterface.getData() != null) {
-                ArrayList<TableGroup> deletedElems = getDeletedElems(UserInterface.getData(),
-                        (List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
-                if (deletedElems != null ) animation.setElemsToDelete(deletedElems);
-                animateCollection(UserInterface.getData());
+                ArrayList<Integer> deletedElems = getDeletedElems(
+                        UserInterface.getData(),
+                        collection); //comparing previous and new collections and get ids that were deleted
+
+                Animation.toDelete = deletedElems; // remember deleted ids to animate boom
+                System.out.println("elems to delete " + deletedElems);
             }
-            UserInterface.setData((List<TableGroup>) msg.getArguments().get(msg.getArguments().size() - 1));
-            animateCollection(UserInterface.getData());
+            UserInterface.setData(collection);
             collectionInit(UserInterface.getData());
 
             if (msg.getArguments().get(0).equals("ок")) {
@@ -305,10 +307,14 @@ public class MainScene {
         }
     }
 
-    private ArrayList<TableGroup> getDeletedElems(List<TableGroup> collection, List<TableGroup> tableGroups) {
-        if (collection.size() > tableGroups.size()) {
-            collection.removeAll(tableGroups);
-            return (ArrayList<TableGroup>) collection;
+    private ArrayList<Integer> getDeletedElems(List<TableGroup> previousCollection, List<TableGroup> actualCollection) {
+        if (previousCollection.size() > actualCollection.size()) {
+            ArrayList<Integer> previousIds = new ArrayList<>();
+            ArrayList<Integer> actualIds = new ArrayList<>();
+            previousCollection.forEach(v->previousIds.add(v.getId()));
+            actualCollection.forEach(v->actualIds.add(v.getId()));
+            previousIds.removeAll(actualIds);
+            return previousIds;
         }
         return null;
     }
@@ -320,9 +326,10 @@ public class MainScene {
     }
 
     public void animateCollection(List<TableGroup> collection) {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        Animation animation = new org.example.controllers.Animation(gc, collection, canvas.getWidth(), canvas.getHeight());
-        animation.startAnimation(collection);
+        Animation.gc = canvas.getGraphicsContext2D();
+        Animation.canvasWidth = canvas.getWidth();
+        Animation.canvasHeight = canvas.getHeight();
+        Animation.startAnimation(collection);
     }
 
     public TableView<TableGroup> getTable() {

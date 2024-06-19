@@ -123,7 +123,7 @@ public class TableGroup implements Serializable { //Record?
         this.owner = owner;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
