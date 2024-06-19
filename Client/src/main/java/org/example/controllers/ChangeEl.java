@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -44,13 +45,15 @@ public class ChangeEl {
     private TextField F_l_name;
     @FXML
     private Button apply;
-    private MainScene mainScene;
+    public MainScene mainScene;
     private int id;
     private String owner;
     private String creationDate;
 
 
     public void init(TableGroup gr, MainScene mainScene){
+        System.out.println(gr);
+        System.out.println(gr.toString());
         F_p_name.setText(gr.getP_name());
         F_gr_name.setText(gr.getGr_name());
         F_p_height.setText(String.valueOf(gr.getP_height()));
@@ -114,5 +117,4 @@ public class ChangeEl {
     public void deleteEl(){
 
     }
-
 }

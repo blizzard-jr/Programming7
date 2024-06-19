@@ -2,12 +2,17 @@ package org.example.controllers;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -17,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import org.island.object.TableGroup;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,6 +66,10 @@ public class Animation {
 
         double getY() {
             return y.get();
+        }
+
+        Color getColor() {
+            return color;
         }
 
         void setPosition(double x, double y) {
@@ -115,7 +125,6 @@ public class Animation {
 
     public static void startAnimation(List<TableGroup> collection) {
         initializeCollection(collection);
-        System.out.println("START ANIMATION");
         Timeline timeline = new Timeline();
 
         for (MyRectangle rect : elements.values()) {
@@ -136,7 +145,6 @@ public class Animation {
         timeline.play();
 
 
-
     }
 
     public static void boom() {
@@ -147,11 +155,9 @@ public class Animation {
         }
 
         for (MyRectangle rect : elements.values()) {
-            if (toDelete.contains(rect.tableGroup.getId())){
-                System.out.println("да надо удалять айди"+rect.tableGroup.getId());
+            if (toDelete.contains(rect.tableGroup.getId())) {
                 gc.drawImage(new Image("boom.png"), rect.targetX, rect.targetY, 100, 100);
             } else {
-                System.out.println("нет не надо удалять рисую прямоуг"+rect.tableGroup.getId());
                 gc.setFill(rect.color);
                 gc.fillRect(rect.targetX, rect.targetY, rect.width, rect.height);
             }
@@ -164,12 +170,9 @@ public class Animation {
 
 
     public static void drawOnFinishAfterBoom() {
-        System.out.println("i am in draw on finish");
         elements.entrySet().removeIf(entry -> toDelete.contains(entry.getValue().tableGroup.getId()));
-
         toDelete.clear();
         drawShapes();
-        System.out.println("FINISHED ANIMATION");
     }
 
 
@@ -186,14 +189,48 @@ public class Animation {
                         + "owner: " + rect.tableGroup.getOwner();
 
 
+                AnchorPane root = new AnchorPane();
+
+
                 Label label = new Label(data);
+                Button buttonUpdate = new Button("update");
+                Button buttonDelete = new Button("delete");
 
 
-                StackPane root = new StackPane();
+                String hex = String.format("#%02X%02X%02X",
+                        (int) (rect.getColor().getRed() * 255),
+                        (int) (rect.getColor().getGreen() * 255),
+                        (int) (rect.getColor().getBlue() * 255));
+
+
+                buttonUpdate.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: white; -fx-font-size: 14px;", hex));
+                buttonDelete.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: white; -fx-font-size: 14px;", hex));
+
+                ElSetting elSetting = new ElSetting();
+                elSetting.init(EnterScene.getMainScene(), root);
+
+
+                buttonUpdate.setOnAction(actionEvent -> elSetting.updateEl(actionEvent, elSetting.mainScene, rect.tableGroup));
+                buttonDelete.setOnAction(actionEvent -> elSetting.deleteEl(actionEvent, elSetting.mainScene, rect.tableGroup));
+
                 root.getChildren().add(label);
+                root.getChildren().add(buttonUpdate);
+                root.getChildren().add(buttonDelete);
+
+                double sceneWidth = 300;
+                double sceneHeight = 200;
+
+                AnchorPane.setTopAnchor(label, sceneHeight / 6);
+                AnchorPane.setLeftAnchor(label, sceneWidth / 2.0 - 60);
+
+                AnchorPane.setTopAnchor(buttonUpdate, sceneHeight * 0.7);
+                AnchorPane.setLeftAnchor(buttonUpdate, sceneWidth * 0.2);
 
 
-                Scene scene = new Scene(root, 300, 200);
+                AnchorPane.setTopAnchor(buttonDelete, sceneHeight * 0.7);
+                AnchorPane.setLeftAnchor(buttonDelete, sceneWidth * 0.6);
+
+                Scene scene = new Scene(root, sceneWidth, sceneHeight);
 
                 // Настраиваем и показываем основное окно
                 Stage primaryStage = new Stage();

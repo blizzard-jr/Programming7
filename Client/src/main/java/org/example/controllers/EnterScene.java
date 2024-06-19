@@ -40,7 +40,7 @@ public class EnterScene {
     private Label ports;
     private LangControl langControl;
     private ResourceBundle bundle = ResourceBundle.getBundle("resources_en_NZ", new Locale("en", "NZ"));
-
+    public static MainScene mainScene;
 
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
@@ -70,7 +70,7 @@ public class EnterScene {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        MainScene mainScene = loader.getController();
+        mainScene = loader.getController();
         mainScene.init(bundle);
         mainScene.collectionInit(UserInterface.getData());
         UserInterface.getStage().setScene(new Scene(root));
@@ -120,6 +120,8 @@ public class EnterScene {
         alert.showAndWait();
     }
 
-
+    public static MainScene getMainScene(){
+        return mainScene;
+    }
 
 }
